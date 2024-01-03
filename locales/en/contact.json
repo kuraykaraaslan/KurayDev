@@ -1,0 +1,22 @@
+{
+    "page_title": "contact me",
+    "page_description": "i am committed to producing high-quality, efficient, and maintainable code. i thrive in collaborative environments, effectively communicating complex technical concepts to cross-functional teams including designers, product managers, and QA engineers. my strong analytical skills empower me to quickly identify and troubleshoot issues, ensuring smooth project progression and timely delivery.",
+    "page_keywords": "software Development, freelancer, web development, mobile app development, full stack development, javascript, python, react, ui/ux design, backend development, frontend development, remote work, api integration, agile development, problem solving",
+    "name": "name",
+    "name_placeholder": "John Doe",
+    "email": "email",
+    "email_placeholder": "john@doe.com",
+    "phone": "phone",
+    "phone_placeholder": "+1234567890",
+    "message": "message",
+    "message_placeholder": "your message",
+    "date": "date",
+    "send_me_a_message": "send me a message",
+    "submit": "submit",
+    "contact_me": "contact me",
+    "contact": "contact",
+    "contact_description": "good things happen when we talk",
+    "my_phone": "+90 545 922 3554",
+    "my_email": "kuraykaraaslan@gmail.com",
+    "my_name": "Kuray Karaaslan"
+}

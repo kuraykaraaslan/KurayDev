@@ -1,0 +1,22 @@
+{
+    "page_title": "benimle iletişime Geçin",
+    "page_description": "yeniliklere tutkulu bir şekilde bağlı yazılım geliştiricisi. inşaat mühendisliğinden yazılım geliştirmeye olan yolculuğum, uyum kabiliyetimi ve yeni zorlukları benimseme taahhüdümü yansıtıyor. şu anda serbest yazılım geliştirici olarak çalışıyorum. ayrıca istanbul üniversitesi'nde bilgi sistemleri yönetimi alanında lisans öğrencisiyim. gerçek dünya sorunlarına yenilikçi çözümler oluşturma fırsatları arıyorum.",
+    "page_keywords": "yazılım geliştirme, freelancer, web geliştirme, mobil uygulama geliştirme, full stack geliştirme, javascript, python, react, ui/ux tasarım, backend, frontend, remote, api, agile, scrum",
+    "name": "isim",
+    "name_placeholder": "ahmet efendi",
+    "email": "e-posta",
+    "email_placeholder": "ahmetefendi@gmail.com",
+    "phone": "telefon",
+    "phone_placeholder": "+90 555 555 55 55",
+    "message": "mesaj",
+    "message_placeholder": "merhaba, ...",
+    "date": "tarih",
+    "send_me_a_message": "bana bir mesaj gönderin",
+    "submit": "gönder",
+    "contact me": "benimle iletişime geçin",
+    "contact": "iletişim",
+    "contact_description": "iyi şeyler, konuştukça olur.",
+    "my_phone": "+90 545 922 3554",
+    "my_email": "kuraykaraaslan@gmail.com",
+    "my_name": "Kuray Karaaslan"
+}

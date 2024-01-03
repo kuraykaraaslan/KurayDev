@@ -1,0 +1,18 @@
+{
+    "home": "home",
+    "about": "about",
+    "contact": "contact",
+    "blog": "blog",
+    "portfolio": "portfolio",
+    "services": "services",
+    "projects": "projects",
+    "dark_mode": "dark mode",
+    "light_mode": "light mode",
+    "contrast_mode": "contrast mode",
+    "barbie_mode": "barbie mode",
+    "languages": "languages",
+    "english": "english",
+    "turkish": "turkish",
+    "german": "german",
+    "thai": "thai"
+}

@@ -1,0 +1,18 @@
+{
+    "home": "startseite",
+    "about": "über mich",
+    "contact": "kontakt",
+    "blog": "blog",
+    "portfolio": "portfolio",
+    "services": "dienstleistungen",
+    "projects": "projekte",
+    "dark_mode": "dunkelmodus",
+    "light_mode": "hellmodus",
+    "contrast_mode": "kontrastmodus",
+    "barbie_mode": "barbie-modus",
+    "languages": "sprachen",
+    "english": "englisch",
+    "turkish": "türkisch",
+    "german": "deutsch",
+    "thai": "thailändisch"
+}

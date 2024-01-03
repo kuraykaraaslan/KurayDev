@@ -1,0 +1,18 @@
+{
+    "home": "หน้าแรก",
+    "about": "เกี่ยวกับ",
+    "contact": "ติดต่อ",
+    "blog": "บทความ",
+    "portfolio": "ผลงาน",
+    "services": "บริการ",
+    "projects": "โครงการ",
+    "dark_mode": "โหมดมืด",
+    "light_mode": "โหมดสว่าง",
+    "contrast_mode": "โหมดคอนทราสต์",
+    "barbie_mode": "โหมดบาร์บี้",
+    "languages": "ภาษา",
+    "english": "อังกฤษ",
+    "turkish": "ตุรกี",
+    "german": "เยอรมัน",
+    "thai": "ไทย"
+}
