@@ -61,7 +61,7 @@ const HeroTop = () => {
 
 
     // This component was auto-generated from Canvas.js
-
+    /*
     useEffect(() => {
         createRoot(document.getElementById('canvas')).render(
             <Canvas>
@@ -74,6 +74,8 @@ const HeroTop = () => {
         )
 
     }, [])
+
+    */
 
     return (
         <div className="hero min-h-screen bg-base-300 -mt-20">

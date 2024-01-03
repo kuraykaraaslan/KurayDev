@@ -1,7 +1,7 @@
 
 import { useState, useEffect, createRef, Component } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faReact, faBootstrap, faHtml5, faPython, faPhp } from "@fortawesome/free-brands-svg-icons"
+import { faReact, faBootstrap, faHtml5, faPython, faPhp, faJava } from "@fortawesome/free-brands-svg-icons"
 import { faWind, faDatabase } from "@fortawesome/free-solid-svg-icons"
 
 const HeroFeatures = () => {
@@ -94,10 +94,10 @@ const HeroFeatures = () => {
                             </div>
                             <div className="card w-40 h-40 bg-base-300 hover:text-white transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 select-none hover:bg-blue-800 px-2 py-2">
                                 <figure className="px-10 pt-10 -mb-3 pb-5">
-                                    <FontAwesomeIcon icon={faDatabase} style={{ width: "45px", height: "45px" }} />
+                                    <FontAwesomeIcon icon={faJava} style={{ width: "45px", height: "45px" }} />
                                 </figure>
                                 <div className="card-body items-center text-center">
-                                    <h2 className="card-title">sql</h2>
+                                    <h2 className="card-title">java</h2>
                                 </div>
                             </div>
                         </div>

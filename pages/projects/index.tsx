@@ -64,23 +64,12 @@ const ProjectShowcase = (props) => {
                     <h2 className="text-2xl font-semibold mb-4">projects</h2>
                     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10">
                         {projects.map((project, index) => (
-                            <>
-                            <Link href={`/projects/${project.slug}`}> 
-
-                                <div
-                                    key={index}
-                                    className="rounded shadow p-6 hover:shadow-xl transition-shadow duration-300 bg-base-100"
-                                >
-                                    <img
-                                        src={project.img ? project.img : "/assets/images/og-image.jpg"}
-                                        alt={project.title}
-                                        className="mb-4 w-full rounded"
-                                    />
+                            <Link href={`/projects/${project.slug}`} key={index}>
+                                <div className="flex flex-col rounded shadow p-6 hover:shadow-xl transition-shadow duration-300 bg-base-100 h-full">
                                     <h3 className="text-lg font-semibold">{project.title}</h3>
-                                    <p className="mb-2">{project.description}</p>
+                                    <p className="mb-2 mt-2">{project.description}</p>
                                 </div>
                             </Link>
-                            </>
                         ))}
                     </div>
                 </div>

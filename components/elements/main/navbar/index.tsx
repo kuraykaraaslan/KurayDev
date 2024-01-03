@@ -55,8 +55,8 @@ const Navbar = (props) => {
                             <ul className="menu menu-horizontal px-1">
                                 <li className={router.pathname == '/' ? 'active' : ''} >
                                     <Link href="/">home</Link></li>
-                                <li className={router.pathname == '/about' ? 'active' : ''} >
-                                    <Link href="/about">about</Link></li>
+                                <li>
+                                    <Link href="https://resume.kuray.dev" target="_blank">resume</Link></li>
                                 <li className={router.pathname.startsWith('/projects') ? 'active' : ''} >
                                     <Link href="/projects " locale="en">projects</Link></li>
                                 <li className={router.pathname.startsWith('/blog') ? 'active' : ''} >
@@ -78,7 +78,7 @@ const Navbar = (props) => {
                                         <Link href="/" className="block text-center">home</Link>
                                     </li>
                                     <li>
-                                        <a href="/about" className="block text-center">about</a>
+                                        <a href="https://resume.kuray.dev" target="_blank" className="block text-center">resume</a>
                                     </li>
                                     <li>
                                         <Link href="/projects" className="block text-center" locale="en">projects</Link>
