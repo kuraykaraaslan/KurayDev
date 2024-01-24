@@ -1,0 +1,40 @@
+p {
+    font-size: 1rem;
+    padding-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    list-style:circle;
+}
+
+h3 {
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+h4 {
+    font-size: 1rem;
+    padding-bottom: 1rem;
+}
+
+h5 {
+    font-size: 0.875rem;
+    padding-bottom: 1rem;
+}
+
+li {
+    font-size: 1rem;
+    padding-left: 1rem;
+    list-style:circle;
+    list-style-position: inside;
+}

@@ -1,41 +1,36 @@
-# kuray.dev Page
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Welcome to the **kuray.dev** GitHub repository! This project aims to create a professional and customizable webpage template for myself to showcase skills, projects, and services.
+## Getting Started
 
-## Features
+First, run the development server:
 
-- **Responsive Design**: The webpage template is designed to be responsive, ensuring a seamless experience across various devices and screen sizes.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- **Portfolio Showcase**: Display my projects, case studies, and code samples in an organized and visually appealing manner. Each project can have its own dedicated section with descriptions, images, and links to live demos or repositories.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- **Skills and Expertise**: Highlight your technical skills, programming languages, frameworks, and tools that you're proficient in. This section helps clients understand your capabilities at a glance.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- **About Me**: Introduce yourself to your visitors. Share your background, journey as a developer, and your approach to solving problems. Let potential clients get to know you personally.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-- **Testimonials**: Showcase feedback and testimonials from previous clients to build credibility and trust.
+## Learn More
 
-- **Contact Information**: Provide various ways for potential clients to get in touch with you. This can include a contact form, email address, social media links, and possibly even direct messaging platforms.
+To learn more about Next.js, take a look at the following resources:
 
-## Usage
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-1. **Fork the Repository**: Start by forking this repository to your GitHub account.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-2. **Clone the Repository**: Clone the forked repository to your local development environment using the following command:
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-3. **Customize**: Modify the HTML, CSS, and other assets to personalize the webpage to your liking. Update the content, add your projects, skills, and tailor the page to reflect your unique style.
-
-4. **Deploy**: Once you're satisfied with your customizations, you can deploy the webpage to your preferred hosting platform. GitHub Pages is a popular option for static sites like this. You can also choose other hosting services or your own server.
-
-5. **Domain Name (Optional)**: If you have a custom domain name, you can configure it to point to your deployed webpage for a professional touch.
-
-## Contribution
-
-Contributions to this project are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request. Please ensure that your contributions align with the project's goals and maintain its simplicity and ease of customization.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the code as you see fit. Attribution is appreciated but not required.
-
-
-   
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
