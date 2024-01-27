@@ -1,9 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faLightbulb, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faLightbulb, faSun, faMoon, faH, faHome, faP, faPerson, faUser, faBriefcase, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 import Link from 'next/link';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 
 const Navbar = () => {
@@ -25,8 +26,8 @@ const Navbar = () => {
     
     return (
         <>
-            <div className="px-4 sm:px-6 lg:px-8 pt-3 sticky top-0 z-50" style={{ zIndex: 99, position: 'absolute', width: '100%' }}>
-                <nav className="navbar bg-base-100 rounded-full shadow ">
+            <div className="px-4 sm:px-6 lg:px-8 pt-3 sticky top-0 z-50 w-full" style={{ zIndex: 99, position: 'absolute', width: '100%' }}>
+                <nav className="navbar bg-base-100 rounded-full shadow-lg border border-base-200">
                     <div className="flex-1">
                         <Link className="btn btn-ghost normal-case text-xl rounded-full" href="/" title="home">
                             <div className="flex items-center space-x-2">
@@ -54,6 +55,8 @@ const Navbar = () => {
                                 <li>
                                     <Link href="https://resume.kuray.dev" target="_blank">resume</Link></li>
                                 <li className={path.startsWith('/projects') ? 'active' : ''} >
+                                    <Link href="/projects">projects</Link></li>
+                                <li className={path.startsWith('/github') ? 'active' : ''} >
                                     <Link href="https://github.com/kuraykaraaslan" target="_blank" locale="en">github</Link></li>
                                 {/* <li className={path.startsWith('/blog') ? 'active' : ''} > */}
                                 {/* <Link href="/blog" locale="en">blog</Link></li> */}
@@ -68,22 +71,25 @@ const Navbar = () => {
                     {isDrawerOpen && (
                         <>
                             <div className='bg-base-200' style={{ position: 'fixed', zIndex: 100, top: 0, left: 0, width: '100%', height: '100vh', opacity: 0.1 }} onClick={toggleDrawer} ></div>
-                            <div className="fixed inset-0 bg-opacity-0 " style={{ position: 'fixed', zIndex: 101, top: 0, width: '250px', height: '100vh', backgroundColor: '#1f2937' }} >
+                            <div style={{ position: 'fixed', zIndex: 101, top: 0, width: '250px', height: '100vh', backgroundColor: '#1f2937' }} className="fixed inset-0 bg-opacity-0 border-r-2 border-base-200 shadow-2xl">
                                 <ul className="h-full p-8 w-full menu menu-box bg-base-100 shadow-xl space-y-2">
-                                    <li>
-                                        <Link href="/" className="block text-center">home</Link>
+                                    <li >
+                                        <Link href="/" className="text-lg block"><FontAwesomeIcon icon={faHome} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem', top: '0.2rem' }} /> home</Link>
                                     </li>
-                                    <li>
-                                        <a href="https://resume.kuray.dev" target="_blank" className="block text-center">resume</a>
+                                    <li >
+                                        <a href="https://resume.kuray.dev" target="_blank" className="text-lg block"><FontAwesomeIcon icon={faUser} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> resume</a>
                                     </li>
-                                    <li>
-                                        <Link href="https://github.com/kuraykaraaslan" target="_blank" className="block text-center">github</Link>
+                                    <li >
+                                        <Link href="/projects" className="text-lg block"><FontAwesomeIcon icon={faBriefcase} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> projects</Link>
+                                    </li>
+                                    <li >
+                                        <Link href="https://github.com/kuraykaraaslan" target="_blank" className="text-lg block"><FontAwesomeIcon icon={faGithub} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> github</Link>
                                     </li>
                                     {/* <li>
-                                        <Link href="/blog" className="block text-center" locale="en">blog</Link>
+                                        <Link href="/blog" className="text-lg block" locale="en">blog</Link>
                                     </li> */}
-                                    <li>
-                                        <Link href="/contact" className="block text-center">contact</Link>
+                                    <li >
+                                        <Link href="/contact" className="text-lg block"><FontAwesomeIcon icon={faPhone} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> contact</Link>
                                     </li>
                                 </ul>
 

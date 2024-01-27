@@ -20,7 +20,7 @@ const ControlViewCube = () => {
                     </div>
                 </div>
                 <div className="flex-1 lg:ml-12">
-                    <h1 className="text-5xl font-bold  relative overflow-hidden animate-shake pb-4"><FontAwesomeIcon icon={faCube} style={{ width: '3.0rem', height: '3.0rem', color: 'purple' , top: '1rem'}} /> 3D View Cube</h1>
+                    <h1 className="text-5xl font-bold  relative overflow-hidden animate-shake pb-4 gap-4"><FontAwesomeIcon icon={faCube} style={{ width: '3.0rem', height: '3.0rem', color: 'purple' , top: '1rem'}} /> 3D View Cube</h1>
                     <p className="py-6">Modern 3d view cube for web applications. You can use it for 3d modeling applications, 3d games, 3d maps, and more. It is easy to use and customize.</p>
                     <Link href="https://www.npmjs.com/package/control-view-cube">
                         <p className="btn btn-primary">
@@ -28,7 +28,7 @@ const ControlViewCube = () => {
                         
                     </Link>
                     <Link href="https://github.com/kuraykaraaslan/Resume">
-                        <p className="btn btn-ghost ml-2"><FontAwesomeIcon icon={faGithub} style={{ width: '1.0rem', height: '1.0rem' }} /> source code</p>
+                        <p className="btn btn-ghost ml-2"><FontAwesomeIcon icon={faGithub} style={{ width: '1.0rem', height: '1.0rem' }} /> Github</p>
                     </Link>
                 </div>
             </div>

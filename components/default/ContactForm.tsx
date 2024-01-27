@@ -8,7 +8,6 @@ const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
 async function sendMessageToChannel(message: any) {
 
-    console.log('Sending message to Discord channel.');
     try {
 
 
@@ -38,8 +37,31 @@ const ContactForm = (props : any) => {
         const message = document?.getElementById('message')?.value;
         const date = new Date();
 
-        if (name === '' || email === '' || phone === '' || message === '') {
-            alert('please fill all fields');
+        // regex for email
+        const emailRegex = /\S+@\S+\.\S+/;
+        // regex for phone
+        const phoneRegex = /^\+?[0-9]{10,14}$/;
+        // regex for name with dot and space
+        const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+
+        // check one of email or phone is provided
+        if (email === '' && phone === '') {
+            alert('please enter at least one of email or phone');
+            return;
+        }
+
+        if (email !== '' && !emailRegex.test(email as string)) {
+            alert('please enter a valid email');
+            return;
+        }
+
+        if (phone !== '' && !phoneRegex.test(phone as string)) {
+            alert('please enter a valid phone');
+            return;
+        }
+
+        if (!nameRegex.test(name as string)) {
+            alert('please enter a valid name');
             return;
         }
 
@@ -67,23 +89,24 @@ const ContactForm = (props : any) => {
 
     return (
         <form action="#" className={claases} onSubmit={formSubmit}>
+
             <div className="mt-2">
                 <label htmlFor="name" className="block mb-2 text-sm font-medium ">name</label>
-                <input type="text" id="name" className="block p-3 w-full text-sm bg-base-300 rounded-lg" placeholder="your name" required />
+                <input type="text" id="name" className="block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black" placeholder="your name" required />
             </div>
             <div className="mt-2">
                 <label htmlFor="email" className="block mb-2 text-sm font-medium">email</label>
-                <input type="email" id="email" className="block p-3 w-full text-sm bg-base-300 rounded-lg" placeholder="username@provider.com" required />
+                <input type="email" id="email" className="block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black" placeholder="username@provider.com" required />
             </div>
             <div className="mt-2">
                 <label htmlFor="phone" className="block mb-2 text-sm font-medium">phone</label>
-                <input type="tel" id="phone" className="block p-3 w-full text-sm bg-base-300 rounded-lg" placeholder="+1 555 555 55 55" required />
+                <input type="tel" id="phone" className="block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black" placeholder="+1 555 555 55 55" required />
             </div>
             <div className="mt-2">
                 <label htmlFor="message" className="block mb-2 text-sm font-medium">message</label>
-                <textarea id="message" rows="6" className="block p-2.5 w-full text-sm bg-base-300 rounded-lg" placeholder="your message" required></textarea>
+                <textarea id="message" rows="6" className="block p-2.5 w-full text-sm rounded-lg border border-1 border-gray-500 min-h-[150px] bg-gray-200 resize-none text-black" placeholder="your message" required></textarea>
             </div>
-            <button type="submit" className="mt-2 py-3 px-5 text-sm font-medium bg-base-300 rounded-lg hover:bg-primary hover:text-white focus:outline-none focus:bg-primary-600" onClick={formSubmit}>send</button>
+            <button type="submit" className="mt-2 py-3 px-5 text-sm font-medium bg-base-300 rounded-lg hover:bg-primary hover:text-white focus:outline-none focus:bg-primary-600 border border-1 border-gray-500 light:placeholder-black" onClick={formSubmit}>send</button>
         </form>
     )
 

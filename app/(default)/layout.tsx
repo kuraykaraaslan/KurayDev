@@ -4,7 +4,7 @@ import './globals.css'
 
 // Components
 import Navbar from '@/components/default/Navbar'
-import Footer from '@/components/default/Footer'
+import Footer from '@/components/default/FooterNew'
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

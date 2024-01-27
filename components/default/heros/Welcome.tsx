@@ -22,7 +22,7 @@ const Welcome = () => {
                     <p className="btn btn-primary lowercase">contact me</p>
                     </Link>
                     <Link href="/projects" locale="en">
-                    <p className="btn btn-ghost ml-2 lowercase hidden">see my work</p>
+                    <p className="btn btn-ghost ml-2 lowercase">see my top projects</p>
                     </Link>
                 </div>
             </div>
