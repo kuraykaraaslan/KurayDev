@@ -6,7 +6,7 @@ import Link from 'next/link'
 const Welcome = () => {
 
     return (
-        <div className="hero min-h-screen bg-base-300">
+        <div className="hero min-h-screen bg-base-300 select-none">
             <div className="hero-content flex-col lg:flex-row-reverse mx-4 md:mx-20">
                 <div className="max-w-sm rounded-lg shadow-2xl hidden lg:block">
                     <div className="mockup-code  bg-base-100 rounded-box">
@@ -16,7 +16,7 @@ const Welcome = () => {
                     </div>
                 </div>
                 <div className="flex-1 lg:mr-12">
-                    <h1 className="text-5xl font-bold  relative overflow-hidden animate-shake pb-4">i do things with code.</h1>
+                    <h1 className="text-5xl font-bold  relative overflow-hidden animate-shake pb-4 select-none">i do things with code.</h1>
                     <p className="py-6">full stack developer, linux enthusiast, and a big fan of open source. I love to automate things and make life easier.</p>
                     <Link href="/contact">
                     <p className="btn btn-primary lowercase">contact me</p>

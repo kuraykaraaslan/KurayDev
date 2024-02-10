@@ -9,7 +9,7 @@ import { faCube } from '@fortawesome/free-solid-svg-icons'
 const ControlViewCube = () => {
 
     return (
-        <div className="hero min-h-screen bg-base-300">
+        <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row mx-4 md:mx-20">
                 <div className="max-w-sm rounded-lg shadow-2xl hidden lg:block">
                     <div className="mockup-browser border bg-base-300">

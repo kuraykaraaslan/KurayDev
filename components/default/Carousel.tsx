@@ -13,8 +13,8 @@ const Carousel = ({ children }: CarouselProps) => {
     const [active, setActive] = useState(0);
     const carouselRef = React.createRef<HTMLDivElement>();
 
-    const buttonClass = "btn btn-circle border-1 border-gray-500 hover:bg-white hover:text-black active:bg-white active:text-black bg-opacity-20 sm:bg-opacity-0 hidden sm:flex shadow-lg border border-base-200";
-    const mobileButtonClass = "btn rounded-full dark:text-black dark:hover:text-white sm:hidden rounded-full -py-2 w-10 h-10  shadow-lg border border-base-200";
+    const buttonClass = "btn btn-circle border-1 border-gray-500 hover:bg-white hover:text-black active:bg-white active:text-black bg-opacity-20 sm:bg-opacity-0 hidden sm:flex shadow-lg border border-base-200 select-none";
+    const mobileButtonClass = "btn rounded-full dark:text-black dark:hover:text-white sm:hidden rounded-full -py-2 w-10 h-10  shadow-lg border border-base-200 select-none";
 
 
 
@@ -43,7 +43,7 @@ const Carousel = ({ children }: CarouselProps) => {
 
     return (
         <>
-            <div className="carousel w-full min-h-screen -mt-24" style={{ top: '0', left: '0'}} ref={carouselRef}>
+            <div className="carousel w-full min-h-screen bg-base-100 -mt-24 mb-8" style={{ top: '0', left: '0'}} ref={carouselRef}>
                 {children?.map((child: any, index: number) => (
                     <>
                     <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index} onClick={() => setActive(index)} >
@@ -64,12 +64,13 @@ const Carousel = ({ children }: CarouselProps) => {
                     </>
                 ))}
             </div>
-            <div className="flex carousel-indicators gap-2" style={{ zIndex: 50, position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '70px', height: '20px' }}>
+            <div className="flex carousel-indicators gap-2 select-none" style={{ zIndex: 50, position: 'relative', left: '0', right: '0', transform: 'translateY(-40px)', margin: 'auto',
+                        bottom: '70px', height: '20px', display: 'flex', justifyContent: 'center' }}>
                 {children?.map((child: any, index: number) => (
                     <a
                         
                         className={(index === active ? `${mobileButtonClass} active bg-primary` : `${mobileButtonClass} bg-gray-300`) + ' rounded-full overflow-text'} style={{ height: '50px', width: '10px' }}
-                        href={`#slide${index + 1}`}  onClick={() => setActive(index)}
+                        href={`#slide${index + 1}`}  onClick={() => setActive(index)} key={index}
                     >
                         <span>{index + 1}</span>
                     </a>

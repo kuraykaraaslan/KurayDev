@@ -1,40 +1,24 @@
 'use client';
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXTwitter, faGithub, faLinkedin, faTelegram, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
-// mail phone
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-import Head from "next/head";
+import { useState, useEffect, createRef, Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight , faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faXTwitter, faGithub, faLinkedin, faTelegram, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+
 import dynamic from 'next/dynamic';
 
+const ContactForm = dynamic(() => import('../ContactForm'), { ssr: false });
 
-const ContactForm = dynamic(() => import('../../../components/default/ContactForm'), { ssr: false });
+const ContactNew = () => {
 
-const ContactPage = () => {
+
     return (
         <>
-            <Head>
-                <title>contact | kuray.dev</title>
-                <meta name="description" content="i am committed to producing high-quality, efficient, and maintainable code. i thrive in collaborative environments, effectively communicating complex technical concepts to cross-functional teams including designers, product managers, and QA engineers. my strong analytical skills empower me to quickly identify and troubleshoot issues, ensuring smooth project progression and timely delivery." />
-                <meta name="keywords" content="software Development, freelancer, web development, mobile app development, full stack development, javascript, python, react, ui/ux design, backend development, frontend development, remote work, api integration, agile development, problem solving" />
-                <meta name="author" content="kuray karaaslan" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow" />
-                <meta property="og:image" content="/assets/images/og-image.jpg" />
-                <meta property="og:title" content="home | kuray.dev" />
-                <meta property="og:description" content="i am committed to producing high-quality, efficient, and maintainable code. i thrive in collaborative environments, effectively communicating complex technical concepts to cross-functional teams including designers, product managers, and QA engineers. my strong analytical skills empower me to quickly identify and troubleshoot issues, ensuring smooth project progression and timely delivery." />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://kuray.dev" />
-                <meta property="og:site_name" content="kuray.dev" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@kuraykaraaslan" />
-                <meta name="twitter:creator" content="@kuraykaraaslan" />
-                <meta name="twitter:title" content="home | kuray.dev" />
-                <meta name="twitter:description" content="i am committed to producing high-quality, efficient, and maintainable code. i thrive in collaborative environments, effectively communicating complex technical concepts to cross-functional teams including designers, product managers, and QA engineers. my strong analytical skills empower me to quickly identify and troubleshoot issues, ensuring smooth project progression and timely delivery." />
-            </Head>
-
-            <div className="mx-4 md:mx-8 bg-base-200 pt-2 rounded-box mb-4">
+        {/* <section className="md:bg-base-100 bg-base-200 px-4 py-8  md:px-20" id="contact"> */}
+        <section className="bg-base-200 px-4 py-8  md:px-20" id="contact">
+            {/* <div className="container px-2 py-8 mx-auto mx-4 md:px-24 md:bg-base-200 mt-0 md:-mt-24 rounded-box shadow-2xl border-full border-2 border-black contactHero"> */}
+            <div className="container  mx-auto mx-4 mt-0 rounded-box shadow-2xl border-full border-2 border-black contactHero">
+            <div className="mx-4 md:mx-8 pt-2 rounded-box mb-4">
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x pt-12 pb-12 mb-2">
                     <div className="py-6 md:py-0 md:px-6">
                         <h1 className="text-4xl font-bold">contact</h1>
@@ -91,8 +75,12 @@ const ContactPage = () => {
                     </form>
                 </div>
             </div>
+            </div>
+        </section>
         </>
-    );
+
+    )
 }
 
-export default ContactPage;
+
+export default ContactNew;

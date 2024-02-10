@@ -8,7 +8,7 @@ import { faFire } from '@fortawesome/free-solid-svg-icons'
 const DateWave = () => {
 
     return (
-        <div className="hero min-h-screen bg-base-300">
+        <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse mx-4 md:mx-20">
                 <div className="max-w-52 rounded-lg hidden lg:block">
                     <div className="animate-softBounce mockup-phone border-primary">

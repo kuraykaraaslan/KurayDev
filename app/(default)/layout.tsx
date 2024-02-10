@@ -17,43 +17,33 @@ export default function DefaultLayout({
 }) {
 
   useEffect(() => {
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-
-    const scrollToTopBtn = document.getElementById("scrollToTop");
+    const scrollToTopBtn = document.getElementById("scrollToTop") as HTMLElement;
     const main = document.getElementById("main");
 
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        scrollToTopBtn?.classList.add("active");
-        scrollToTopBtn?.classList.remove("hidden");
+    //make the button appear slowly  when the user scrolls down 20px from the top to 500ms
+    window.onscroll = () => {
+      var aligned = window.scrollY * 0.1 -80;
+      if (aligned > 20) {
+        aligned = 20;
+      }
+      scrollToTopBtn.style.right = aligned + "px";
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "flex";
       } else {
-        scrollToTopBtn?.classList.remove("active");
-        scrollToTopBtn?.classList.add("hidden");
+        scrollToTopBtn.style.display = "none";
       }
 
-      // Add null check for main?.offsetHeight
-      if (window.scrollY + window.innerHeight + 200 >= main?.offsetHeight || 0) {
-        scrollToTopBtn?.classList.add("bottom-16");
-        scrollToTopBtn?.classList.remove("bottom-8");
+      //if it is end of the page, for footer raise it up to 100px
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+        const diff = window.innerHeight + window.scrollY - document.body.offsetHeight + 50;
+        scrollToTopBtn.style.bottom = diff + 20 + "px";
       } else {
-        scrollToTopBtn?.classList.remove("bottom-16");
-        scrollToTopBtn?.classList.add("bottom-8");
+        scrollToTopBtn.style.bottom = "20px";
       }
-    };
+    }
+  }
+  )
 
-    scrollToTopBtn?.addEventListener("click", scrollToTop);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      scrollToTopBtn?.removeEventListener("click", scrollToTop);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [])
 
   return (
     <>
@@ -61,7 +51,7 @@ export default function DefaultLayout({
       <main className="mx-auto min-h-screen pt-24 bg-base-300" id="main">{children}</main>
       <Footer />
 
-      <div className="fixed btn bottom-8 right-8 btn btn-primary rounded-full hidden" style={{ zIndex: 100 }} id="scrollToTop">
+      <div className="fixed btn btn btn-primary rounded-full transition duration-500 ease-in-out" style={{ zIndex: 100 , right: "-80px", bottom: "20px" }} id="scrollToTop" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
         <FontAwesomeIcon icon={faArrowUp} className="text-2xl text-white" style={{ width: '20px', height: '20px' }} />
       </div>
     </>

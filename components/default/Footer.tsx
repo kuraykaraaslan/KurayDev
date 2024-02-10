@@ -9,7 +9,7 @@ const Footer = (props: any) => {
             <>
                 <footer className="mx-auto footer items-center p-4 bg-base-200">
                     <div className="items-center grid-flow-col">
-                        <p>© 2023 kuray.dev all rights reserved.</p>
+                        <p>{new Date().getFullYear() + ' kuray.dev all rights resergved.'}</p>
                     </div>
                     <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                         <a href='https://twitter.com/kuraykaraaslan' target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faXTwitter} style={{ width: '24px', height: '24px' }} /></a>

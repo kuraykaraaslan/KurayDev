@@ -1,31 +1,4 @@
 import type { Config } from 'tailwindcss'
-import plugin from 'tailwindcss/plugin'
-
-
-const rotateY = plugin(function ({ addUtilities }) {
-  addUtilities({
-    '.rotate-y-60': {
-      transform: 'rotateY(60deg)',
-    },
-    '.rotate-y-90': {
-      transform: 'rotateY(90deg)',
-    },
-    '.rotate-y-120': {
-      transform: 'rotateY(120deg)',
-    },
-    '.rotate-y-180': {
-      transform: 'rotateY(180deg)',
-    },
-    '.rotate-y-270': {
-      transform: 'rotateY(270deg)',
-    },
-    '.rotate-y-0': {
-      transform: 'rotateY(0deg)',
-    },
-  })
-})
-
-
 
 const config: Config = {
   content: [
@@ -114,42 +87,29 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("daisyui"), require('@tailwindcss/typography'), rotateY],
+  plugins: [require("daisyui"), require('@tailwindcss/typography')],
   daisyui: {
     themes: [
       {
         dark: {
 
-          
-          
-          "primary": "#00aaff",
-          
-          "secondary": "#00dea6",
-                   
-          "accent": "#00ae79",
-                   
-          "neutral": "#311e1d",
-                   
-          "base-100": "#282a3a",
-                   
-          "info": "#00b1d2",
-                   
-          "success": "#33f16a",
-                   
-          "warning": "#d52d00",
-                   
-          "error": "#fd0e3d",
-                   },
-        barbie: {
-          "primary": "#ff1493",    // Barbie Pink
-          "secondary": "#ffffff",  // White
-          "accent": "#ff69b4",     // Hot Pink
-          "neutral": "#f8c6e5",    // Light Pink
-          "base-100": "#f4c2d7",   // Lighter Pink
-          "info": "#87ceeb",       // Sky Blue
-          "success": "#205aee",    // Spring Green
-          "warning": "#a86a05",    // Gold
-          "error": "#ff0000",      // Red
+          "primary": "#aef49c",
+
+          "secondary": "#31167f",
+
+          "accent": "#2d990c",
+
+          "neutral": "#281a2e",
+
+          "base-100": "#342f37",
+
+          "info": "#93d7eb",
+
+          "success": "#12685e",
+
+          "warning": "#efcc1a",
+
+          "error": "#fd5e83",
         },
         light: {
           
@@ -170,18 +130,7 @@ const config: Config = {
           "warning": "#fb6d00",
                    
           "error": "#ff5365",
-        },
-        contrast: {          
-          "primary": "#d85108",          
-          "secondary": "#b7dff4",                   
-          "accent": "#e3ef73",                   
-          "neutral": "#1f2533",                   
-          "base-100": "#3b343c",                   
-          "info": "#62a8f3",                   
-          "success": "#1e8047",                   
-          "warning": "#f8bd4f",                   
-          "error": "#ea3b2e",
-        },
+        }
       },
     ],
   },

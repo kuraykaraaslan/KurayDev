@@ -9,7 +9,7 @@ const Footer = (props: any) => {
         <>
             <footer className="footer grid grid-cols-1 lg:grid-cols-2 gap-4 bg-base-200 p-4 min-w-full">
                 <div className="col-span-1 flex flex-row flex-wrap justify-start">
-                    <p>© 2023 kuray.dev all rights reserved.</p>
+                    <p>{ '© ' +new Date().getFullYear() + ' kuray.dev all rights reserved.'}</p>
                 </div>
                 <div className="col-span-1 flex flex-row flex-wrap justify-start">
                     <a className="link link-hover" href="/privacy">Privacy</a>

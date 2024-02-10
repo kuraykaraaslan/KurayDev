@@ -7,15 +7,13 @@ import DateWave from "@/components/default/heros/DateWave"
 import Toolbox from "@/components/default/heros/Toolbox"
 import Testimonials from "@/components/default/heros/Testimonials"
 import Contact from "@/components/default/heros/Contact"
+import ContactNew from "@/components/default/heros/ContactNew"
 import HireMe from "@/components/default/heros/HireMe"
+import Projects from "@/components/default/heros/Projects"
 
 export default function Home() {
 
   const carouselItems = [
-    {
-      htmlDOM: <HireMe />
-    },
-
     {
       htmlDOM: <Resume />
     },
@@ -32,9 +30,11 @@ export default function Home() {
 
   return (
     <>
+    <HireMe />
     <Carousel children={carouselItems as any} />
+    <Projects />
     <Toolbox />
-    <Contact />
+    <ContactNew />
 
     </>
   )
