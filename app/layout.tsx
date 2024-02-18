@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'kuray karaaslan - self-taught full-stack developer',
-  description: "i'm a self-taught full-stack developer with experience in react , java and more. i'm currently looking for a job.",
+  description: "i'm a self-taught full-stack developer with experience in react , java and more. I'm open for new opportunities.",
   openGraph: {
     images: [
       {
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth focus:scroll-auto">
+    <html lang="en" className="scroll-smooth focus:scroll-auto" data-theme="light">
       <head>
       <meta name="viewport" 
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">

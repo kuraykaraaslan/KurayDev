@@ -41,6 +41,56 @@ const Projects = () => {
                         <p className="font-light sm:text-xl">I use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>
                     </div>
                     <div className="grid gap-8 lg:grid-cols-2">
+                        {/* pegasus, a Tailwind React UI Kit, React, Tailwind */}
+                        <article className="p-6 rounded-lg border shadow-md bg-base-200 border-base-100">
+                            <div className="flex items-center mb-5 text-black">
+                                {/* React */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-300">
+                                    <FontAwesomeIcon icon={faReact} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">React</span>
+                                </span>
+                                {/* Tailwind */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-500">
+                                    <FontAwesomeIcon icon={faWind} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">Tailwind</span>
+                                </span>
+                            </div>
+                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>Pegasus UI Kit</a></h2>
+                            <p className="mb-5 font-light">Pegasus is a React UI Kit that is built using Tailwind CSS. It offers a responsive and user-friendly interface for an optimal experience.</p>
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center space-x-4">
+                                    <a href="https://github.com/kuraykaraaslan/pegasus" className="inline-flex items-center font-medium hover:underline">
+                                        <FontAwesomeIcon icon={faGithub} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                        GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        {/* sözleşmeci, Contract Generator, React, Firebase */}   
+                        <article className="p-6 rounded-lg border shadow-md bg-green-500 border-base-100">
+                            <div className="flex items-center mb-5 text-black">
+                                {/* React */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-300">
+                                    <FontAwesomeIcon icon={faReact} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">React</span>
+                                </span>
+                                {/* Firebase */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-yellow-300">
+                                    <FontAwesomeIcon icon={faFire} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">Firebase</span>
+                                </span>
+                            </div>
+                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>Sözleşmeci</a></h2>
+                            <p className="mb-5 font-light">Sözleşmeci is a contract generator that allows users to create, customize, and print professional contracts with ease. Built using React, it offers a responsive and user-friendly interface for an optimal experience.</p>
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center space-x-4">
+                                    <a href="https://sozlesmeci.com.tr" className="inline-flex items-center font-medium hover:underline">
+                                        <FontAwesomeIcon icon={faGlobe} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                        Sozlesmeci.com.tr
+                                    </a>
+                                </div>
+                            </div>
+                        </article>                  
                         {/* tny.ist , URL Shortener , React, Firebase, Android */}
                         <article className="p-6 rounded-lg border shadow-md bg-yellow-500 text-black border-base-100">
                             <div className="flex items-center mb-5 text-black">

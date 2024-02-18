@@ -7,19 +7,6 @@ import React, { useEffect } from 'react'
 
 const Toolbox = () => {
 
-    const frontendRef = React.useRef(null);
-    const backendRef = React.useRef(null);
-
-    useEffect(() => {
-        //console the current window position
-        console.log(window.scrollY);
-        //console the frontendRef position
-        const frontend = frontendRef.current;
-
-    }, [])
-
-
-
     return (
         <>
             <section className="dark:bg-base-100 py-8 px-4 md:px-20 px-4">
@@ -41,7 +28,7 @@ const Toolbox = () => {
                         <div className="flex-1 pl-4 select-none hidden lg:block">
                             <h1 className="text-3xl font-bold  relative overflow-hidden animate-shake pb-4">front-end.</h1>
                         </div>
-                        <div className="group flex-none grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8" ref={frontendRef}>
+                        <div className="group flex-none grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                             {/* Javascript */}
                             <div className='w-40 h-40 group'>
                                 <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-yellow-500 px-2 py-2 shadow-lg">
@@ -50,14 +37,14 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faJs} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faJs} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="w-40 card-body items-center text-center duration-1000 ease-in-out">
                                             <h2 className="card-title">javascript</h2>
-                                            <span className="text-xs text-white -mt-1">react & native</span>
-                                            <span className="text-xs text-white -mt-2">redux, next.js</span>
+                                            <span className="text-xs text-black -mt-1">react & native</span>
+                                            <span className="text-xs text-black -mt-2">redux, next.js</span>
                                         </div>
                                     </div>
                                 </div>
@@ -70,13 +57,13 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faFigma} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faFigma} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="card-body items-center text-center duration-1000 ease-in-out">
                                             <h2 className="card-title">figma</h2>
-                                            <span className="text-xs text-white">design</span>
+                                            <span className="text-xs text-black">design</span>
                                         </div>
                                     </div>
                                 </div>
@@ -89,14 +76,14 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faCss3} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faCss3} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="card-body items-center text-center duration-1000 ease-in-out">
                                             <h2 className="card-title">css</h2>
-                                            <span className="text-xs text-white -mt-1">tailwind</span>
-                                            <span className="text-xs text-white -mt-2">bootstrap</span>
+                                            <span className="text-xs text-black -mt-1">tailwind</span>
+                                            <span className="text-xs text-black -mt-2">bootstrap</span>
                                         </div>
                                     </div>
                                 </div>
@@ -109,13 +96,13 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faHtml5} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faHtml5} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="card-body items-center text-center duration-1000 ease-in-out">
                                             <h2 className="card-title">html</h2>
-                                            <span className="text-xs text-white">semantic</span>
+                                            <span className="text-xs text-black">semantic</span>
                                         </div>
                                     </div>
                                 </div>
@@ -136,13 +123,13 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faJava} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faJava} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="card-body items-center text-center duration-1000 ease-in-out">
                                             <h2 className="card-title">java</h2>
-                                            <span className="text-xs text-white">spring, swing</span>
+                                            <span className="text-xs text-black">spring, swing</span>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +142,7 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faPython} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faPython} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
@@ -174,32 +161,32 @@ const Toolbox = () => {
                                             <FontAwesomeIcon icon={faPhp} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
                                             <FontAwesomeIcon icon={faPhp} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="card-body items-center text-center duration-1000 ease-in-out">
                                             <h2 className="card-title">php</h2>
-                                            <span className="text-xs text-white">laravel</span>
+                                            <span className="text-xs text-black">laravel</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {/* Bash */}
                             <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-green-400 px-2 py-2 shadow-lg">
+                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:rotate-y-180 group-hover:bg-green-400 px-2 py-2 shadow-lg">
                                     <div className='flex flex-col items-center justify-center group-hover:hidden'>
                                         <figure className="px-10 pt-5 -mb-3">
                                             <FontAwesomeIcon icon={faLinux} className="text-8xl" />
                                         </figure>
                                     </div>
-                                    <div className='flex flex-col items-center justify-center hidden group-hover:flex rotate-y-180'>
+                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180 duration-100'>
                                         <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faLinux} className="text-4xl transition duration-500 hover:animate-spin" />
+                                            <FontAwesomeIcon icon={faLinux} className="text-4xl transition  duration-100 hover:animate-spin" />
                                         </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
+                                        <div className="card-body items-center text-center ease-in-out">
                                             <h2 className="card-title">linux</h2>
-                                            <span className="text-xs text-white">server, bash</span>
+                                            <span className="text-xs text-black">server, bash</span>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +205,7 @@ const Toolbox = () => {
                         {/* SQL */}
                         <div className='w-28 h-20 group'>
                             <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-rose-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180 gap-2'>
+                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
                                     <figure className="mt-5 hover:animate-spin">
                                         <FontAwesomeIcon icon={faDatabase} className="text-2xl flex group-hover:hidden" />
                                     </figure>
@@ -231,7 +218,7 @@ const Toolbox = () => {
                         {/* API */}
                         <div className='w-28 h-20 group'>
                             <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-blue-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180 gap-2'>
+                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
                                     <figure className="mt-5 hover:animate-spin">
                                         <FontAwesomeIcon icon={faCode} className="text-2xl flex group-hover:hidden" />
                                     </figure>
@@ -244,7 +231,7 @@ const Toolbox = () => {
                         {/* Firebase */}
                         <div className='w-28 h-20 group'>
                             <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-green-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180 gap-2'>
+                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
                                     <figure className="mt-5 hover:animate-spin">
                                         <FontAwesomeIcon icon={faFire} className="text-2xl flex group-hover:hidden" />
                                     </figure>
@@ -258,7 +245,7 @@ const Toolbox = () => {
                         {/* Version Control (e.g., Git) */}
                         <div className='w-28 h-20 group'>
                             <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-yellow-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180 gap-2'>
+                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
                                     <figure className="mt-5 hover:animate-spin">
                                         <FontAwesomeIcon icon={faCodeBranch} className="text-2xl flex group-hover:hidden" />
                                     </figure>
@@ -271,7 +258,7 @@ const Toolbox = () => {
                         {/* Teamwork */}
                         <div className='w-28 h-20 group'>
                             <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-purple-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180 gap-2'>
+                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
                                     <figure className="mt-5 hover:animate-ping">
                                         <FontAwesomeIcon icon={faUsers} className="text-2xl flex group-hover:hidden" />
                                     </figure>
@@ -284,7 +271,7 @@ const Toolbox = () => {
                         {/* Problem Solving */}
                         <div className='w-28 h-20 group'>
                             <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-orange-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180 gap-2'>
+                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
                                     <figure className="mt-5 hover:animate-bounce">
                                         <FontAwesomeIcon icon={faLightbulb} className="text-2xl flex group-hover:hidden" />
                                     </figure>

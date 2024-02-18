@@ -12,6 +12,7 @@ module.exports = {
     },
     env: {
       DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
+      DISCORD_DOORMAN_WEBHOOK_URL: process.env.DISCORD_DOORMAN_WEBHOOK_URL,
       GITHUB_TREE: process.env.GITHUB_TREE,
     },
   

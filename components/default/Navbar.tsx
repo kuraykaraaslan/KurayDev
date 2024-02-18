@@ -51,7 +51,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="px-4 sm:px-6 lg:px-8 pt-3 sticky top-0 z-50 w-full" style={{ zIndex: 99, position: 'absolute', width: '100%' }}>
+            <div className="bg-base-200 px-4 sm:px-6 lg:px-8 pt-3 pb-6 sticky top-0 z-50 w-full" style={{ zIndex: 99, position: 'absolute', width: '100%' }}>
                 <nav className="navbar bg-base-100 rounded-full shadow-lg border border-base-200">
                     <div className="flex-1">
                         <Link className="btn btn-ghost normal-case text-xl rounded-full" href="/" title="home">
@@ -92,7 +92,7 @@ const Navbar = () => {
                                     <Link href="https://github.com/kuraykaraaslan" target="_blank" locale="en"><FontAwesomeIcon icon={faGithub} style={{ width: '1.0rem', height: '1.0rem' }} />
                                         github</Link></li>
                                 <li className="rounded-r-full" >
-                                    <Link href="https://resume.kuray.dev" target="_blank"><FontAwesomeIcon icon={faLink} style={{ width: '1.0rem', height: '1.0rem' }} />
+                                    <Link href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link" target="_blank"><FontAwesomeIcon icon={faLink} style={{ width: '1.0rem', height: '1.0rem' }} />
                                         resume</Link></li>
 
                                 {/* <li className={path.startsWith('/blog') ? 'active' : ''} > */}
@@ -113,7 +113,7 @@ const Navbar = () => {
                                         <Link href="#home" className="text-lg block"><FontAwesomeIcon icon={faHome} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem', top: '0.2rem' }} /> home</Link>
                                     </li>
                                     <li >
-                                        <a href="https://resume.kuray.dev" target="_blank" className="text-lg block"><FontAwesomeIcon icon={faLink} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> resume</a>
+                                        <a href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link" target="_blank" className="text-lg block"><FontAwesomeIcon icon={faLink} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> resume</a>
                                     </li>
                                     <li >
                                         <Link href="#projects" className="text-lg block"><FontAwesomeIcon icon={faBriefcase} style={{ width: '1.5rem', height: '1.5rem', marginRight: '0.5rem' }} /> projects</Link>

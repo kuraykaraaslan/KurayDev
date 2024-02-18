@@ -11,17 +11,19 @@ import ContactNew from "@/components/default/heros/ContactNew"
 import HireMe from "@/components/default/heros/HireMe"
 import Projects from "@/components/default/heros/Projects"
 
+
 export default function Home() {
 
   const carouselItems = [
-    {
-      htmlDOM: <Resume />
-    },
+
     {
       htmlDOM: <ControlViewCube />
     },
     {
       htmlDOM: <InstaFollowStudio />
+    }, 
+    {
+      htmlDOM: <Resume />
     },
     {
       htmlDOM: <DateWave />
@@ -30,12 +32,16 @@ export default function Home() {
 
   return (
     <>
-    <HireMe />
-    <Carousel children={carouselItems as any} />
-    <Projects />
-    <Toolbox />
-    <ContactNew />
-
+      <HireMe />
+      <Carousel>
+        <ControlViewCube />
+        <InstaFollowStudio />
+        <Resume />
+        <DateWave />
+      </Carousel>
+      <Projects />
+      <Toolbox />
+      <ContactNew />
     </>
   )
 }

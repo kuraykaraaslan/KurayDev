@@ -14,8 +14,8 @@ const Footer = (props: any) => {
                 <div className="col-span-1 flex flex-row flex-wrap justify-start">
                     <a className="link link-hover" href="/privacy">Privacy</a>
                     <a className="link link-hover" href="/terms">Terms</a>
-                    <a className="link link-hover" href="/projects">Projects</a>
-                    <a className="link link-hover" href="/contact">Contact</a>
+                    <a className="link link-hover" href="#projects">Projects</a>
+                    <a className="link link-hover" href="#contact">Contact</a>
                 </div>
                 <div className="col-span-1 flex flex-row flex-wrap justify-end">
                     <a href='https://twitter.com/kuraykaraaslan' target='_blank' rel='noopener noreferrer'><FontAwesomeIcon icon={faXTwitter} style={{ width: '24px', height: '24px' }} /></a>
