@@ -64,6 +64,11 @@ const Projects = () => {
                                         GitHub
                                     </a>
                                 </div>
+                                <a href="https://pegasus.kuray.dev" className="inline-flex items-center font-medium hover:underline">
+                                    <FontAwesomeIcon icon={faGlobe} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    demo
+                                </a>
+
                             </div>
                         </article>
                         {/* sözleşmeci, Contract Generator, React, Firebase */}   
@@ -80,8 +85,8 @@ const Projects = () => {
                                     <span className="text-sm hidden lg:block">Firebase</span>
                                 </span>
                             </div>
-                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>Sözleşmeci</a></h2>
-                            <p className="mb-5 font-light">Sözleşmeci is a contract generator that allows users to create, customize, and print professional contracts with ease. Built using React, it offers a responsive and user-friendly interface for an optimal experience.</p>
+                            <h2 className="mb-2 text-2xl text-white font-bold tracking-tight"><a>Sözleşmeci</a></h2>
+                            <p className="mb-5 font-light text-white">Sözleşmeci is a contract generator that allows users to create, customize, and print professional contracts with ease. Built using React, it offers a responsive and user-friendly interface for an optimal experience.</p>
                             <div className="flex justify-between items-center">
                                 <div className="flex items-center space-x-4">
                                     <a href="https://sozlesmeci.com.tr" className="inline-flex items-center font-medium hover:underline">
