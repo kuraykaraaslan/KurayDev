@@ -10,6 +10,7 @@ import Contact from "@/components/default/heros/Contact"
 import ContactNew from "@/components/default/heros/ContactNew"
 import HireMe from "@/components/default/heros/HireMe"
 import Projects from "@/components/default/heros/Projects"
+import Timeline from "@/components/default/heros/Timeline"
 
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
         <DateWave />
       </Carousel>
       <Projects />
+      <Timeline />
       <Toolbox />
       <ContactNew />
     </>

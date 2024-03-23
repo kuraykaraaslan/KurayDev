@@ -51,20 +51,27 @@ const TypingEffect = () => {
 
 const HireMe = () => {
 
+    const [isSeeking, setIsSeeking] = useState(false);
+
 
     const buttonClass = "mx-1 py-1 px-2 font-bold text-white light:font-white dark:text-black rounded";
 
     return (
         <>
             <div className="hero min-h-screen bg-base-200 -mb-24 select-none" id="#home">
-                <div className="hero-content mx-4 md:mx-20 -mt-12 mb-24">
-                    <div className="flex-1">
+                <div className="hero-content mx-4 md:mx-20 -mt-12 mb-24 md:gap-20">
+                    <div className="flex-1 max-w-2xl">
                         <h1 className="font-bold  relative overflow-hidden animate-shake text-4xl leading-normal">
                             I'm ready to <TypingEffect />
                         </h1>
                         <h2 className="py-6 leading-10">
                             <span>I'm a&nbsp;</span><span className={'bg-primary bg-opacity-100 ' + buttonClass}>self-taught</span> <span className={'bg-purple-500 bg-opacity-100 inline-block' + buttonClass + ' rounded-r-none -mr-2'}>full-stack </span><span className={'bg-purple-500 bg-opacity-100 inline-block' + buttonClass + ' rounded-l-none -ml-1'}>developer</span><span>&nbsp;with a passion for building things. I have experience in&nbsp;</span><span className={'bg-blue-500 bg-opacity-100 ' + buttonClass}>React</span>&nbsp;, <span className={'bg-yellow-500 bg-opacity-100 ' + buttonClass}>java</span><span>&nbsp;and more.&nbsp;</span>
+                        
+                        {isSeeking ? (
                             <span className='inline-block'><span className={'bg-green-500 animate-bounce ' + buttonClass}>I'm open for new opportunities.</span></span>
+                        ) : (
+                            null
+                        )}
                         </h2>
 
                         <details className="dropdown">
@@ -78,6 +85,9 @@ const HireMe = () => {
                         <Link href="https://github.com/kuraykaraaslan" target="_blank">
                             <p className="btn btn-ghost ml-2 lowercase"><FontAwesomeIcon icon={faGithub} className="text-primary mt-1" style={{ width: '1rem' }} />my github</p>
                         </Link>
+                    </div>
+                    <div className="flex-none hidden md:block">
+                        <img src="/assests/img/kuraykaraaslan_1.jpg" alt="kuray karaaslan" className="rounded-lg shadow-2xl max-w-48 md:max-w-64 " />
                     </div>
                 </div>
 

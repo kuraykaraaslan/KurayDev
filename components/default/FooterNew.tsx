@@ -7,7 +7,7 @@ const Footer = (props: any) => {
 
     return (
         <>
-            <footer className="footer grid grid-cols-1 lg:grid-cols-2 gap-4 bg-base-200 p-4 min-w-full">
+            <footer className="footer grid grid-cols-1 lg:grid-cols-2 gap-4 bg-base-300 p-4 min-w-full shadow-lg">
                 <div className="col-span-1 flex flex-row flex-wrap justify-start">
                     <p>{ '© ' +new Date().getFullYear() + ' kuray.dev all rights reserved.'}</p>
                 </div>

@@ -120,68 +120,63 @@ const config: Config = {
       {
         dark: {
 
-          
-          
+
+
           "primary": "#00aaff",
-          
+
           "secondary": "#00dea6",
-                   
+
           "accent": "#00ae79",
-                   
+
           "neutral": "#311e1d",
-                   
-          "base-100": "#282a3a",
-                   
+
+          "base-100": "#3d3f4d",
+
+          "base-200": "#282a3a",
+
+          "base-300": "#242534",
+
+          "base-400": "#20212e",
+
+          "base-500": "#101017",
+
           "info": "#00b1d2",
-                   
+
           "success": "#33f16a",
-                   
+
           "warning": "#d52d00",
-                   
+
           "error": "#fd0e3d",
-                   },
-        barbie: {
-          "primary": "#ff1493",    // Barbie Pink
-          "secondary": "#ffffff",  // White
-          "accent": "#ff69b4",     // Hot Pink
-          "neutral": "#f8c6e5",    // Light Pink
-          "base-100": "#f4c2d7",   // Lighter Pink
-          "info": "#87ceeb",       // Sky Blue
-          "success": "#205aee",    // Spring Green
-          "warning": "#a86a05",    // Gold
-          "error": "#ff0000",      // Red
         },
         light: {
-          
+
           "primary": "#7100ff",
-                   
+
           "secondary": "#007e9b",
-                   
+
           "accent": "#005bef",
-                   
+
           "neutral": "#0b0200",
-                   
+
           "base-100": "#ffffd8",
-                   
+
+          "base-200": "#f3f3f3",
+
+          "base-300": "#e9e9e9",
+
+          "base-400": "#dfdfdf",
+
+          "base-500": "#cfcfcf",
+
+
           "info": "#00d6ff",
-                   
+
           "success": "#00ff7c",
-                   
+
           "warning": "#fb6d00",
-                   
+
           "error": "#ff5365",
-        },
-        contrast: {          
-          "primary": "#d85108",          
-          "secondary": "#b7dff4",                   
-          "accent": "#e3ef73",                   
-          "neutral": "#1f2533",                   
-          "base-100": "#3b343c",                   
-          "info": "#62a8f3",                   
-          "success": "#1e8047",                   
-          "warning": "#f8bd4f",                   
-          "error": "#ea3b2e",
-        },
+        }
       },
     ],
   },
