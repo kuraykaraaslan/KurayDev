@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import './globals.css'
 
 // Components
@@ -9,6 +9,9 @@ import Footer from '@/components/default/FooterNew'
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+
+//Suspense
+import Loading from "@/components/default/Loading";
 
 export default function DefaultLayout({
   children,
@@ -46,7 +49,7 @@ export default function DefaultLayout({
 
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <Navbar />
       <main className="mx-auto min-h-screen pt-24 bg-base-300" id="main">{children}</main>
       <Footer />
@@ -54,6 +57,6 @@ export default function DefaultLayout({
       <div className="fixed btn btn btn-primary rounded-full transition duration-500 ease-in-out" style={{ zIndex: 100 , right: "-80px", bottom: "20px" }} id="scrollToTop" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
         <FontAwesomeIcon icon={faArrowUp} className="text-2xl text-white" style={{ width: '20px', height: '20px' }} />
       </div>
-    </>
+    </Suspense>
   )
 }
