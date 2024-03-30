@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { faReact, faBootstrap, faHtml5, faPython, faPhp, faJava, faJs, faAmazon, faAndroid, faChrome, faOpera, faApple, faGithub } from "@fortawesome/free-brands-svg-icons"
+import { faReact, faBootstrap, faHtml5, faPython, faPhp, faJava, faJs, faAmazon, faAndroid, faChrome, faOpera, faApple, faGithub, faGit } from "@fortawesome/free-brands-svg-icons"
 import { faAnchor, faAnglesDown, faAnglesUp, faFire, faGear, faGlobe, faMobileScreenButton, faTv, faWind } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -89,9 +89,9 @@ const Projects = () => {
                             <p className="mb-5 font-light text-white">Sözleşmeci is a contract generator that allows users to create, customize, and print professional contracts with ease. Built using React, it offers a responsive and user-friendly interface for an optimal experience.</p>
                             <div className="flex justify-between items-center">
                                 <div className="flex items-center space-x-4">
-                                    <a href="https://sozlesmeci.com.tr" className="inline-flex items-center font-medium hover:underline">
-                                        <FontAwesomeIcon icon={faGlobe} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                        Sozlesmeci.com.tr
+                                    <a href="https://github.com/kuraykaraaslan/Sozlesmeci" className="inline-flex items-center font-medium hover:underline">
+                                        <FontAwesomeIcon icon={faGithub} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                        GitHub
                                     </a>
                                 </div>
                             </div>

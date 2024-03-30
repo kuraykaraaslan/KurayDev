@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 
+
 const Navbar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [theme, setTheme] = useState('dark');
@@ -46,13 +47,14 @@ const Navbar = () => {
         }
     }
 
-    const path = typeof window !== 'undefined' ? window.location.pathname : '';
+    //current path
 
+    const path = typeof window !== 'undefined' ? window.location.pathname : '';
 
     return (
         <>
-            <div className="bg-base-200 px-4 sm:px-6 lg:px-8 pt-3 pb-6 sticky top-0 z-50 w-full" style={{ zIndex: 99, position: 'absolute', width: '100%' }}>
-                <nav className="navbar bg-base-100 rounded-full shadow-lg border border-base-200">
+            <div className="px-4 sm:px-6 lg:px-8 pt-3 pb-6 sticky top-0 z-50 w-full" style={{ zIndex: 60, position: 'absolute', width: '100%' }}>
+                <nav className={"navbar bg-base-100 rounded-full shadow-lg border border-base-200" + ((path == '/' || path == '') ? ' bg-opacity-50' : '')}>
                     <div className="flex-1">
                         <Link className="btn btn-ghost normal-case text-xl rounded-full" href="/" title="home">
                             <div className="flex items-center space-x-2">

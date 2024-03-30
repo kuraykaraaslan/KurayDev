@@ -1,6 +1,7 @@
 
 'use client';
-import React, { useState, useEffect, createRef, Component } from 'react'
+import React, { useState, useEffect, createRef, Component, useRef } from 'react'
+import ReactDOM from 'react-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -11,8 +12,99 @@ import Link from 'next/link';
 import "@fontsource/caveat-brush";
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
+import { Canvas, useFrame } from '@react-three/fiber'
+import { Points, PointMaterial } from '@react-three/drei'
+import { inSphere } from "maath/random";
+
+function Background() {
+  return (
+    <Canvas camera={{ position: [0, 0, 1] }} style={{ position: 'absolute', top: 0, left: 0, zIndex: 10 , width: '100%', height: '100%'}}>
+      <Stars />
+    </Canvas>
+  )
+}
+
+function Stars(props = {}) {
+  const ref = useRef() as any
+
+  const [dotColor, setDotColor] = useState('#ffffff');
+
+  const [sphere] = useState(() => new Float32Array(inSphere(new Float32Array(5000), { radius: 1.5 })));
+
+
+
+  useFrame((state, delta) => {
+
+    if (!ref.current || !ref.current?.rotation) {
+        return ;
+    }
+    ref.current.rotation.x -= delta / 10
+    ref.current.rotation.y -= delta / 15
+
+    ref.current.rotation.z -= delta / 20
+
+    //change color of dots
+    let html_theme = document.documentElement.getAttribute('data-theme');
+
+    if (html_theme === 'dark') {
+        setDotColor('#ffffff');
+    } else {
+        setDotColor('#000000');
+    }
+    
+
+  })
+
+
+  useEffect(() => {
+    let html_theme = document.documentElement.getAttribute('data-theme');
+
+    if (html_theme === 'dark') {
+        setDotColor('#ffffff');
+    } else {
+        setDotColor('#000000');
+    }
+    }
+    , []);  
+
+  return (
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
+        <PointMaterial transparent size={0.005} sizeAttenuation={true} depthWrite={false} color={dotColor} />
+      </Points>
+    </group>
+  )
+}
+
 const TypingEffect = () => {
-    const texts = ["hire", "make a difference", "build the future", "create awesome things"];
+    const texts = [
+        "learn new things",
+        "make a difference", 
+        "build the future", 
+        "create awesome things",
+        "work together",
+        "solve problems",
+        "push the limits",
+        "be creative",
+        "embrace challenges",
+        "strive for excellence",
+        "never give up",
+        "dream big",
+        "inspire others",
+        "stay focused",
+        "take risks",
+        "keep improving",
+        "aim for success",
+        "stay determined",
+        "think outside the box",
+        "be a team player",
+        "pursue my passion",
+        "lead with integrity",
+        "make a positive impact",
+        "stay humble",
+        "be a lifelong learner",
+        "stay positive",
+    ];
 
     const [textsIndex, setTextsIndex] = useState(0);
     const [letterIndex, setLetterIndex] = useState(0);
@@ -29,7 +121,9 @@ const TypingEffect = () => {
 
             if (letterIndex === 0) {
                 setIsDeleting(false);
-                setTextsIndex((textsIndex + 1) % texts.length);
+                if (isDeleting) {
+                    setTextsIndex((textsIndex + 1) % texts.length);
+                }
             }
 
             const count = isDeleting ? -1 : 1;
@@ -58,7 +152,8 @@ const HireMe = () => {
 
     return (
         <>
-            <div className="hero min-h-screen bg-base-200 -mb-24 select-none" id="#home">
+            <Background />
+            <div className="hero min-h-screen -mb-24 select-none" id="#home" style={{ zIndex: 20 , display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
                 <div className="hero-content mx-4 md:mx-20 -mt-12 mb-24 md:gap-20">
                     <div className="flex-1 max-w-2xl">
                         <h1 className="font-bold  relative overflow-hidden animate-shake text-4xl leading-normal">
@@ -97,4 +192,3 @@ const HireMe = () => {
 }
 
 export default HireMe;
-

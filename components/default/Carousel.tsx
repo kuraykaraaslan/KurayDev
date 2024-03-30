@@ -105,8 +105,8 @@ const DefaultCaresoulSmooth = ({ children }: { children?: ReactNode[] }) => {
                 {children?.map((child, index) => (
                     <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>
                         {child}
-                        <a className={buttonClass} style={{ zIndex: 100, position: 'absolute', top: '50%', left: '5', marginLeft: '30px' }} onClick={handleLeft}>&#10094;</a>
-                        <a className={buttonClass} style={{ zIndex: 100, position: 'absolute', top: '50%', right: '0', marginRight: '30px' }} onClick={handleRight}> &#10095;</a>
+                        <a className={buttonClass} style={{ zIndex: 20, position: 'absolute', top: '50%', left: '5', marginLeft: '30px' }} onClick={handleLeft}>&#10094;</a>
+                        <a className={buttonClass} style={{ zIndex: 20, position: 'absolute', top: '50%', right: '0', marginRight: '30px' }} onClick={handleRight}> &#10095;</a>
                     </div>
                 ))}
             </div>

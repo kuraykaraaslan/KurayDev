@@ -12,6 +12,9 @@ import HireMe from "@/components/default/heros/HireMe"
 import Projects from "@/components/default/heros/Projects"
 import Timeline from "@/components/default/heros/Timeline"
 
+//Animations
+import Phoenix from "@/components/Phoenix"
+
 
 export default function Home() {
 

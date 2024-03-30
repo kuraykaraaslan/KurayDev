@@ -26,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth focus:scroll-auto" data-theme="dark">
+    <html lang="en" className="scroll-smooth focus:scroll-auto transition-colors" data-theme="dark">
       <head>
       <meta name="viewport" 
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
       </meta>
       </head> 
-      <body className="lowercase min-h-screen antialiased bg-base-300">
+      <body className="lowercase min-h-screen antialiased bg-base-300  duration-200 transition-all">
         {children}</body>
     </html>
   )

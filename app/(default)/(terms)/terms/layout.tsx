@@ -15,8 +15,8 @@ export default function PrivacyLayout({
 }) {
   return (
     <>
-    <article className="mx-4 md:mx-8 bg-base-100 rounded-box px-4 py-2 mb-4">
-      <div className="pt-4 pb-8 px-8">
+    <article className="bg-base-300 p-0 md:p-8">
+      <div className="pt-4 pb-8 px-8  bg-base-200 md:bg-base-100 md:rounded-lg md:shadow-lg md:mx-auto">
         {children}
       </div>
     </article>
