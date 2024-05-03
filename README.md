@@ -24,7 +24,6 @@ You can view a live demo of the webpage at [kuray.dev](https://kuray.dev).
 - **Projects Section**: The webpage has a projects section that my projects.
 - **Skills Section**: The webpage has a skills section that shows my skills.
 - **Timeline Section**: The webpage has a timeline section that shows my life events.
-- **Blog Section**: The webpage has a blog section. *Coming soon*
 - **3JS Background**: The webpage has a 3JS background that can be used to showcase my projects.
 
 ## Roadmap
