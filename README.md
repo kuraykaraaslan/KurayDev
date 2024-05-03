@@ -27,6 +27,17 @@ You can view a live demo of the webpage at [kuray.dev](https://kuray.dev).
 - **Blog Section**: The webpage has a blog section. *Coming soon*
 - **3JS Background**: The webpage has a 3JS background that can be used to showcase my projects.
 
+## Roadmap
+
+- [x] Add projects section
+- [x] Add skills section
+- [x] Add timeline section
+- [ ] Add blog section
+- [ ] Add multi-language support
+- [x] Add more animations
+- [x] Add redux for state management
+- [ ] Add more tests
+
 ## Technologies
 
 - **React**: The webpage is built using React.
