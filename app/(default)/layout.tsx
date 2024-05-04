@@ -12,6 +12,11 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 //Suspense
 import Loading from "@/components/default/Loading";
+import dynamic from 'next/dynamic'
+
+//Cookie Consent
+import { CookiesProvider } from 'react-cookie';
+const CookieConsent = dynamic(() => import('@/components/default/CookieConsent'), { ssr: false });
 
 export default function DefaultLayout({
   children,
@@ -25,7 +30,7 @@ export default function DefaultLayout({
 
     //make the button appear slowly  when the user scrolls down 20px from the top to 500ms
     window.onscroll = () => {
-      var aligned = window.scrollY * 0.1 -80;
+      var aligned = window.scrollY * 0.1 - 80;
       if (aligned > 20) {
         aligned = 20;
       }
@@ -50,13 +55,16 @@ export default function DefaultLayout({
 
   return (
     <Suspense fallback={<Loading />}>
-      <Navbar />
-      <main className="mx-auto min-h-screen pt-24 bg-base-300" id="main">{children}</main>
-      <Footer />
+      <CookiesProvider defaultSetOptions={{ path: '/', maxAge: 31536000 }} >
+        <Navbar />
+        <main className="mx-auto min-h-screen pt-24 bg-base-300" id="main">{children}</main>
+        <Footer />
 
-      <div className="fixed btn btn btn-primary rounded-full transition duration-500 ease-in-out" style={{ zIndex: 100 , right: "-80px", bottom: "20px" }} id="scrollToTop" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <FontAwesomeIcon icon={faArrowUp} className="text-2xl text-white" style={{ width: '20px', height: '20px' }} />
-      </div>
+        <div className="fixed btn btn btn-primary rounded-full transition duration-500 ease-in-out" style={{ zIndex: 100, right: "-80px", bottom: "20px" }} id="scrollToTop" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <FontAwesomeIcon icon={faArrowUp} className="text-2xl text-white" style={{ width: '20px', height: '20px' }} />
+        </div>
+        <CookieConsent />
+      </CookiesProvider>
     </Suspense>
   )
 }

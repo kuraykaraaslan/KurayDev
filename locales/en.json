@@ -1,1 +1,51 @@
-{}
+{
+    "NAVIGATION": {
+        "HOME": "Home",
+        "PROJECTS": "Projects",
+        "CONTACT": "Contact",
+        "RESUME": "Resume",
+        "BLOG": "Blog",
+        "GITHUB": "GitHub"
+    },
+    "LANGUAGES": {
+        "EN": "English",
+        "TR": "Turkish",
+        "DE": "Deutsch",
+        "TH": "Thai"
+    },
+    "SITE": {
+        "TITLE": "kuray karaaslan - self-taught full-stack developer",
+        "DESCRIPTION": "i'm a self-taught full-stack developer with experience in react , java and more. I'm open for new opportunities."
+    },
+    "COOKIES": {
+        "MESSAGE": "This website uses cookies to ensure you get the best experience on our website.",
+        "AGREE": "Got it!",
+        "DISAGREE": "Decline"
+    },
+    "HIRE_ME": {
+        "HELLO": "Hello, I'm",
+        "DESCRIPTION": "I'm a self-taught full-stack developer with experience in React, Java and more. I'm open for new opportunities.",
+        "INTRO": "I'm ready to",
+        "OUTRO": "",
+        "MY_RESUME": "My Resume",
+        "MY_GITHUB": "My GitHub",
+        "IZMIR_KARACA_CINEMA": "Izmir Karaca Cinema",
+        "10TH_DECEMBER_2023": "10th December 2023",
+        "LEARN_NEW_THINGS": "learn new things",
+        "MAKE_A_DIFFERENCE": "make a difference",
+        "BUILD_THE_FUTURE": "build the future",
+        "CREATE_AWESOME_THINGS": "create awesome things",
+        "WORK_TOGETHER": "work together",
+        "SOLVE_PROBLEMS": "solve problems",
+        "PUSH_LIMITS": "push limits",
+        "PURSUE_EXCELLENCE": "pursue excellence",
+        "THINK_OUTSIDE_THE_BOX": "think outside the box",
+        "STAY_HUMBLE": "stay humble",
+        "EMBRACE_CHANGE": "embrace change",
+        "BE_A_TEAM_PLAYER": "be a team player",
+        "STAY_FOCUSED": "stay focused",
+        "TAKE_RISKS": "take risks",
+        "KEEP_IMPROVING": "keep improving",
+        "AIM_HIGH": "aim high"
+    }
+}

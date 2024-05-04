@@ -69,10 +69,10 @@ const ContactNew = () => {
                             </div>
                         </div>
                     </div>
-                    <form className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
+                    <div className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
                         <h1 className="text-4xl font-bold">send me a message</h1>
                         <ContactForm />
-                    </form>
+                    </div>
                 </div>
             </div>
             </div>

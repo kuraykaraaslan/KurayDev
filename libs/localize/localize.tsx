@@ -3,12 +3,14 @@ import { initReactI18next } from 'react-i18next';
 
 import tr from "@/locales/tr.json";
 import en from "@/locales/en.json";
+import de from "@/locales/de.json";
+import th from "@/locales/th.json";
 
 import store from '@/libs/redux/store';
 
 const compatibilityJSON = 'v3';
 const fallbackLng = 'en';
-const languages = ['en', 'tr', 'de','es', 'fr', 'it'];
+const languages = ['en', 'tr', 'de','th'];
 
 const resources = {
   en: {
@@ -17,6 +19,12 @@ const resources = {
   ,
   tr: {
     translation: tr
+  },
+  de: {
+    translation: de
+  },
+  th: {
+    translation: th
   }
 };
 

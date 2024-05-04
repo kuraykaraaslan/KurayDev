@@ -6,6 +6,10 @@ import { faBars, faLightbulb, faSun, faMoon, faH, faHome, faP, faPerson, faUser,
 import Link from 'next/link';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
+import dynamic from 'next/dynamic'
+
+const LangButton = dynamic(() => import('./NavbarPartial/LangButton'), { ssr: false });
+const ThemeButton = dynamic(() => import('./NavbarPartial/ThemeButton'), { ssr: false });
 
 
 const Navbar = () => {
@@ -62,26 +66,9 @@ const Navbar = () => {
                             </div>
                         </Link>
 
-                        <button className="btn btn-square btn-ghost rounded-full block items-center " onClick={changeThemeEachOther}>
-                            <FontAwesomeIcon icon={faLightbulb} style={{ width: '24px', height: '24px' }} />
+                        <ThemeButton />
+                        <LangButton />
 
-                        </button>
-
-                        {/*
-
-                        <div className="dropdown dropdown-right dropdown-center ml-2"  title="themes">
-                            <button className="btn rounded-full bg-base-100 hover:bg-base-200 border-none" ><FontAwesomeIcon icon={faLightbulb} style={{ width: '1.0rem', height: '1.0rem' }}/></button>
-                            <ul className="dropdown-content z-[1] menu menu-horizontal w-32 border-inherit bg-base-200 rounded-box shadow-xl -mt-0.5 ml-2">
-                                <li title="ligth mode">
-                                    <button className="text-base-content block text-center" onClick={() => changeTheme('light')}><FontAwesomeIcon icon={faSun} style={{ width: '1.0rem', height: '1.0rem' }}/></button>
-                                </li>
-                                <li title="dark mode">
-                                    <button className="text-base-content block text-center" onClick={() => changeTheme('dark')}><FontAwesomeIcon icon={faMoon} style={{ width: '1.0rem', height: '1.0rem' }} /></button>
-                                </li>
-                            </ul>
-                        </div>
-
-                        */}
                     </div>
 
                     <div className="flex-none">
@@ -96,9 +83,6 @@ const Navbar = () => {
                                 <li className="rounded-r-full" >
                                     <Link href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link" target="_blank"><FontAwesomeIcon icon={faLink} style={{ width: '1.0rem', height: '1.0rem' }} />
                                         resume</Link></li>
-
-                                {/* <li className={path.startsWith('/blog') ? 'active' : ''} > */}
-                                {/* <Link href="/blog" locale="en">blog</Link></li> */}
 
                             </ul>
                         </div>

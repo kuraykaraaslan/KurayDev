@@ -1,0 +1,51 @@
+{
+    "NAVIGATION": {
+        "HOME": "Heim",
+        "PROJECTS": "Projekte",
+        "CONTACT": "Kontakt",
+        "RESUME": "Wieder aufnehmen",
+        "BLOG": "Blog",
+        "GITHUB": "GitHub"
+    },
+    "LANGUAGES": {
+        "EN": "Englisch",
+        "TR": "Türkisch",
+        "DE": "Deutsch",
+        "TH": "Thai"
+    },
+    "SITE": {
+        "TITLE": "kuray karaaslan – autodidaktischer Full-Stack-Entwickler",
+        "DESCRIPTION": "Ich bin ein autodidaktischer Full-Stack-Entwickler mit Erfahrung in React, Java und mehr. "
+    },
+    "COOKIES": {
+        "MESSAGE": "Diese Website verwendet Cookies, um sicherzustellen, dass Sie das beste Erlebnis auf unserer Website erhalten.",
+        "AGREE": "Habe es!",
+        "DISAGREE": "Abfall"
+    },
+    "HIRE_ME": {
+        "HELLO": "Hallo ich bin",
+        "DESCRIPTION": "Ich bin ein autodidaktischer Full-Stack-Entwickler mit Erfahrung in React, Java und mehr. ",
+        "INTRO": "Ich bin bereit dazu",
+        "OUTRO": "",
+        "MY_RESUME": "Mein Lebenslauf",
+        "MY_GITHUB": "Mein GitHub",
+        "IZMIR_KARACA_CINEMA": "Izmir Karaca Kino",
+        "10TH_DECEMBER_2023": "10. Dezember 2023",
+        "LEARN_NEW_THINGS": "neue Dinge lernen",
+        "MAKE_A_DIFFERENCE": "Einen Unterschied machen",
+        "BUILD_THE_FUTURE": "die Zukunft bauen",
+        "CREATE_AWESOME_THINGS": "Erschaffe tolle Dinge",
+        "WORK_TOGETHER": "zusammenarbeiten",
+        "SOLVE_PROBLEMS": "Probleme lösen",
+        "PUSH_LIMITS": "Grenzen verschieben",
+        "PURSUE_EXCELLENCE": "Exzellenz anstreben",
+        "THINK_OUTSIDE_THE_BOX": "Anders denken",
+        "STAY_HUMBLE": "bleib bescheiden",
+        "EMBRACE_CHANGE": "Veränderungen annehmen",
+        "BE_A_TEAM_PLAYER": "sei ein Teamspieler",
+        "STAY_FOCUSED": "konzentriert bleiben",
+        "TAKE_RISKS": "Risiken eingehen",
+        "KEEP_IMPROVING": "Verbessere dich weiter",
+        "AIM_HIGH": "hoch zielen"
+    }
+}

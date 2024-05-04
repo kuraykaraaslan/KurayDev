@@ -1,0 +1,51 @@
+{
+    "NAVIGATION": {
+        "HOME": "บ้าน",
+        "PROJECTS": "โครงการ",
+        "CONTACT": "ติดต่อ",
+        "RESUME": "ประวัติย่อ",
+        "BLOG": "บล็อก",
+        "GITHUB": "GitHub"
+    },
+    "LANGUAGES": {
+        "EN": "ภาษาอังกฤษ",
+        "TR": "เติร์กเช่",
+        "DE": "เยอรมัน",
+        "TH": "ไทย"
+    },
+    "SITE": {
+        "TITLE": "kuray karaaslan - นักพัฒนาฟูลสแตกที่เรียนรู้ด้วยตนเอง",
+        "DESCRIPTION": "ฉันเป็นนักพัฒนา Full-Stack ที่เรียนรู้ด้วยตนเองและมีประสบการณ์ในด้าน React, Java และอื่นๆ อีกมากมาย "
+    },
+    "COOKIES": {
+        "MESSAGE": "เว็บไซต์นี้ใช้คุกกี้เพื่อให้แน่ใจว่าคุณได้รับประสบการณ์ที่ดีที่สุดบนเว็บไซต์ของเรา",
+        "AGREE": "เข้าใจแล้ว!",
+        "DISAGREE": "ปฏิเสธ"
+    },
+    "HIRE_ME": {
+        "HELLO": "สวัสดีฉัน",
+        "DESCRIPTION": "ฉันเป็นนักพัฒนา Full-Stack ที่เรียนรู้ด้วยตนเองและมีประสบการณ์ใน React, Java และอื่นๆ อีกมากมาย ",
+        "INTRO": "ฉันพร้อมที่จะ",
+        "OUTRO": "",
+        "MY_RESUME": "ประวัติของฉัน",
+        "MY_GITHUB": "GitHub ของฉัน",
+        "IZMIR_KARACA_CINEMA": "โรงภาพยนตร์อิซเมียร์ การากา",
+        "10TH_DECEMBER_2023": "10 ธันวาคม 2023",
+        "LEARN_NEW_THINGS": "เรียนรู้สิ่งใหม่",
+        "MAKE_A_DIFFERENCE": "สร้างความแตกต่าง",
+        "BUILD_THE_FUTURE": "สร้างอนาคต",
+        "CREATE_AWESOME_THINGS": "สร้างสิ่งที่ยอดเยี่ยม",
+        "WORK_TOGETHER": "ทำงานด้วยกัน",
+        "SOLVE_PROBLEMS": "แก้ปัญหา",
+        "PUSH_LIMITS": "ผลักดันขีด จำกัด",
+        "PURSUE_EXCELLENCE": "มุ่งสู่ความเป็นเลิศ",
+        "THINK_OUTSIDE_THE_BOX": "คิดนอกกรอบ",
+        "STAY_HUMBLE": "จงถ่อมตัว",
+        "EMBRACE_CHANGE": "ยอมรับการเปลี่ยนแปลง",
+        "BE_A_TEAM_PLAYER": "เป็นผู้เล่นในทีม",
+        "STAY_FOCUSED": "มีสมาธิ",
+        "TAKE_RISKS": "รับความเสี่ยง",
+        "KEEP_IMPROVING": "ปรับปรุงต่อไป",
+        "AIM_HIGH": "ตั้งเป้าไว้สูง"
+    }
+}
