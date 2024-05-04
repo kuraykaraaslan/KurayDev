@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faLightbulb, faSun, faMoon, faH, faHome, faP, faPerson, faUser, faBriefcase, faPhone, faLink } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faLightbulb, faSun, faMoon, faH, faHome, faP, faPerson, faUser, faBriefcase, faPhone, faLink, faSkull } from '@fortawesome/free-solid-svg-icons';
 
 import Link from 'next/link';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -15,6 +15,21 @@ const ThemeButton = dynamic(() => import('./NavbarPartial/ThemeButton'), { ssr: 
 const Navbar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [theme, setTheme] = useState('dark');
+
+    const themes = {
+        dark: {
+            icon: faMoon,
+            text: 'dark'
+        },
+        light: {
+            icon: faSun,
+            text: 'light'
+        },
+        black: {
+            icon: faSkull,
+            text: 'black'
+        }
+    }
 
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);

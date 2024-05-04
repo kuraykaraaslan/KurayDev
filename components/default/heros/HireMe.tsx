@@ -53,8 +53,10 @@ function Stars(props = {}) {
 
         if (html_theme === 'dark') {
             setDotColor('#ffffff');
-        } else {
+        } else if (html_theme === 'light') {
             setDotColor('#000000');
+        } else {
+            setDotColor('#ffffff');
         }
 
 
@@ -126,6 +128,10 @@ const TypingEffect = () => {
 
             if (letterIndex < 0) {
                 setLetterIndex(0);
+            }
+
+            if (letterIndex > texts[textsIndex].length) {
+                setLetterIndex(texts[textsIndex].length);
             }
 
             const count = isDeleting ? -1 : 1;

@@ -176,7 +176,34 @@ const config: Config = {
           "warning": "#fb6d00",
 
           "error": "#ff5365",
-        }
+        },
+        black: {
+          "primary": "#ffffff",
+
+          "secondary": "#ffffff",
+
+          "accent": "#00ae79",
+
+          "neutral": "#311e1d",
+
+          "base-100": "#000000",
+
+          "base-200": "#111111",
+
+          "base-300": "#222222",
+
+          "base-400": "#000000",
+
+          "base-500": "#000000",
+
+          "info": "#00b1d2",
+
+          "success": "#33f16a",
+
+          "warning": "#d52d00",
+
+          "error": "#fd0e3d",
+        },
       },
     ],
   },

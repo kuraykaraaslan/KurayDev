@@ -1,64 +1,73 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faLightbulb, faSkull, faMoon, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { useCookies } from 'react-cookie';
 
-interface State {
-    theme: string;
-}
 
-class ThemeButton extends Component<any, State> {
+const ThemeButton = () => {
 
-    constructor(props : any) {
-        super(props);
-        this.changeTheme = this.changeTheme.bind(this);
-        this.changeThemeEachOther = this.changeThemeEachOther.bind(this);
+    const [currentTheme, setCurrentTheme] = useState('dark');
 
-    }
+    const themesWithIcons = {
+        dark: faMoon,
+        light: faLightbulb,
+        black: faSkull
+    } as { [key: string]: IconDefinition };
 
-    componentDidMount() {
-        //Check for theme in local storage
-        const theme = localStorage.getItem('theme');
+    useEffect(() => {
+        // Check for theme in local storage
+        const localTheme = localStorage.getItem('theme');
+        console.log("localTheme: " + localTheme);
 
-        if (theme) {
-            this.changeTheme(theme);
-            return;
-        }
-
-        //Default theme
-        this.changeTheme('dark');
-        localStorage.setItem('theme', 'dark');
-
-    }
-
-    changeTheme(theme: string) {
-        const html = document.querySelector('html');
-        if (html) {
-            html.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        }
-    }
-
-    changeThemeEachOther() {
-        const html = document.querySelector('html');
-        if (html) {
-            if (html.getAttribute('data-theme') === 'dark') {
-                this.changeTheme('light');
-            } else {
-                this.changeTheme('dark');
+        if (localTheme) {
+            setCurrentTheme(localTheme);
+            const html = document.querySelector('html');
+            if (html) {
+                html.setAttribute('data-theme', localTheme);
             }
+            return;
+        } else {
+            // Default theme
+            setCurrentTheme('dark');
+            localStorage.setItem('theme', 'dark');
         }
-    }
 
-    render() {
+    }, []);
 
-        return (
-            <button className="btn btn-square btn-ghost rounded-full items-center justify-center grayscale duration-300 hover:grayscale-0" onClick={this.changeThemeEachOther}>
-                <FontAwesomeIcon icon={faLightbulb} style={{ width: '24px', height: '24px' }} />
-            </button>
-        );
-    }
-}
+    const changeTheme  = (direction: number) => {
+        const themes = Object.keys(themesWithIcons);
+        const currentIndex = themes.indexOf(currentTheme);
+        const nextIndex = (currentIndex + direction + themes.length) % themes.length;
+        const nextTheme = themes[nextIndex];
+
+        localStorage.setItem('theme', nextTheme);
+
+        setCurrentTheme(nextTheme);
+        console.log("theme changed to " + nextTheme);
+
+        const html = document.querySelector('html');
+        if (html) {
+            html.setAttribute('data-theme', nextTheme);
+        }
+    };
+
+    const changeThemeEachOther = (event: any) => {
+        event.preventDefault();
+        //if left click
+        if (event.button === 0) {
+            changeTheme(1);
+        } else {
+            changeTheme(-1);
+        }
+    };
+
+    return (
+        <button className="btn btn-square btn-ghost rounded-full items-center justify-center grayscale duration-300 hover:grayscale-0" onClick={changeThemeEachOther}>
+            <FontAwesomeIcon icon={themesWithIcons[currentTheme] as IconDefinition} 
+            style={{ width: '24px', height: '24px' }} />
+        </button>
+    );
+};
 
 export default ThemeButton;
