@@ -25,6 +25,7 @@
     "@types/three": "^0.162.0",
     "axios": "^1.6.5",
     "daisyui": "^4.6.0",
+    "depcheck": "^1.4.7",
     "front-matter": "^4.0.2",
     "gray-matter": "^4.0.3",
     "i18next": "^23.11.3",
