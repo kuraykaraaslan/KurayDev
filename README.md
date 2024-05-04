@@ -32,7 +32,7 @@ You can view a live demo of the webpage at [kuray.dev](https://kuray.dev).
 - [x] Add skills section
 - [x] Add timeline section
 - [ ] Add blog section
-- [ ] Add multi-language support
+- [x] Add multi-language support
 - [x] Add more animations
 - [x] Add redux for state management
 - [ ] Add more tests
