@@ -9,10 +9,6 @@ const DefaultCaresoulSmooth = ({ children }: { children?: ReactNode[] }) => {
     const [active, setActive] = useState(0);
     const sliderRef = useRef<HTMLDivElement>(null);
 
-    const timer = useRef<NodeJS.Timeout>();
-
-    //create a timer to scroll the slider smoothly
-
     const handleRight = useCallback(() => {
         if (sliderRef.current) {
             const slider = sliderRef.current;
@@ -87,7 +83,7 @@ const DefaultCaresoulSmooth = ({ children }: { children?: ReactNode[] }) => {
     }
     , [children]);
 
-    useEffect(() => {
+    const handleScroll = useCallback(() => {
         if (sliderRef.current) {
             const slider = sliderRef.current;
             if (!children) {
@@ -97,11 +93,68 @@ const DefaultCaresoulSmooth = ({ children }: { children?: ReactNode[] }) => {
             const slideCount = Math.round(slider.scrollLeft / slideWidth);
             setActive(slideCount);
         }
-    }, [children]);
+    }
+    , [children]);
+
+    useEffect(() => {
+        if (sliderRef.current) {
+            const slider = sliderRef.current;
+            slider.addEventListener('scroll', handleScroll);
+        }
+
+        return () => {
+            if (sliderRef.current) {
+                const slider = sliderRef.current;
+                slider.removeEventListener('scroll', handleScroll);
+            }
+        };
+    }, [handleScroll]);
+
+    
+    //create a timer for auto slide
+    const timer = useRef<NodeJS.Timeout | null>(null);
+
+    function startTimer() {
+        if (timer.current) {
+            clearInterval(timer.current);
+        }
+        timer.current = setInterval(() => {
+            handleRight();
+        }, 10000);
+    }
+
+    function stopTimer() {
+        if (timer.current) {
+            clearInterval(timer.current);
+        }
+    }
+
+    function handleMouseEnter() {
+        stopTimer();
+    }
+
+    function handleMouseLeave() {
+        startTimer();
+    }
+
+    useEffect(() => {
+        //if screen is mobile, do not start timer
+        /*
+        if (window.innerWidth < 640) {
+            return;
+        }
+        */
+        startTimer();
+        return () => {
+            if (timer.current) {
+                clearInterval(timer.current);
+            }
+        };
+    }, []);
 
     return (
         <>
-            <div className="group carousel bg-base-100 w-full min-h-screen" style={{ top: '0', left: '0'}} ref={sliderRef}>
+            <div className="group carousel bg-base-100 w-full min-h-screen" style={{ top: '0', left: '0'}} ref={sliderRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onPointerEnter={handleMouseEnter} onPointerLeave={handleMouseLeave}>
                 {children?.map((child, index) => (
                     <div id={`slide${index + 1}`} className="carousel-item relative w-full" key={index}>
                         {child}
