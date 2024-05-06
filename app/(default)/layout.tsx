@@ -4,7 +4,7 @@ import './globals.css'
 
 // Components
 import Navbar from '@/components/default/Navbar'
-import Footer from '@/components/default/FooterNew'
+import Footer from '@/components/default/Footer'
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,11 +18,10 @@ import dynamic from 'next/dynamic'
 import { CookiesProvider } from 'react-cookie';
 const CookieConsent = dynamic(() => import('@/components/default/CookieConsent'), { ssr: false });
 
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+//i18n
+import { withTranslation } from 'react-i18next';
+
+const layout = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const scrollToTopBtn = document.getElementById("scrollToTop") as HTMLElement;
@@ -68,3 +67,6 @@ export default function DefaultLayout({
     </Suspense>
   )
 }
+
+
+export default layout;

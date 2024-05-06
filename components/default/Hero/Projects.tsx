@@ -4,13 +4,13 @@ import { faReact, faBootstrap, faHtml5, faPython, faPhp, faJava, faJs, faAmazon,
 import { faAnchor, faAnglesDown, faAnglesUp, faFire, faGear, faGlobe, faMobileScreenButton, faTv, faWind } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Metadata } from 'next';
-export const metadata: Metadata = {
-    title: "projects - kuray.dev",
-};
-
+//i18n
+import { withTranslation } from 'react-i18next';
+import i18n from '@/libs/localize/localize';
 
 const Projects = () => {
+
+    const { t } = i18n;
 
     const [expanded, setExpanded] = React.useState(false);
     const container = React.useRef(null);
@@ -37,8 +37,8 @@ const Projects = () => {
             <section className="bg-base-300 pt-12" id="projects">
                 <div className="px-4 mx-auto max-w-screen-xl lg:pb-16 lg:px-6 duration-1000" style={{ height: '560px', overflow: 'clip' }} ref={container}>
                     <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8 -mt-8 lg-mt-0">
-                        <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold">My Projects</h2>
-                        <p className="font-light sm:text-xl">I use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>
+                        <h2 className="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold">{t('PROJECTS.TITLE')}</h2>
+                        <p className="font-light sm:text-xl">{t('PROJECTS.DESCRIPTION')}</p>
                     </div>
                     <div className="grid gap-8 lg:grid-cols-2">
                         {/* pegasus, a Tailwind React UI Kit, React, Tailwind */}
@@ -71,7 +71,27 @@ const Projects = () => {
 
                             </div>
                         </article>
-                        {/* sözleşmeci, Contract Generator, React, Firebase */}   
+                        {/* Expo React Redux Boilerplate, React Native, Expo, Redux */}
+                        <article className="p-6 rounded-lg border shadow-md bg-blue-500 text-white border-base-100">
+                            <div className="flex items-center mb-5 text-black">
+                                {/* React Native */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-300">
+                                    <FontAwesomeIcon icon={faReact} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">React Native</span>
+                                </span>
+                            </div>
+                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>Expo React Redux Boilerplate</a></h2>
+                            <p className="mb-5 font-light"> It provides a solid foundation for creating cross-platform mobile apps with a predictable state container for managing application data flow.</p>
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center space-x-4">
+                                    <a href="https://github.com/kuraykaraaslan/expo-react-redux-boilerplate" className="inline-flex items-center font-medium hover:underline">
+                                        <FontAwesomeIcon icon={faGithub} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                        GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        {/* sözleşmeci, Contract Generator, React, Firebase */}
                         <article className="p-6 rounded-lg border shadow-md bg-green-500 border-base-100">
                             <div className="flex items-center mb-5 text-black">
                                 {/* React */}
@@ -95,8 +115,8 @@ const Projects = () => {
                                     </a>
                                 </div>
                             </div>
-                        </article>                  
-                        {/* tny.ist , URL Shortener , React, Firebase, Android */}
+                        </article>
+                        {/* fireCMS, Firebase CMS, Express, Firebase */}
                         <article className="p-6 rounded-lg border shadow-md bg-yellow-500 text-black border-base-100">
                             <div className="flex items-center mb-5 text-black">
                                 {/* React */}
@@ -109,26 +129,16 @@ const Projects = () => {
                                     <FontAwesomeIcon icon={faFire} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
                                     <span className="text-sm hidden lg:block">Firebase</span>
                                 </span>
-                                {/* Android */}
-                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-green-300">
-                                    <FontAwesomeIcon icon={faAndroid} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    <span className="text-sm hidden lg:block">Android</span>
-                                </span>
                             </div>
-                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>tny.ist</a></h2>
-                            <p className="mb-5 font-light">tny.ist is a free URL shortening service that provides companies and individuals with unique, customizable and secure links as well as analytics for the shortened links.</p>
+                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>fireCMS</a></h2>
+                            <p className="mb-5 font-light">fireCMS is a Headless CMS that is built using Express and Firebase. It offers a API based CMS for an optimal experience.</p>
                             <div className="flex justify-between items-center">
                                 <div className="flex items-center space-x-4">
-                                    <a href="https://tny.ist" className="inline-flex items-center font-medium hover:underline">
-                                        <FontAwesomeIcon icon={faAndroid} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                        coming soon
+                                    <a href="https://github.com/kuraykaraaslan/FireCMS" className="inline-flex items-center font-medium hover:underline">
+                                        <FontAwesomeIcon icon={faGithub} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                        GitHub
                                     </a>
                                 </div>
-                                <a href="https://tny.ist" className="inline-flex items-center font-medium hover:underline">
-                                    <FontAwesomeIcon icon={faGlobe} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    tny.ist
-
-                                </a>
                             </div>
                         </article>
                         {/* Instagram Follow Studio, Instagram Follow Unfollow Chrome Extension, React, Chrome, Opera */}
@@ -167,7 +177,6 @@ const Projects = () => {
                                 </a>
                             </div>
                         </article>
-
                         {/* Resume, React Based interactive resume, React */}
                         <article className="p-6 rounded-lg border shadow-md bg-white border-base-100 text-black">
                             <div className="flex items-center mb-5 text-black">
@@ -190,6 +199,41 @@ const Projects = () => {
                                 <a href="https://resume.kuray.dev" className="inline-flex items-center font-medium hover:underline">
                                     <FontAwesomeIcon icon={faGlobe} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
                                     Resume</a>
+                            </div>
+                        </article>
+                        {/* tny.ist , URL Shortener , React, Firebase, Android */}
+                        <article className="p-6 rounded-lg border shadow-md bg-purple-500 text-black border-base-100">
+                            <div className="flex items-center mb-5 text-black">
+                                {/* React */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-300">
+                                    <FontAwesomeIcon icon={faReact} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">React</span>
+                                </span>
+                                {/* Firebase */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-yellow-300">
+                                    <FontAwesomeIcon icon={faFire} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">Firebase</span>
+                                </span>
+                                {/* Android */}
+                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-green-300">
+                                    <FontAwesomeIcon icon={faAndroid} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    <span className="text-sm hidden lg:block">Android</span>
+                                </span>
+                            </div>
+                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>tny.ist</a></h2>
+                            <p className="mb-5 font-light">tny.ist is a free URL shortening service that provides companies and individuals with unique, customizable and secure links as well as analytics for the shortened links.</p>
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center space-x-4">
+                                    <a href="https://tny.ist" className="inline-flex items-center font-medium hover:underline">
+                                        <FontAwesomeIcon icon={faAndroid} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                        coming soon
+                                    </a>
+                                </div>
+                                <a href="https://tny.ist" className="inline-flex items-center font-medium hover:underline">
+                                    <FontAwesomeIcon icon={faGlobe} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
+                                    tny.ist
+
+                                </a>
                             </div>
                         </article>
                         {/* DateWave, Dating App, React Native, Firebase, Android, iOS */}
@@ -227,36 +271,6 @@ const Projects = () => {
                                     GitHub</a>
                             </div>
                         </article>
-                        {/* SufWave, Android TV Web Browser, Android, React Native, Android TV */}
-                        <article className="p-6 rounded-lg border shadow-md bg-green-500 border-base-100 text-black">
-                            <div className="flex items-center mb-5 text-black">
-                                {/* React Native */}
-                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-300">
-                                    <FontAwesomeIcon icon={faReact} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    <span className="text-sm hidden lg:block">React Native</span>
-                                </span>
-                                {/* Android */}
-                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-green-300">
-                                    <FontAwesomeIcon icon={faAndroid} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    <span className="text-sm hidden lg:block">Android</span>
-                                </span>
-                                {/* Android TV */}
-                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-yellow-300">
-                                    <FontAwesomeIcon icon={faTv} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    <span className="text-sm hidden lg:block">Android TV</span>
-                                </span>
-                            </div>
-                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>SufWave</a></h2>
-                            <p className="mb-5 font-light">SufWave is a web browser for Android TV. It is built using React Native and it is available on Android TV.</p>
-                            <div className='flex justify-between items-center'>
-                                <div className='flex items-center space-x-4'>
-
-                                </div>
-                                <a className="inline-flex items-center font-medium hover:underline">
-                                    <FontAwesomeIcon icon={faAndroid} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    Coming Soon</a>
-                            </div>
-                        </article>
                         {/* 3D View Cube, React, 3JS, WebGL */}
                         <article className="p-6 rounded-lg border shadow-md bg-purple-200 text-black border-base-100">
                             <div className="flex items-center mb-5 text-black">
@@ -286,31 +300,6 @@ const Projects = () => {
                                     npm</a>
                             </div>
                         </article>
-                        {/* LiveCaption, an chrome extension that provides live caption for videos, React, Chrome */}
-                        <article className="p-6 rounded-lg border shadow-md bg-base-200 border-base-100">
-                            <div className="flex items-center mb-5 text-black">
-                                {/* React */}
-                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-blue-300">
-                                    <FontAwesomeIcon icon={faReact} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    <span className="text-sm hidden lg:block">React</span>
-                                </span>
-                                {/* Chrome */}
-                                <span className="text-xs font-medium me-2 px-2.5 pt-0.5 pb-1 rounded flex items-center bg-purple-300">
-                                    <FontAwesomeIcon icon={faChrome} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                    <span className="text-sm hidden lg:block">Chrome</span>
-                                </span>
-                            </div>
-                            <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>LiveCaption</a></h2>
-                            <p className="mb-5 font-light">LiveCaptions is a Chrome extension that provides live caption for videos. It is built using React and it is available on Chrome.</p>
-                            <div className='flex justify-between items-center'>
-                                <div className='flex items-center space-x-4'>
-                                    <a href="https://github.com/kuraykaraaslan/LiveCaptions" className="inline-flex items-center font-medium hover:underline">
-                                        <FontAwesomeIcon icon={faGithub} style={{ width: "1rem", height: "1rem", marginRight: "0.25rem", paddingTop: "0.25rem" }} />
-                                        GitHub
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
                         {/* for other projects , check my github */}
                         <article className="p-6 rounded-lg border shadow-md bg-red-500 border-base-100 text-white">
                             <div className="flex items-center mb-5 text-black">
@@ -330,8 +319,8 @@ const Projects = () => {
                                     <span className="text-sm hidden lg:block">Web</span>
                                 </span>
 
-                                
-                                
+
+
                             </div>
                             <h2 className="mb-2 text-2xl font-bold tracking-tight"><a>Other Projects</a></h2>
                             <p className="mb-5 font-light">For other projects, check my GitHub profile. You can find various projects that I have worked on.</p>
@@ -357,8 +346,9 @@ const Projects = () => {
                     }}>
                         {!expanded ?
                             <a className="flex flex-col items-center gap-2 animate-bounce" style={{ height: '80px', width: '130px' }} onClick={handleClick} >
-                                <FontAwesomeIcon icon={faAnglesDown} style={{ width: '2.0rem', height: '2.0rem'
-                            }} /> <span>{expanded ? 'Show Less' : 'Show More'}</span>
+                                <FontAwesomeIcon icon={faAnglesDown} style={{
+                                    width: '2.0rem', height: '2.0rem'
+                                }} /> <span>{expanded ? 'Show Less' : 'Show More'}</span>
                             </a>
                             :
                             <a className="flex flex-col items-center gap-2" style={{ height: '80px', width: '130px' }} onClick={handleClick} >
@@ -373,5 +363,5 @@ const Projects = () => {
 
 }
 
-export default Projects;
+export default withTranslation()(Projects);
 

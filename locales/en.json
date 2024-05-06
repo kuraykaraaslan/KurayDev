@@ -47,5 +47,79 @@
         "TAKE_RISKS": "take risks",
         "KEEP_IMPROVING": "keep improving",
         "AIM_HIGH": "aim high"
+    },
+    "FOOTER": {
+        "COPYRIGHT": "© {{year}} Kuray.dev All rights reserved.",
+        "PRIVACY": "Privacy",
+        "TERMS": "Terms",
+        "PROJECTS": "Projects",
+        "CONTACT": "Contact"
+    },
+    "CONTACT": {
+        "TITLE": "Contact",
+        "DESCRIPTION": "good things happen when we talk.",
+        "SEND_MESSAGE": "Send me a message",
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "PHONE": "Phone",
+        "MESSAGE": "Message",
+        "SEND": "Send",
+        "NAME_PLACEHOLDER": "Your name",
+        "EMAIL_PLACEHOLDER": "Your email",
+        "PHONE_PLACEHOLDER": "Your phone",
+        "MESSAGE_PLACEHOLDER": "Your message"
+    },
+    "TOOLBOX" : {
+        "TITLE": "Creativy needs a lot of tools",
+        "DESCRIPTION": " have a lot of tools in my toolbox, and i'm always learning new ones.",
+        "FRONTEND": "Front-end.",
+        "BACKEND": "Back-end."
+    },
+    "PROJECTS": {
+        "TITLE": "My Projects",
+        "DESCRIPTION": "i use an agile approach to test assumptions and connect with the needs of your audience early and often."
+    },
+    "TIMELINE": {
+        "CLICK_TO_SEE_DETAILS": "Click on the timeline to see details",
+        "STEP_1": {
+            "TITLE": "Day 0",
+            "DESCRIPTION": "i was born in 1996 in mersin, turkey. i was a very curious child and always wanted to learn new things.",
+            "YEAR": "1996"
+        },
+        "STEP_2": {
+            "TITLE": "First Computer",
+            "DESCRIPTION": "i started my education in mersin, turkey. i was a very curious child and always wanted to learn new things.",
+            "YEAR": "2002"
+        },
+        "STEP_3": {
+            "TITLE": "Meet with the Internet",
+            "DESCRIPTION": "i met the internet in 2005. i was amazed by the things i could do with it. i started learning how to use it and meet with linux.",
+            "YEAR": "2005"
+        },
+        "STEP_4": {
+            "TITLE": "Started to Learn Programming",
+            "DESCRIPTION": "i started coding in 2008. i learned html, css, and javascript. i built my first website and was hooked on coding",
+            "YEAR": "2008"
+        },
+        "STEP_5": {
+            "TITLE": "First website",
+            "DESCRIPTION": "i built my first website in 2010. it was a simple website for my school project. i was so proud of it.",
+            "YEAR": "2010"
+        },
+        "STEP_6": {
+            "TITLE": "University",
+            "DESCRIPTION": "i started my university education in 2015. i studied civil engineering. i learned a lot of things about project management and teamwork.",
+            "YEAR": "2015"
+        },
+        "STEP_7": {
+            "TITLE": "changed my career",
+            "DESCRIPTION": "i decided to change my career in 2023. i wanted to work in tech and build software. i started learning new technologies and building projects.",
+            "YEAR": "2023"
+        },
+        "STEP_8": {
+            "TITLE": "First Job",
+            "DESCRIPTION": "i got my first job as a full-stack developer in 2024. i worked on a lot of projects and learned a lot of things.",
+            "YEAR": "2024"
+        }
     }
 }

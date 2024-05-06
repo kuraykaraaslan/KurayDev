@@ -63,7 +63,7 @@ const ThemeButton = () => {
     };
 
     return (
-        <button className="btn btn-square btn-ghost rounded-full items-center justify-center grayscale duration-300 hover:grayscale-0" onClick={changeThemeEachOther}>
+        <button className="btn btn-square btn-ghost rounded-full items-center justify-center grayscale duration-300 hover:grayscale-0" onClick={changeThemeEachOther} onContextMenu={changeThemeEachOther}>
             <FontAwesomeIcon icon={themesWithIcons[currentTheme] as IconDefinition} 
             style={{ width: '24px', height: '24px' }} />
         </button>

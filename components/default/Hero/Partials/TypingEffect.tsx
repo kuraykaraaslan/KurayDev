@@ -35,7 +35,7 @@ const TypingEffect = () => {
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            if (letterIndex === texts[textsIndex].length) {
+            if (letterIndex >= texts[textsIndex].length) {
                 setIsDeleting(true);
             }
 

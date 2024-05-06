@@ -12,7 +12,7 @@ const InstaFollowStudio = () => {
                 <div className="max-w-sm rounded-lg shadow-2xl hidden lg:block">
                     <div className="mockup-browser border bg-base-300">
                         <div className="mockup-browser-toolbar">
-                            <div className="input">Insta Follow Studio</div>
+                            <div className="input">Pegasus UI Kit</div>
                         </div>
                         <img src="/assests/img/insta-follow-studio.png" alt="cover" className="mockup-browser-img" />
                     </div>

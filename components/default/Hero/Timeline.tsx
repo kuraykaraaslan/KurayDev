@@ -5,7 +5,13 @@ import React, { useEffect } from 'react'
 import { faBaby, faBriefcase, faBuildingColumns, faCode, faComputer, faFaceSmile, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faChrome, faFirefox } from '@fortawesome/free-brands-svg-icons';
 
+//i18n
+import { withTranslation } from 'react-i18next';
+import i18n from '@/libs/localize/localize';
+
 const Timeline = () => {
+
+    const { t } = i18n;
 
 
     const [showDetails, setShowDetails] = React.useState(false);
@@ -21,120 +27,120 @@ const Timeline = () => {
                         zIndex: 100,
                         display: isHovering ? showDetails ? 'none' : 'flex' : 'none',
                     }}>
-                        <h3 className="text-3xl font-bold text-center">click on the timeline to see details</h3>
+                        <h3 className="text-3xl font-bold text-center">{t('TIMELINE.CLICK_TO_SEE_DETAILS')}</h3>
                     </div>
                     {/* Content inside the blurred section */}
 
                     <ul className={"timeline bg-base-200 my-6" + (showDetails ? ' timeline-vertical' : ' timeline-vertical lg:timeline-horizontal')}>
                         <li>
                             <div className="timeline-start timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>day 0</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i was born in 1996 in mersin, turkey. i was a very curious child and always wanted to learn new things.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_1.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_1.DESCRIPTION')}</p>
                             </div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faBaby} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
-                            <div className="timeline-end mx-2">1996</div>
+                            <div className="timeline-end mx-2">{t('TIMELINE.STEP_1.YEAR')}</div>
                             <hr />
 
                         </li>
                         <li>
                             <hr />
-                            <div className="timeline-start mx-2">2002</div>
+                            <div className="timeline-start mx-2">{t('TIMELINE.STEP_2.YEAR')}</div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faComputer} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
                             <div className="timeline-end timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>first computer</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i got my first computer in 2002. it was a windows 98 machine with a 15-inch crt monitor. i spent hours playing games and trying to understand how it worked.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_2.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_2.DESCRIPTION')}</p>
                             </div>
                             <hr />
                         </li>
                         <li>
                             <hr />
                             <div className="timeline-start timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>meets internet</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i met the internet in 2005. i was amazed by the things i could do with it. i started learning how to use it and meet with linux.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_3.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_3.DESCRIPTION')}</p>
                             </div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faGlobe} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
-                            <div className="timeline-end mx-2">2005</div>
+                            <div className="timeline-end mx-2">{t('TIMELINE.STEP_3.YEAR')}</div>
                             <hr />
                         </li>
                         <li style={{ display: showDetails ? 'grid' : 'none' }}>
                             <hr />
-                            <div className="timeline-start mx-2">2008</div>
+                            <div className="timeline-start mx-2">{t('TIMELINE.STEP_4.YEAR')}</div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faCode} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
                             <div className="timeline-end timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>starts coding</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i started coding in 2008. i learned html, css, and javascript. i built my first website and was hooked on coding.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_4.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_4.DESCRIPTION')}</p>
                             </div>
                             <hr />
                         </li>
                         <li style={{ display: showDetails ? 'grid' : 'none' }}>
                             <hr />
                             <div className="timeline-start timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>first website</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i built my first website in 2010. it was a simple site with a few pages. i was proud of what i had created and wanted to learn more.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_5.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_5.DESCRIPTION')}</p>
                             </div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faFirefox} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
-                            <div className="timeline-end mx-2">2010</div>
+                            <div className="timeline-end mx-2">{t('TIMELINE.STEP_5.YEAR')}</div>
                             <hr />
                         </li>
                         <li>
                             <hr />
-                            <div className="timeline-start mx-2">2015</div>
+                            <div className="timeline-start mx-2">{t('TIMELINE.STEP_6.YEAR')}</div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faBuildingColumns} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
                             <div className="timeline-end timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>university</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i went to university in 2015. i studied civil engineering and learned a lot about buildings and structures. i also continued to learn about coding and web development.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_6.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_6.DESCRIPTION')}</p>
                             </div>
                             <hr />
                         </li>
                         <li>
                             <hr />
                             <div className="timeline-start timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>changing career</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i decided to change my career in 2023. i wanted to work in tech and build software. i started learning new technologies and building projects.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_7.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_7.DESCRIPTION')}</p>
                             </div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faBriefcase} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
-                            <div className="timeline-end mx-2">2023</div>
+                            <div className="timeline-end mx-2">{t('TIMELINE.STEP_7.YEAR')}</div>
                             <hr />
                         </li>
                         <li>
                             <hr />
-                            <div className="timeline-start mx-2">2024</div>
+                            <div className="timeline-start mx-2">{t('TIMELINE.STEP_8.YEAR')}</div>
                             <div className="timeline-middle my-1">
                                 <div className="bg-white text-black rounded-full pt-1 px-1">
                                     <FontAwesomeIcon icon={faFaceSmile} style={{ width: '12px', height: '12px' }} className="m-1 mt-1" />
                                 </div>
                             </div>
                             <div className="timeline-end timeline-box max-w-xs mx-2">
-                                <p className='font-bold'>first software job</p>
-                                <p style={{ display: showDetails ? 'block' : 'none' }}>i got my first software job in 2024. i was excited to start working as a software developer and to build real-world projects.</p>
+                                <p className='font-bold'>{t('TIMELINE.STEP_8.TITLE')}</p>
+                                <p style={{ display: showDetails ? 'block' : 'none' }}>{t('TIMELINE.STEP_8.DESCRIPTION')}</p>
                             </div>
                         </li>
                     </ul>
