@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChrome, faOpera, faEdge, faFirefox, faSafari, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faGlobe, faHorseHead } from '@fortawesome/free-solid-svg-icons'
 
-const InstaFollowStudio = () => {
+const Pegasus = () => {
 
     return (
         <div className="hero min-h-screen">
@@ -33,4 +33,4 @@ const InstaFollowStudio = () => {
     )
 }
 
-export default InstaFollowStudio;
+export default Pegasus;
