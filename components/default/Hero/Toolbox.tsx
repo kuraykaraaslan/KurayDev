@@ -40,17 +40,17 @@ const Toolbox = () => {
                                 <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-blue-500 px-2 py-2 shadow-lg">
                                     <div className='flex flex-col items-center justify-center group-hover:hidden'>
                                         <figure className="px-10 pt-5 -mb-3">
-                                            <img src="/assests/img/typescriptw.svg" alt="Javascript" className="w-20 h-20" />
+                                            <FontAwesomeIcon icon={faJs} className="text-8xl" />
                                         </figure>
                                     </div>
                                     <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
                                         <figure className="px-10 pt-5 -mb-4">
-                                            <img src="/assests/img/typescript.svg" alt="Javascript" className="w-10 h-10" />
+                                            <FontAwesomeIcon icon={faJs} className="text-4xl transition duration-500 hover:animate-spin" />
                                         </figure>
                                         <div className="w-40 card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">typescript</h2>
+                                            <h2 className="card-title">javascript</h2>
                                             <span className="text-xs text-black -mt-1">react & native</span>
-                                            <span className="text-xs text-black -mt-2">redux, next.js</span>
+                                            <span className="text-xs text-black -mt-2">typescript & es6</span>
                                         </div>
                                     </div>
                                 </div>
