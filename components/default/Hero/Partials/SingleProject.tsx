@@ -12,14 +12,21 @@ export type Url = {
     url: string;
 };
 
+export type Tag = {
+    name: string;
+    color: string;
+    icon: IconDefinition;
+};
+
 export type Project = {
     id: string;
     title: string;
     description: string;
     urls: Url[];
-    tags: { name: string; color: string; icon: IconDefinition}[];
-    bgColor: string;
-    textColor: string;
+    tags: Tag[];
+    bgColor?: string;
+    borderColor?: string;
+    textColor?: string;
 };
 
 type SingleProjectProps = {
@@ -28,7 +35,7 @@ type SingleProjectProps = {
 
 const SingleProject: React.FC<SingleProjectProps> = ({ project }) => {
     return (
-        <article className={`p-6 rounded-lg border shadow-md ${project.bgColor} ${project.textColor}`}>
+        <article className={`p-6 rounded-lg border shadow-md ${project.bgColor ? project.bgColor : 'bg-base-100'} ${project.borderColor ? project.borderColor : 'border-base-200'} ${project.textColor ? project.textColor : 'text-base-900'}`}>
             <div className="flex items-center mb-5 text-black">
                 {project.tags.map((tag) => (
                     <span

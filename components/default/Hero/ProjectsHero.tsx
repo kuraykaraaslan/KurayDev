@@ -43,8 +43,6 @@ const ProjectsHero = () => {
             { name: 'React', color: 'bg-blue-300', icon: faReact },
             { name: 'Tailwind', color: 'bg-blue-500', icon: faWind },
           ],
-          bgColor: 'bg-base-200',
-          textColor: 'text-black',
         },
         {
           id: '2',
@@ -56,8 +54,6 @@ const ProjectsHero = () => {
             tags: [
                 { name: 'React Native', color: 'bg-blue-300', icon: faReact },
             ],
-            bgColor: 'bg-blue-500',
-            textColor: 'text-white',
         },
         {
             id: '3',
@@ -70,8 +66,6 @@ const ProjectsHero = () => {
                 { name: 'React', color: 'bg-blue-300', icon: faReact },
                 { name: 'Firebase', color: 'bg-yellow-300', icon: faFire },
             ],
-            bgColor: 'bg-green-500',
-            textColor: 'text-white',
         },
         {
             id: '4',
@@ -84,8 +78,6 @@ const ProjectsHero = () => {
                 { name: 'React', color: 'bg-blue-300', icon: faReact },
                 { name: 'Firebase', color: 'bg-yellow-300', icon: faFire },
             ],
-            bgColor: 'bg-yellow-500',
-            textColor: 'text-black',
         },
         {
             id: '5',
@@ -100,8 +92,6 @@ const ProjectsHero = () => {
                 { name: 'Chrome', color: 'bg-purple-300', icon: faChrome },
                 { name: 'Opera', color: 'bg-red-300', icon: faOpera },
             ],
-            bgColor: 'bg-base-200',
-            textColor: 'text-black',
         },
         {
             id: '6',
@@ -114,8 +104,6 @@ const ProjectsHero = () => {
             tags: [
                 { name: 'React', color: 'bg-blue-300', icon: faReact },
             ],
-            bgColor: 'bg-white',
-            textColor: 'text-black',
         },
         {
             id: '7',
@@ -129,8 +117,6 @@ const ProjectsHero = () => {
                 { name: 'Firebase', color: 'bg-yellow-300', icon: faFire },
                 { name: 'Android', color: 'bg-green-300', icon: faAndroid },
             ],
-            bgColor: 'bg-purple-500',
-            textColor: 'text-black',
         },
         {
             id: '8',
@@ -145,8 +131,6 @@ const ProjectsHero = () => {
                 { name: 'Android', color: 'bg-green-300', icon: faAndroid },
                 { name: 'iOS', color: 'bg-purple-300', icon: faApple },
             ],
-            bgColor: 'bg-base-200',
-            textColor: 'text-black',
         },
         {
             id: '9',
@@ -160,8 +144,6 @@ const ProjectsHero = () => {
                 { name: 'React', color: 'bg-blue-300', icon: faReact },
                 { name: 'WebGL', color: 'bg-yellow-300', icon: faGlobe },
             ],
-            bgColor: 'bg-purple-200',
-            textColor: 'text-black',
         },
         {
             id: '10',
@@ -175,8 +157,7 @@ const ProjectsHero = () => {
                 { name: 'Mobile', color: 'bg-green-300', icon: faMobileScreenButton },
                 { name: 'Web', color: 'bg-blue-300', icon: faGlobe },
             ],
-            bgColor: 'bg-red-500',
-            textColor: 'text-white',
+            bgColor: 'bg-base-200',
         },
     ];
     
