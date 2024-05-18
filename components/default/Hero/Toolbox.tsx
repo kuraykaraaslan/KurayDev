@@ -9,9 +9,108 @@ import React, { useEffect } from 'react'
 import { withTranslation } from 'react-i18next';
 import i18n from '@/libs/localize/localize';
 
+import SingleTool, { SingleToolProps } from '@/components/default/Hero/Partials/SingleTool'
+import SingleSkill, { SingleSkillProps } from '@/components/default/Hero/Partials/SingleSkill'
+
 const Toolbox = () => {
 
     const { t } = i18n;
+
+    const backendTools = [
+        {
+          icon: faJava,
+          hoverBgColor: 'bg-red-500',
+          title: 'Java',
+          description: 'spring, swing',
+          hoverTextColor: 'black',
+        },
+        {
+          icon: faPython,
+          hoverBgColor: 'bg-yellow-500',
+          title: 'Python',
+          description: 'django',
+          hoverTextColor: 'blue-500',
+        },
+        {
+          icon: faPhp,
+          hoverBgColor: 'bg-purple-500',
+          title: 'PHP',
+          description: 'laravel',
+          hoverTextColor: 'black',
+        },
+        {
+          icon: faLinux,
+          hoverBgColor: 'bg-green-500',
+          title: 'Linux',
+          description: 'server, bash',
+          hoverTextColor: 'black',
+        },
+      ] as SingleToolProps[];
+
+    const frontendTools = [
+        {
+            icon: faJs,
+            hoverBgColor: 'bg-blue-500',
+            title: 'Javascript',
+            description: 'react & native',
+            hoverTextColor: 'black',
+        },
+        {
+            icon: faCss3,
+            hoverBgColor: 'bg-purple-500',
+            title: 'CSS',
+            description: 'tailwind & bootstrap',
+            hoverTextColor: 'black',
+        },
+        {
+            icon: faHtml5,
+            hoverBgColor: 'bg-orange-500',
+            title: 'HTML',
+            description: 'semantic',
+            hoverTextColor: 'black',
+        },
+        {
+            icon: faFigma,
+            hoverBgColor: 'bg-red-500',
+            title: 'Figma',
+            description: 'design',
+            hoverTextColor: 'black',
+        },
+    ] as SingleToolProps[];
+
+    const skills = [
+        {
+            icon: faDatabase,
+            color: 'bg-rose-500',
+            title: 'SQL',
+        },
+        {
+            icon: faCode,
+            color: 'bg-blue-500',
+            title: 'Clean Code',
+        },
+        {
+            icon: faFire,
+            color: 'bg-green-500',
+            title: 'Firebase',
+        },
+        {
+            icon: faCodeBranch,
+            color: 'bg-yellow-500',
+            title: 'Version Control',
+        },
+        {
+            icon: faUsers,
+            color: 'bg-purple-500',
+            title: 'Teamwork',
+        },
+        {
+            icon: faLightbulb,
+            color: 'bg-orange-500',
+            title: 'Problem Solving',
+        },
+    ] as SingleSkillProps[];
+
 
     return (
         <>
@@ -26,177 +125,28 @@ const Toolbox = () => {
                     </div>
                 </div>
 
-
-
-
                 <div className="grid grid-row-auto justify-items-center grid-row-1 md:grid-row-2 md:space-y-8 py-8 md:py-16">
                     <div className="flex flex-col lg:flex-row-reverse md:mx-12 mx-auto">
                         <div className="flex-1 pl-4 select-none hidden lg:block">
                             <h1 className="text-3xl font-bold  relative overflow-hidden animate-shake pb-4">{t("TOOLBOX.FRONTEND")}</h1>
                         </div>
                         <div className="group flex-none grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                            {/* Javascript */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-blue-500 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faJs} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faJs} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="w-40 card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">javascript</h2>
-                                            <span className="text-xs text-black -mt-1">react & native</span>
-                                            <span className="text-xs text-black -mt-2">typescript & es6</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* Figma */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-white group-hover:rotate-y-180 group-hover:bg-red-500 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faFigma} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faFigma} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">figma</h2>
-                                            <span className="text-xs text-black">design</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* CSS */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-white group-hover:rotate-y-180 group-hover:bg-blue-500 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faCss3} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faCss3} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">css</h2>
-                                            <span className="text-xs text-black -mt-1">tailwind</span>
-                                            <span className="text-xs text-black -mt-2">bootstrap</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* HTML */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-white group-hover:rotate-y-180 group-hover:bg-orange-500 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faHtml5} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faHtml5} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">html</h2>
-                                            <span className="text-xs text-black">semantic</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
+                            {frontendTools.map((tool, index) => (
+                                <SingleTool key={index} {...tool} />
+                            ))}
+                            
                         </div>
                     </div>
-                    <div className="group flex flex-col lg:flex-row md:mx-12 mx-auto pt-4">
+                    <div className="flex flex-col lg:flex-row md:mx-12 mx-auto pt-4">
                         <div className="flex-0 lg:pl-0 select-none hidden lg:block pr-4">
                             <h1 className="text-3xl font-bold  relative overflow-hidden animate-shake pb-4">{t("TOOLBOX.BACKEND")}</h1>
                         </div>
-                        <div className="flex-none grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                        <div className="group flex-none grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
 
-                            {/* Java */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-red-500 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faJava} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faJava} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">java</h2>
-                                            <span className="text-xs text-black">spring, swing</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* python */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-blue-500 group-hover:rotate-y-180 group-hover:bg-yellow-400 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faPython} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faPython} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">python</h2>
-                                            <span className="text-xs text-black">django</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* php */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-purple-400 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faPhp} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faPhp} className="text-4xl transition duration-500 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center duration-1000 ease-in-out">
-                                            <h2 className="card-title">php</h2>
-                                            <span className="text-xs text-black">laravel</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* Bash */}
-                            <div className='w-40 h-40 group'>
-                                <div className="card w-40 h-40 bg-base-300 relative select-none transition duration-500 transform group-hover:rotate-y-180 group-hover:bg-green-400 px-2 py-2 shadow-lg">
-                                    <div className='flex flex-col items-center justify-center group-hover:hidden'>
-                                        <figure className="px-10 pt-5 -mb-3">
-                                            <FontAwesomeIcon icon={faLinux} className="text-8xl" />
-                                        </figure>
-                                    </div>
-                                    <div className='flex flex-col items-center justify-center hidden text-black group-hover:flex rotate-y-180 duration-100'>
-                                        <figure className="px-10 pt-5 -mb-4">
-                                            <FontAwesomeIcon icon={faLinux} className="text-4xl transition  duration-100 hover:animate-spin" />
-                                        </figure>
-                                        <div className="card-body items-center text-center ease-in-out">
-                                            <h2 className="card-title">linux</h2>
-                                            <span className="text-xs text-black">server, bash</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {backendTools.map((tool, index) => (
+                                <SingleTool key={index} {...tool} />
+                            ))}
 
 
                         </div>
@@ -207,86 +157,11 @@ const Toolbox = () => {
 
 
                     <div className="group flex-none grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-8 mt-4" >
-                        {/*Small SKills*/}
-                        {/* SQL */}
-                        <div className='w-28 h-20 group'>
-                            <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-rose-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
-                                    <figure className="mt-5 hover:animate-spin">
-                                        <FontAwesomeIcon icon={faDatabase} className="text-2xl flex group-hover:hidden" />
-                                    </figure>
-                                    <div className="mt-4 flex flex-col items-center justify-center hidden group-hover:flex">
-                                        <h2 className="card-title text-center">SQL</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* API */}
-                        <div className='w-28 h-20 group'>
-                            <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-blue-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
-                                    <figure className="mt-5 hover:animate-spin">
-                                        <FontAwesomeIcon icon={faCode} className="text-2xl flex group-hover:hidden" />
-                                    </figure>
-                                    <div className="mt-1 flex flex-col items-center justify-center hidden group-hover:flex">
-                                        <h2 className="card-title text-center">Clean Code</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Firebase */}
-                        <div className='w-28 h-20 group'>
-                            <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-green-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
-                                    <figure className="mt-5 hover:animate-spin">
-                                        <FontAwesomeIcon icon={faFire} className="text-2xl flex group-hover:hidden" />
-                                    </figure>
-                                    <div className="mt-4 flex flex-col items-center justify-center hidden group-hover:flex">
-                                        <h2 className="card-title text-center">Firebase</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Version Control (e.g., Git) */}
-                        <div className='w-28 h-20 group'>
-                            <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-yellow-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
-                                    <figure className="mt-5 hover:animate-spin">
-                                        <FontAwesomeIcon icon={faCodeBranch} className="text-2xl flex group-hover:hidden" />
-                                    </figure>
-                                    <div className="mt-1 flex flex-col items-center justify-center hidden group-hover:flex">
-                                        <h2 className="card-title text-center">Version Control</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Teamwork */}
-                        <div className='w-28 h-20 group'>
-                            <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-purple-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
-                                    <figure className="mt-5 hover:animate-ping">
-                                        <FontAwesomeIcon icon={faUsers} className="text-2xl flex group-hover:hidden" />
-                                    </figure>
-                                    <div className="mt-4 flex flex-col items-center justify-center hidden group-hover:flex">
-                                        <h2 className="card-title text-center">Teamwork</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* Problem Solving */}
-                        <div className='w-28 h-20 group'>
-                            <div className="card 'w-28 h-20 bg-base-300 relative select-none transition duration-500 transform group-hover:text-black group-hover:rotate-y-180 group-hover:bg-orange-500 px-2 py-2 shadow-lg">
-                                <div className='flex flex-row items-center justify-center group-hover:rotate-y-180'>
-                                    <figure className="mt-5 hover:animate-bounce">
-                                        <FontAwesomeIcon icon={faLightbulb} className="text-2xl flex group-hover:hidden" />
-                                    </figure>
-                                    <div className="mt-1 flex flex-col items-center justify-center hidden group-hover:flex">
-                                        <h2 className="card-title text-center">Problem Solving</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        {skills.map((skill, index) => (
+                            <SingleSkill key={index} {...skill} />
+                        ))}
+                        
                     </div>
 
                 </div>
