@@ -8,7 +8,7 @@ import Toolbox from "@/components/default/Hero/Toolbox"
 import Testimonials from "@/components/default/Hero/Testimonials"
 import Contact from "@/components/default/Hero/Contact"
 import HireMe from "@/components/default/Hero/HireMe"
-import Projects from "@/components/default/Hero/Projects"
+import ProjectsHero from "@/components/default/Hero/ProjectsHero"
 import Timeline from "@/components/default/Hero/Timeline"
 import ExpoBoilerplate from "@/components/default/CarouselPartial/ExpoBoilerplate"
 import Pegasus from "@/components/default/CarouselPartial/Pegasus"
@@ -26,7 +26,7 @@ export default function Home() {
         <Resume />
         
       </Carousel>
-      <Projects />
+      <ProjectsHero />
       <Timeline />
       <Toolbox />
       <Contact />
