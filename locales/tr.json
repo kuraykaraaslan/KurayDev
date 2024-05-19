@@ -1,52 +1,52 @@
 {
-    "HELLO": "Merhaba",
-    "NAVIGATION": {
-        "HOME": "Anasayfa",
-        "PROJECTS": "Projeler",
-        "CONTACT": "İletişim",
-        "RESUME": "Özgeçmiş",
-        "BLOG": "Blog",
-        "GITHUB": "GitHub"
-    },
-    "LANGUAGES": {
-        "EN": "İngilizce",
-        "TR": "Türkçe",
-        "DE": "Almanca",
-        "TH": "Tayca"
-    },
-    "SITE": {
-        "TITLE": "kuray karaaslan - kendi kendini yetiştirmiş tam yığın geliştirici",
-        "DESCRIPTION": "react , Java ve daha birçok konuda deneyimi olan, kendi kendini yetiştirmiş bir full-stack geliştiricisiyim. "
-    },
-    "COOKIES": {
-        "MESSAGE": "Bu site, hizmetlerimizi sunmak ve iyileştirmek için çerezler kullanır.",
-        "AGREE": "Kabul et",
-        "DISAGREE": "Reddet"
-    },
-    "HIRE_ME": {
-        "DESCRIPTION": "react, Java ve daha birçok konuda deneyimi olan, kendi kendini yetiştirmiş bir full-stack geliştiricisiyim. ",
-        "INTRO": "ben",
-        "OUTRO": " hazırım.",
-        "OPEN_FOR_NEW_OPPORTUNITIES": "Yeni fırsatlara açığım.",
-        "MY_RESUME": "Özgeçmişim",
-        "MY_GITHUB": "GitHub'ım",
-        "IZMIR_KARACA_CINEMA": "İzmir Karaca Sineması",
-        "10TH_DECEMBER_2023": "10 Aralık 2023",
-        "LEARN_NEW_THINGS": "yeni şeyler öğrenmeye",
-        "MAKE_A_DIFFERENCE": "bir fark yaratmaya",
-        "BUILD_THE_FUTURE": "geleceği inşa etmeye",
-        "CREATE_AWESOME_THINGS": "harika şeyler üretmeye",
-        "WORK_TOGETHER": "birlikte çalışmaya",
-        "SOLVE_PROBLEMS": "problem çözmeye",
-        "PUSH_LIMITS": "sınırları zorlamaya",
-        "PURSUE_EXCELLENCE": "mükemmelliği takip etmeye",
-        "THINK_OUTSIDE_THE_BOX": "kutunun dışında düşünmeye",
-        "STAY_HUMBLE": "mütevazi kalmaya",
-        "EMBRACE_CHANGE": "değişimi kucaklamaya",
-        "BE_A_TEAM_PLAYER": "takım oyuncusu olmaya",
-        "STAY_FOCUSED": "odaklanmaya",
-        "TAKE_RISKS": "risk almaya",
-        "KEEP_IMPROVING": "gelişmeye devam etmeye",
-        "AIM_HIGH": "yükseği hedeflemeye"
-    }
+  "HELLO": "Merhaba",
+  "NAVIGATION": {
+    "HOME": "Anasayfa",
+    "PROJECTS": "Projeler",
+    "CONTACT": "İletişim",
+    "RESUME": "Özgeçmiş",
+    "BLOG": "Blog",
+    "GITHUB": "GitHub"
+  },
+  "LANGUAGES": {
+    "EN": "İngilizce",
+    "TR": "Türkçe",
+    "DE": "Almanca",
+    "TH": "Tayca"
+  },
+  "SITE": {
+    "TITLE": "kuray karaaslan - kendi kendini yetiştirmiş tam yığın geliştirici",
+    "DESCRIPTION": "react , Java ve daha birçok konuda deneyimi olan, kendi kendini yetiştirmiş bir full-stack geliştiricisiyim. "
+  },
+  "COOKIES": {
+    "MESSAGE": "Bu site, hizmetlerimizi sunmak ve iyileştirmek için çerezler kullanır.",
+    "AGREE": "Kabul et",
+    "DISAGREE": "Reddet"
+  },
+  "HIRE_ME": {
+    "DESCRIPTION": "react, Java ve daha birçok konuda deneyimi olan, kendi kendini yetiştirmiş bir full-stack geliştiricisiyim. ",
+    "INTRO": "ben",
+    "OUTRO": " hazırım.",
+    "OPEN_FOR_NEW_OPPORTUNITIES": "Yeni fırsatlara açığım.",
+    "MY_RESUME": "Özgeçmişim",
+    "MY_GITHUB": "GitHub'ım",
+    "IZMIR_KARACA_CINEMA": "İzmir Karaca Sineması",
+    "10TH_DECEMBER_2023": "10 Aralık 2023",
+    "LEARN_NEW_THINGS": "yeni şeyler öğrenmeye",
+    "MAKE_A_DIFFERENCE": "bir fark yaratmaya",
+    "BUILD_THE_FUTURE": "geleceği inşa etmeye",
+    "CREATE_AWESOME_THINGS": "harika şeyler üretmeye",
+    "WORK_TOGETHER": "birlikte çalışmaya",
+    "SOLVE_PROBLEMS": "problem çözmeye",
+    "PUSH_LIMITS": "sınırları zorlamaya",
+    "PURSUE_EXCELLENCE": "mükemmelliği takip etmeye",
+    "THINK_OUTSIDE_THE_BOX": "kutunun dışında düşünmeye",
+    "STAY_HUMBLE": "mütevazi kalmaya",
+    "EMBRACE_CHANGE": "değişimi kucaklamaya",
+    "BE_A_TEAM_PLAYER": "takım oyuncusu olmaya",
+    "STAY_FOCUSED": "odaklanmaya",
+    "TAKE_RISKS": "risk almaya",
+    "KEEP_IMPROVING": "gelişmeye devam etmeye",
+    "AIM_HIGH": "yükseği hedeflemeye"
+  }
 }

@@ -2,9 +2,7 @@
 
 ![kuray.dev](/static/kuraymain.gif)
 
-Welcome to the **kuray.dev** GitHub repository! Tihs project is the code of [kuray.dev](https://kuray.dev) website. This repository contains the source code for a personal portfolio webpage template. 
-
-
+Welcome to the **kuray.dev** GitHub repository! Tihs project is the code of [kuray.dev](https://kuray.dev) website. This repository contains the source code for a personal portfolio webpage template.
 
 ## Screenshot of the webpage
 
@@ -44,17 +42,21 @@ You can view a live demo of the webpage at [kuray.dev](https://kuray.dev).
 - **3JS**: The webpage uses 3JS for the background.
 
 ## Installation
+
 1. Clone the repository
+
 ```bash
 git clone https://github.com/kuraykaraaslan/KurayDev.git
 ```
 
 2. Install the dependencies
+
 ```bash
 npm install
 ```
 
 3. Start the development server
+
 ```bash
 npm run dev
 ```

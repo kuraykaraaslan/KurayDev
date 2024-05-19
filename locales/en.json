@@ -1,125 +1,125 @@
 {
-    "NAVIGATION": {
-        "HOME": "Home",
-        "PROJECTS": "Projects",
-        "CONTACT": "Contact",
-        "RESUME": "Resume",
-        "BLOG": "Blog",
-        "GITHUB": "GitHub"
+  "NAVIGATION": {
+    "HOME": "Home",
+    "PROJECTS": "Projects",
+    "CONTACT": "Contact",
+    "RESUME": "Resume",
+    "BLOG": "Blog",
+    "GITHUB": "GitHub"
+  },
+  "LANGUAGES": {
+    "EN": "English",
+    "TR": "Turkish",
+    "DE": "Deutsch",
+    "TH": "Thai"
+  },
+  "SITE": {
+    "TITLE": "kuray karaaslan - self-taught full-stack developer",
+    "DESCRIPTION": "i'm a self-taught full-stack developer with experience in react , java and more. I'm open for new opportunities."
+  },
+  "COOKIES": {
+    "MESSAGE": "This website uses cookies to ensure you get the best experience on our website.",
+    "AGREE": "Got it!",
+    "DISAGREE": "Decline"
+  },
+  "HIRE_ME": {
+    "HELLO": "Hello, I'm",
+    "DESCRIPTION": "I'm a self-taught full-stack developer with experience in React, Java and more. I'm open for new opportunities.",
+    "INTRO": "I'm ready to",
+    "OUTRO": "",
+    "MY_RESUME": "My Resume",
+    "MY_GITHUB": "My GitHub",
+    "IZMIR_KARACA_CINEMA": "Izmir Karaca Cinema",
+    "10TH_DECEMBER_2023": "10th December 2023",
+    "LEARN_NEW_THINGS": "learn new things",
+    "MAKE_A_DIFFERENCE": "make a difference",
+    "BUILD_THE_FUTURE": "build the future",
+    "CREATE_AWESOME_THINGS": "create awesome things",
+    "WORK_TOGETHER": "work together",
+    "SOLVE_PROBLEMS": "solve problems",
+    "PUSH_LIMITS": "push limits",
+    "PURSUE_EXCELLENCE": "pursue excellence",
+    "THINK_OUTSIDE_THE_BOX": "think outside the box",
+    "STAY_HUMBLE": "stay humble",
+    "EMBRACE_CHANGE": "embrace change",
+    "BE_A_TEAM_PLAYER": "be a team player",
+    "STAY_FOCUSED": "stay focused",
+    "TAKE_RISKS": "take risks",
+    "KEEP_IMPROVING": "keep improving",
+    "AIM_HIGH": "aim high"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "© {{year}} Kuray.dev All rights reserved.",
+    "PRIVACY": "Privacy",
+    "TERMS": "Terms",
+    "PROJECTS": "Projects",
+    "CONTACT": "Contact"
+  },
+  "CONTACT": {
+    "TITLE": "Contact",
+    "DESCRIPTION": "good things happen when we talk.",
+    "SEND_MESSAGE": "Send me a message",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "MESSAGE": "Message",
+    "SEND": "Send",
+    "NAME_PLACEHOLDER": "Your name",
+    "EMAIL_PLACEHOLDER": "Your email",
+    "PHONE_PLACEHOLDER": "Your phone",
+    "MESSAGE_PLACEHOLDER": "Your message"
+  },
+  "TOOLBOX": {
+    "TITLE": "Creativy needs a lot of tools",
+    "DESCRIPTION": " have a lot of tools in my toolbox, and i'm always learning new ones.",
+    "FRONTEND": "Front-end.",
+    "BACKEND": "Back-end."
+  },
+  "PROJECTS": {
+    "TITLE": "My Projects",
+    "DESCRIPTION": "i use an agile approach to test assumptions and connect with the needs of your audience early and often."
+  },
+  "TIMELINE": {
+    "CLICK_TO_SEE_DETAILS": "Click on the timeline to see details",
+    "STEP_1": {
+      "TITLE": "Day 0",
+      "DESCRIPTION": "i was born in 1996 in mersin, turkey. i was a very curious child and always wanted to learn new things.",
+      "YEAR": "1996"
     },
-    "LANGUAGES": {
-        "EN": "English",
-        "TR": "Turkish",
-        "DE": "Deutsch",
-        "TH": "Thai"
+    "STEP_2": {
+      "TITLE": "First Computer",
+      "DESCRIPTION": "i started my education in mersin, turkey. i was a very curious child and always wanted to learn new things.",
+      "YEAR": "2002"
     },
-    "SITE": {
-        "TITLE": "kuray karaaslan - self-taught full-stack developer",
-        "DESCRIPTION": "i'm a self-taught full-stack developer with experience in react , java and more. I'm open for new opportunities."
+    "STEP_3": {
+      "TITLE": "Meet with the Internet",
+      "DESCRIPTION": "i met the internet in 2005. i was amazed by the things i could do with it. i started learning how to use it and meet with linux.",
+      "YEAR": "2005"
     },
-    "COOKIES": {
-        "MESSAGE": "This website uses cookies to ensure you get the best experience on our website.",
-        "AGREE": "Got it!",
-        "DISAGREE": "Decline"
+    "STEP_4": {
+      "TITLE": "Started to Learn Programming",
+      "DESCRIPTION": "i started coding in 2008. i learned html, css, and javascript. i built my first website and was hooked on coding",
+      "YEAR": "2008"
     },
-    "HIRE_ME": {
-        "HELLO": "Hello, I'm",
-        "DESCRIPTION": "I'm a self-taught full-stack developer with experience in React, Java and more. I'm open for new opportunities.",
-        "INTRO": "I'm ready to",
-        "OUTRO": "",
-        "MY_RESUME": "My Resume",
-        "MY_GITHUB": "My GitHub",
-        "IZMIR_KARACA_CINEMA": "Izmir Karaca Cinema",
-        "10TH_DECEMBER_2023": "10th December 2023",
-        "LEARN_NEW_THINGS": "learn new things",
-        "MAKE_A_DIFFERENCE": "make a difference",
-        "BUILD_THE_FUTURE": "build the future",
-        "CREATE_AWESOME_THINGS": "create awesome things",
-        "WORK_TOGETHER": "work together",
-        "SOLVE_PROBLEMS": "solve problems",
-        "PUSH_LIMITS": "push limits",
-        "PURSUE_EXCELLENCE": "pursue excellence",
-        "THINK_OUTSIDE_THE_BOX": "think outside the box",
-        "STAY_HUMBLE": "stay humble",
-        "EMBRACE_CHANGE": "embrace change",
-        "BE_A_TEAM_PLAYER": "be a team player",
-        "STAY_FOCUSED": "stay focused",
-        "TAKE_RISKS": "take risks",
-        "KEEP_IMPROVING": "keep improving",
-        "AIM_HIGH": "aim high"
+    "STEP_5": {
+      "TITLE": "First website",
+      "DESCRIPTION": "i built my first website in 2010. it was a simple website for my school project. i was so proud of it.",
+      "YEAR": "2010"
     },
-    "FOOTER": {
-        "COPYRIGHT": "© {{year}} Kuray.dev All rights reserved.",
-        "PRIVACY": "Privacy",
-        "TERMS": "Terms",
-        "PROJECTS": "Projects",
-        "CONTACT": "Contact"
+    "STEP_6": {
+      "TITLE": "University",
+      "DESCRIPTION": "i started my university education in 2015. i studied civil engineering. i learned a lot of things about project management and teamwork.",
+      "YEAR": "2015"
     },
-    "CONTACT": {
-        "TITLE": "Contact",
-        "DESCRIPTION": "good things happen when we talk.",
-        "SEND_MESSAGE": "Send me a message",
-        "NAME": "Name",
-        "EMAIL": "Email",
-        "PHONE": "Phone",
-        "MESSAGE": "Message",
-        "SEND": "Send",
-        "NAME_PLACEHOLDER": "Your name",
-        "EMAIL_PLACEHOLDER": "Your email",
-        "PHONE_PLACEHOLDER": "Your phone",
-        "MESSAGE_PLACEHOLDER": "Your message"
+    "STEP_7": {
+      "TITLE": "changed my career",
+      "DESCRIPTION": "i decided to change my career in 2023. i wanted to work in tech and build software. i started learning new technologies and building projects.",
+      "YEAR": "2023"
     },
-    "TOOLBOX" : {
-        "TITLE": "Creativy needs a lot of tools",
-        "DESCRIPTION": " have a lot of tools in my toolbox, and i'm always learning new ones.",
-        "FRONTEND": "Front-end.",
-        "BACKEND": "Back-end."
-    },
-    "PROJECTS": {
-        "TITLE": "My Projects",
-        "DESCRIPTION": "i use an agile approach to test assumptions and connect with the needs of your audience early and often."
-    },
-    "TIMELINE": {
-        "CLICK_TO_SEE_DETAILS": "Click on the timeline to see details",
-        "STEP_1": {
-            "TITLE": "Day 0",
-            "DESCRIPTION": "i was born in 1996 in mersin, turkey. i was a very curious child and always wanted to learn new things.",
-            "YEAR": "1996"
-        },
-        "STEP_2": {
-            "TITLE": "First Computer",
-            "DESCRIPTION": "i started my education in mersin, turkey. i was a very curious child and always wanted to learn new things.",
-            "YEAR": "2002"
-        },
-        "STEP_3": {
-            "TITLE": "Meet with the Internet",
-            "DESCRIPTION": "i met the internet in 2005. i was amazed by the things i could do with it. i started learning how to use it and meet with linux.",
-            "YEAR": "2005"
-        },
-        "STEP_4": {
-            "TITLE": "Started to Learn Programming",
-            "DESCRIPTION": "i started coding in 2008. i learned html, css, and javascript. i built my first website and was hooked on coding",
-            "YEAR": "2008"
-        },
-        "STEP_5": {
-            "TITLE": "First website",
-            "DESCRIPTION": "i built my first website in 2010. it was a simple website for my school project. i was so proud of it.",
-            "YEAR": "2010"
-        },
-        "STEP_6": {
-            "TITLE": "University",
-            "DESCRIPTION": "i started my university education in 2015. i studied civil engineering. i learned a lot of things about project management and teamwork.",
-            "YEAR": "2015"
-        },
-        "STEP_7": {
-            "TITLE": "changed my career",
-            "DESCRIPTION": "i decided to change my career in 2023. i wanted to work in tech and build software. i started learning new technologies and building projects.",
-            "YEAR": "2023"
-        },
-        "STEP_8": {
-            "TITLE": "First Job",
-            "DESCRIPTION": "i got my first job as a full-stack developer in 2024. i worked on a lot of projects and learned a lot of things.",
-            "YEAR": "2024"
-        }
+    "STEP_8": {
+      "TITLE": "First Job",
+      "DESCRIPTION": "i got my first job as a full-stack developer in 2024. i worked on a lot of projects and learned a lot of things.",
+      "YEAR": "2024"
     }
+  }
 }
