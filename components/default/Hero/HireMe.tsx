@@ -82,35 +82,17 @@ const HireMe = () => {
               ) : null}
             </h2>
 
-            <details className="dropdown">
-              <summary className="m-1 btn btn-primary lowercase">
+            <Link href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link" target="_blank">
+              <p className="btn btn-primary ml-2 lowercase">
                 <FontAwesomeIcon
                   icon={faLink}
-                  className="text-black mt-1"
+                  className="mt-1"
                   style={{ width: "1rem" }}
                 />
                 {t("HIRE_ME.MY_RESUME")}
-              </summary>
-              <ul className="p-2 shadow menu dropdown-content z-[1] mt-1 bg-base-300 rounded-box w-52 normal-case border border-white border-opacity-50">
-                <li>
-                  <a
-                    href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link"
-                    target="_blank"
-                  >
-                    {t("LANGUAGES.EN")}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://drive.google.com/file/d/1Z_X1KR12GMMlPBqrFZZ8ZFaSsXNgLLDz/view?usp=drive_link"
-                    target="_blank"
-                  >
-                    {t("LANGUAGES.TR")}
-                  </a>
-                </li>
-              </ul>
-            </details>
-
+              </p>
+            </Link>
+            
             <Link href="https://github.com/kuraykaraaslan" target="_blank">
               <p className="btn btn-ghost ml-2 lowercase">
                 <FontAwesomeIcon
