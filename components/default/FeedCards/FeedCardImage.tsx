@@ -73,7 +73,7 @@ const FeedCardImage = (props: FeedCardProps) => {
                 <div className="flex items-center gap-1">
                     <a href={"/blog/" + (props.path || "")}
                     className="text-primary">Read More</a>
-                    <FontAwesomeIcon icon={faCaretRight} className="text-primary mt-1" />
+                    <FontAwesomeIcon icon={faCaretRight} className="text-primary mt-1" style={{ height: '1rem', width: '1rem' }}/>
                 </div>
             </div>
         </div>
