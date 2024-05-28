@@ -23,6 +23,8 @@ const CookieConsent = dynamic(
 
 //i18n
 import { withTranslation } from "react-i18next";
+import { Scroll } from "@react-three/drei";
+import ScrollToTop from "@/components/default/ScrollToTop";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
@@ -70,18 +72,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         </main>
         <Footer />
 
-        <div
-          className="fixed btn btn btn-primary rounded-full transition duration-500 ease-in-out"
-          style={{ zIndex: 100, right: "-80px", bottom: "20px" }}
-          id="scrollToTop"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          <FontAwesomeIcon
-            icon={faArrowUp}
-            className="text-2xl text-white"
-            style={{ width: "20px", height: "20px" }}
-          />
-        </div>
+        <ScrollToTop />
         <CookieConsent />
       </CookiesProvider>
     </Suspense>

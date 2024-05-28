@@ -15,6 +15,7 @@ import {
   faPhone,
   faLink,
   faSkull,
+  faBlog,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
@@ -117,6 +118,11 @@ const Navbar = () => {
                   <Link href="#home">{t("NAVIGATION.HOME")}</Link>
                 </li>
                 <li>
+                  <Link href="/blog" locale="en">
+                    {t("NAVIGATION.BLOG")}
+                  </Link>
+                </li>
+                <li>
                   <Link href="#projects">{t("NAVIGATION.PROJECTS")}</Link>
                 </li>
                 <li>
@@ -199,6 +205,19 @@ const Navbar = () => {
                         }}
                       />{" "}
                       {t("NAVIGATION.HOME")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog" className="text-lg block" locale="en">
+                      <FontAwesomeIcon
+                        icon={faBlog}
+                        style={{
+                          width: "1.5rem",
+                          height: "1.5rem",
+                          marginRight: "0.5rem",
+                        }}
+                      />{" "}
+                      {t("NAVIGATION.BLOG")}
                     </Link>
                   </li>
                   <li>
