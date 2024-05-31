@@ -39,7 +39,7 @@ const Timeline = () => {
           <div
             className="absolute inset-0 bg-base-200 bg-opacity-50 backdrop-filter backdrop-blur-sm items-center justify-center flex flex-col"
             style={{
-              zIndex: 100,
+              zIndex: 5,
               display: isHovering ? (showDetails ? "none" : "flex") : "none",
             }}
           >

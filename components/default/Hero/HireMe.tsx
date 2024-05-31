@@ -47,20 +47,20 @@ const HireMe = () => {
     "mx-1 py-1 px-2 font-bold text-white light:font-white dark:text-black rounded";
 
   return (
-    <>
+    <div className="relative  -mt-24">
       <Background />
       <div
-        className="hero min-h-screen -mb-24 select-none"
+        className="hero min-h-screen select-none"
         id="#home"
         style={{
-          zIndex: 20,
+          zIndex: 11,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
         }}
       >
-        <div className="hero-content mx-4 md:mx-20 -mt-12 mb-24 md:gap-20">
+        <div className="hero-content">
           <div className="flex-1 max-w-2xl">
             <h1 className="font-bold relative overflow-hidden animate-shake text-4xl leading-normal">
               <span>
@@ -108,7 +108,7 @@ const HireMe = () => {
           <MyImage />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

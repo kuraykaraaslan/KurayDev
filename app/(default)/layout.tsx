@@ -32,7 +32,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <Suspense fallback={<Loading />}>
       <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
         <Navbar />
-        <main className="mx-auto min-h-screen pt-24 bg-base-300" id="main">
+        <main className="mx-auto min-h-screen bg-base-300" id="main">
           {children}
         </main>
         <Footer />

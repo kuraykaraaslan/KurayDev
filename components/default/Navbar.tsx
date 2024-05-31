@@ -63,9 +63,9 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 40) {
         setIsTopReached(false);
-      } else {
+      }  else {
         setIsTopReached(true);
       }
     };
@@ -115,7 +115,7 @@ const Navbar = () => {
     <>
       <div
         className={"sticky top-0 z-50 w-full transition-all duration-300 ease-in-out " +
-        (isTopReached ? " px-4 sm:px-6 lg:px-8 pt-3 pb-6" : " px-0 pt-0 pb-0")}
+        (isTopReached ? " px-4 sm:px-6 lg:px-8 pt-3 pb-6" : " px-0 pt-0 pb-6")}
 
         style={{ zIndex: 60, width: "100%" }}
       >
