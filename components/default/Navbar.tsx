@@ -40,6 +40,7 @@ const Navbar = () => {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const [isTopReached, setIsTopReached] = useState(true);
 
   const themes = {
     dark: {
@@ -59,6 +60,23 @@ const Navbar = () => {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsTopReached(false);
+      } else {
+        setIsTopReached(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }
+  , []);
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -96,13 +114,15 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="px-4 sm:px-6 lg:px-8 pt-3 pb-6 sticky top-0 z-50 w-full"
-        style={{ zIndex: 60, position: "absolute", width: "100%" }}
+        className={"sticky top-0 z-50 w-full transition-all duration-300 ease-in-out " +
+        (isTopReached ? " px-4 sm:px-6 lg:px-8 pt-3 pb-6" : " px-0 pt-0 pb-0")}
+
+        style={{ zIndex: 60, width: "100%" }}
       >
         <nav
           className={
-            "navbar bg-base-100 rounded-full shadow-lg border border-base-200" +
-            (path == "/" || path == "" ? " bg-opacity-50" : "")
+            "navbar bg-base-100 rounded-full shadow-lg border border-base-200 self-center	" +
+            (isTopReached ? " bg-opacity-50 rounded-full" : " bg-opacity-100 rounded-none")
           }
         >
           <div className="flex-1">
