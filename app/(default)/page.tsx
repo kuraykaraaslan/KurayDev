@@ -12,6 +12,7 @@ import ProjectsHero from "@/components/default/Hero/ProjectsHero";
 import Timeline from "@/components/default/Hero/Timeline";
 import ExpoBoilerplate from "@/components/default/CarouselPartial/ExpoBoilerplate";
 import Pegasus from "@/components/default/CarouselPartial/Pegasus";
+import GitSection from "@/components/default/Hero/GitSection";
 
 export default function Home() {
   return (

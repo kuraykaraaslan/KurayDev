@@ -14,5 +14,9 @@ module.exports = {
     DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
     DISCORD_DOORMAN_WEBHOOK_URL: process.env.DISCORD_DOORMAN_WEBHOOK_URL,
     GITHUB_TREE: process.env.GITHUB_TREE,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
+    GITHUB_USER: process.env.GITHUB_USER,
+    GITLAB_TOKEN: process.env.GITLAB_TOKEN,
+    GITLAB_USER: process.env.GITLAB_USER,
   },
 };
