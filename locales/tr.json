@@ -48,5 +48,11 @@
     "TAKE_RISKS": "risk almaya",
     "KEEP_IMPROVING": "gelişmeye devam etmeye",
     "AIM_HIGH": "yükseği hedeflemeye"
+  },
+  "GITHUB": {
+    "TITLE": "bazı şeyler yapmış olabilirim",
+    "DESCRIPTION": "yazılım sektörüne geçiş yapmamın ardından, hiç ara vermeden geliştirmeye devam ettim. github hesabımda bazı projelerimi bulabilirsiniz.",
+    "BUTTON": "GitHub'ım"
+
   }
 }

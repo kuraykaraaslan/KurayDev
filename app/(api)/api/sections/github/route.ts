@@ -3,7 +3,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axiosInstance from '@/libs/http/axios'
-import { GraphQLRes } from '@/types/GitTypes'
+
+import  { ContributionDay, Week, Weeks, GraphQLRes } from "@/types/GitTypes";
 
 type ResponseData = {
     message: string
@@ -41,8 +42,27 @@ export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData
             Authorization: `bearer ${token}`
         }
     }).then((response) => {
-        const data: GraphQLRes = response.data;
-        return NextResponse.json({ message: 'Success', data } as ResponseData) 
+        var data: GraphQLRes = response.data.data;
+        
+        const weeks = data.user.contributionsCollection.contributionCalendar.weeks as Week[];
+        const last = weeks.length - 1;
+
+        const days = weeks[last].contributionDays as ContributionDay[];
+        const count = days.length;
+
+        //complete the week to 7 days
+        const missing = 7 - count;
+        for (let i = 0; i < missing; i++) {
+            days.push({ color: "#ebedf0", contributionCount: 0, date: "0", weekday: count + i });
+        }
+
+        //update the week
+        weeks[last].contributionDays = days;
+
+        data.user.contributionsCollection.contributionCalendar.weeks = weeks;       
+
+
+        return NextResponse.json(data, { status: 200 });
         
         
         }

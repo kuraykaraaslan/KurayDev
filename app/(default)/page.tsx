@@ -18,6 +18,7 @@ export default function Home() {
   return (
     <>
       <HireMe />
+      <GitSection />
       <Carousel>
         <Pegasus />
         <ExpoBoilerplate />

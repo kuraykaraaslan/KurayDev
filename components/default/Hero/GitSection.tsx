@@ -8,14 +8,13 @@ import React, {
 } from "react";
 import ReactDOM from "react-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faArrowRight, faLink } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
 
 import "@fontsource/caveat-brush";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
@@ -36,14 +35,22 @@ const GitSection = () => {
         <>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content text-center">
-                    <div className="max-w-md">
+                    <div className="">
                         <h1 className="text-5xl font-bold">
-                            {t("github.title")}
+                            {t("GITHUB.TITLE")}
                         </h1>
                         <p className="py-6">
-                            {t("github.description")}
+                            {t("GITHUB.DESCRIPTION")}
                         </p>
                         <GitContributions />
+                        <div className="flex justify-center py-6">
+                            <Link href="https://github.com/kuraykaraaslan">
+                                <button className="btn btn-primary">
+                                   <FontAwesomeIcon icon={faGithub} className="mr-2" />
+                                    {t("GITHUB.BUTTON")}
+                                </button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
