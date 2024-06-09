@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "NODE_ENV=development next dev",
+    "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -26,6 +26,7 @@
     "axios": "^1.6.5",
     "daisyui": "^4.6.0",
     "depcheck": "^1.4.7",
+    "dotenv": "^16.4.5",
     "front-matter": "^4.0.2",
     "gray-matter": "^4.0.3",
     "i18next": "^23.11.3",

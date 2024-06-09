@@ -121,5 +121,10 @@
       "DESCRIPTION": "i got my first job as a full-stack developer in 2024. i worked on a lot of projects and learned a lot of things.",
       "YEAR": "2024"
     }
+  },
+  "GITHUB": {
+    "TITLE": "a relentless developer",
+    "DESCRIPTION": "After switching to the software industry, I continued to develop without a break. ",
+    "BUTTON": "My GitHub"
   }
 }

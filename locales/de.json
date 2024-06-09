@@ -47,5 +47,10 @@
     "TAKE_RISKS": "Risiken eingehen",
     "KEEP_IMPROVING": "Verbessere dich weiter",
     "AIM_HIGH": "hoch zielen"
+  },
+  "GITHUB": {
+    "TITLE": "ein unermüdlicher Entwickler",
+    "DESCRIPTION": "Nach meinem Wechsel in die Softwarebranche habe ich mich ohne Pause weiterentwickelt. ",
+    "BUTTON": "Mein GitHub"
   }
 }

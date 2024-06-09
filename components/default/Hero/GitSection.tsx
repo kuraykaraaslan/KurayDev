@@ -46,7 +46,7 @@ const GitSection = () => {
                         <div className="flex justify-center py-6">
                             <Link href="https://github.com/kuraykaraaslan">
                                 <button className="btn btn-primary">
-                                   <FontAwesomeIcon icon={faGithub} className="mr-2" />
+                                   <FontAwesomeIcon icon={faGithub} className="mr-2 text-xl" height="20" width="20" />
                                     {t("GITHUB.BUTTON")}
                                 </button>
                             </Link>

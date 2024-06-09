@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axiosInstance from '@/libs/http/axios'
+import axios from 'axios';
 
 import  { ContributionDay, Week, Weeks, GraphQLRes } from "@/types/GitTypes";
 
@@ -37,7 +37,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData
         }
     }
     `
-    return axiosInstance.post(url, { query }, {
+    return axios.post(url, { query }, {
         headers: {
             Authorization: `bearer ${token}`
         }

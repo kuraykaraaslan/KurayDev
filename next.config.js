@@ -1,3 +1,12 @@
+const NODE_ENV = process.env.NODE_ENV || "production";
+
+if (NODE_ENV === "development") {
+  require('dotenv').config({ path: `./.env.development` });
+} else {
+  require('dotenv').config({ path: `./.env.production` });
+}
+
+
 module.exports = {
   trailingSlash: true, // Add trailing slash to all paths
   reactStrictMode: true,
@@ -18,5 +27,6 @@ module.exports = {
     GITHUB_USER: process.env.GITHUB_USER,
     GITLAB_TOKEN: process.env.GITLAB_TOKEN,
     GITLAB_USER: process.env.GITLAB_USER,
+    INTERNAL_API_URL: process.env.INTERNAL_API_URL,
   },
 };
