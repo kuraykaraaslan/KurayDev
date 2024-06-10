@@ -3,6 +3,8 @@ import React, { useEffect, Suspense, useState } from "react";
 import axiosInstance from "@/libs/http/axios";
 import  { ContributionDay, Week, Weeks, GraphQLRes } from "@/types/GitTypes";
 
+const INTERNAL_API_URL = process.env.INTERNAL_API_URL;
+
 
 const GitContributions = () => {
 
@@ -10,7 +12,7 @@ const GitContributions = () => {
 
     
     useEffect(() => {
-        axiosInstance.get("http://localhost:3000/api/sections/github").then((response) => {
+        axiosInstance.get(INTERNAL_API_URL + "/api/sections/github").then((response) => {
             const data: GraphQLRes = response.data;
             console.log(data);
             setWeeks(data.user.contributionsCollection.contributionCalendar.weeks);

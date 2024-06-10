@@ -7,19 +7,19 @@
 // - the page should have a link to the home page
 
 import React from "react";
+import { signIn } from "@/auth"
+
 
 const LoginPage = () => {
   return (
-    <div>
-      <form>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button type="submit">Submit</button>
-      </form>
-      <a href="/register">Register</a>
-      <a href="/forgot-password">Forgot Password</a>
-      <a href="/">Home</a>
-    </div>
+    <form
+      action={async () => {
+        "use server"
+        await signIn("github")
+      }}
+    >
+      <button type="submit">Signin with GitHub</button>
+    </form>
   );
 };
 

@@ -28,5 +28,8 @@ module.exports = {
     GITLAB_TOKEN: process.env.GITLAB_TOKEN,
     GITLAB_USER: process.env.GITLAB_USER,
     INTERNAL_API_URL: process.env.INTERNAL_API_URL,
+    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
+    FIREBASE_PRIVATE_KEY: process.env.FIREBASE_PRIVATE_KEY,
+    FIREBASE_CLIENT_EMAIL: process.env.FIREBASE_CLIENT_EMAIL,
   },
 };
