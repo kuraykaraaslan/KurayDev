@@ -111,6 +111,7 @@ const Navbar = () => {
 
   const path = typeof window !== "undefined" ? window.location.pathname : "";
 
+
   return (
     <>
       <div

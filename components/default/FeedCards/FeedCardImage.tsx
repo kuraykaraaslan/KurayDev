@@ -5,11 +5,14 @@ import { faCalendar, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 // Path: components/Feed/FeedCard.tsx
 
 export interface FeedCardProps {
+    index?: number;
     title: string;
     description: string;
     date: Date;
-    path: string;
+    slug: string;
     className?: string;
+    img?: string;
+    createdAt?: Date;
 }
 
 const FeedCardImage = (props: FeedCardProps) => {
@@ -58,20 +61,22 @@ const FeedCardImage = (props: FeedCardProps) => {
     return (
         <div className={"bg-base-100 grid grid-row-2 grid-cols-12 gap-4 " + (props.className || "")}>
             <div className="col-span-12 justify-center flex">
-                <img src="https://via.placeholder.com/1200x600" alt="feed image" className="w-full h-64 object-cover" />
+                <img src={props.img || "/assests/img/og.png"} alt="feed image" className="w-full h-64 object-cover" />
             </div>
             <div className="col-span-12 justify-center px-4">
+                <a href={"/blog/" + (props.slug || "")} className="text-primary">
                 <h3 className="text-xl font-bold">{props.title || "Title"}</h3>
-                <p className="text-base">{props.description?.substring(0, 200) || "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</p>
+                </a>
+                <p className="text-base mt-2">{props.description?.substring(0, 200) || "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}</p>
             </div>
             <div className="col-span-12 justify-between flex  px-4 pb-4">
                 <div className="flex items-center">
                     <FontAwesomeIcon icon={faCalendar} className="text-gray-500 w-4"
                     />
-                    <p className="text-gray-500 text-sm ml-2">{dateText || "Just now"}</p>
+                    <p className="text-gray-500 text-sm ml-2">{props.createdAt ? new Date(props.createdAt).toDateString() : dateText}</p>
                 </div>
                 <div className="flex items-center gap-1">
-                    <a href={"/blog/" + (props.path || "")}
+                    <a href={"/blog/" + (props.slug || "")}
                     className="text-primary">Read More</a>
                     <FontAwesomeIcon icon={faCaretRight} className="text-primary mt-1" style={{ height: '1rem', width: '1rem' }}/>
                 </div>

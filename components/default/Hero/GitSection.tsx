@@ -33,7 +33,7 @@ const GitSection = () => {
 
     return (
         <>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-200 hidden lg:flex items-center justify-center">
                 <div className="hero-content text-center">
                     <div className="">
                         <h1 className="text-5xl font-bold">

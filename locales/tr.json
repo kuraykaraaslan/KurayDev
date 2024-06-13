@@ -6,7 +6,9 @@
     "CONTACT": "İletişim",
     "RESUME": "Özgeçmiş",
     "BLOG": "Blog",
-    "GITHUB": "GitHub"
+    "GITHUB": "GitHub",
+    "LOGIN": "Giriş yap",
+    "LOGOUT": "Çıkış yap"
   },
   "LANGUAGES": {
     "EN": "İngilizce",

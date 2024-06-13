@@ -26,8 +26,15 @@ export default class BlogPostService {
     }
 
     async getPostsPaginated(page: number, limit: number) {
-        const res = await firestore.collection('posts').offset(page * limit).limit(limit).get();
-        return res;
+        const posts : Post[] = [];
+        const res = await firestore.collection('posts').offset(page * limit).limit(limit).get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                posts.push(doc.data() as Post);
+            });
+            return posts;
+        }
+        );
+        return posts;
     }
 
     async getPost(slug: string) {

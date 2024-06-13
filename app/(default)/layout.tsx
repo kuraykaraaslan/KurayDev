@@ -26,19 +26,25 @@ import { withTranslation } from "react-i18next";
 import { Scroll } from "@react-three/drei";
 import ScrollToTop from "@/components/default/ScrollToTop";
 
+// Next Auth
+import { SessionProvider } from "next-auth/react"
+
+
 const layout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
-        <Navbar />
-        <main className="mx-auto min-h-screen bg-base-300" id="main">
-          {children}
-        </main>
-        <Footer />
-        <ScrollToTop />
-        <CookieConsent />
-      </CookiesProvider>
+      <SessionProvider>
+        <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
+          <Navbar />
+          <main className="mx-auto min-h-screen bg-base-300" id="main">
+            {children}
+          </main>
+          <Footer />
+          <ScrollToTop />
+          <CookieConsent />
+        </CookiesProvider>
+      </SessionProvider>
     </Suspense>
   );
 };

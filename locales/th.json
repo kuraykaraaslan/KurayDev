@@ -5,7 +5,9 @@
     "CONTACT": "ติดต่อ",
     "RESUME": "ประวัติย่อ",
     "BLOG": "บล็อก",
-    "GITHUB": "GitHub"
+    "GITHUB": "GitHub",
+    "LOGIN": "เข้าสู่ระบบ",
+    "LOGOUT": "ออกจากระบบ"
   },
   "LANGUAGES": {
     "EN": "ภาษาอังกฤษ",

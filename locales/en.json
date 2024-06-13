@@ -5,7 +5,9 @@
     "CONTACT": "Contact",
     "RESUME": "Resume",
     "BLOG": "Blog",
-    "GITHUB": "GitHub"
+    "GITHUB": "GitHub",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout"
   },
   "LANGUAGES": {
     "EN": "English",

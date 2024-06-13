@@ -5,7 +5,9 @@
     "CONTACT": "Kontakt",
     "RESUME": "Wieder aufnehmen",
     "BLOG": "Blog",
-    "GITHUB": "GitHub"
+    "GITHUB": "GitHub",
+    "LOGIN": "Anmeldung",
+    "LOGOUT": "Ausloggen"
   },
   "LANGUAGES": {
     "EN": "Englisch",
