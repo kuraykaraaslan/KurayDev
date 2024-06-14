@@ -1,6 +1,6 @@
 "use server";
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axiosInstance from '@/libs/http/axios'
 import { GraphQLRes } from '@/types/GitTypes'

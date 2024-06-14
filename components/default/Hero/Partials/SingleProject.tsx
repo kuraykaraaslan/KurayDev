@@ -3,6 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 export type Url = {
   type?: "GitHub" | "Demo" | "Other";
@@ -57,13 +58,13 @@ const SingleProject: React.FC<SingleProjectProps> = ({ project }) => {
         ))}
       </div>
       <h2 className="mb-2 text-2xl font-bold tracking-tight">
-        <a>{project.title}</a>
+        <Link href="">{project.title}</Link>
       </h2>
       <p className="mb-5 font-light">{project.description}</p>
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4">
           {project.urls.map((url) => (
-            <a
+            <Link
               key={url.url}
               href={url.url}
               className="inline-flex items-center font-medium hover:underline"
@@ -88,7 +89,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ project }) => {
                 : url.type === "GitHub"
                   ? "GitHub"
                   : "Demo"}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

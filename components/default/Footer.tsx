@@ -9,6 +9,7 @@ import {
 //i18n
 import { withTranslation } from "react-i18next";
 import i18n from "@/libs/localize/localize";
+import Link from "next/link";
 
 const Footer = (props: any) => {
   const { t } = i18n;
@@ -20,21 +21,21 @@ const Footer = (props: any) => {
           <p>{t("FOOTER.COPYRIGHT", { year: new Date().getFullYear() })}</p>
         </div>
         <div className="col-span-1 flex flex-row flex-wrap justify-start">
-          <a className="link link-hover" href="/privacy">
+          <Link className="link link-hover" href="/privacy">
             {t("FOOTER.PRIVACY")}
-          </a>
-          <a className="link link-hover" href="/terms">
+          </Link>
+          <Link className="link link-hover" href="/terms">
             {t("FOOTER.TERMS")}
-          </a>
-          <a className="link link-hover" href="#projects">
+          </Link>
+          <Link className="link link-hover" href="#projects">
             {t("FOOTER.PROJECTS")}
-          </a>
-          <a className="link link-hover" href="#contact">
+          </Link>
+          <Link className="link link-hover" href="#contact">
             {t("FOOTER.CONTACT")}
-          </a>
+          </Link>
         </div>
         <div className="col-span-1 flex flex-row flex-wrap justify-end">
-          <a
+          <Link
             href="https://twitter.com/kuraykaraaslan"
             target="_blank"
             rel="noopener noreferrer"
@@ -43,8 +44,8 @@ const Footer = (props: any) => {
               icon={faXTwitter}
               style={{ width: "24px", height: "24px" }}
             />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://github.com/kuraykaraaslan"
             target="_blank"
             rel="noopener noreferrer"
@@ -53,8 +54,8 @@ const Footer = (props: any) => {
               icon={faGithub}
               style={{ width: "24px", height: "24px" }}
             />
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://www.linkedin.com/in/kuraykaraaslan/"
             target="_blank"
             rel="noopener noreferrer"
@@ -63,7 +64,7 @@ const Footer = (props: any) => {
               icon={faLinkedin}
               style={{ width: "24px", height: "24px" }}
             />
-          </a>
+          </Link>
         </div>
       </footer>
     </>

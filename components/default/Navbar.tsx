@@ -3,14 +3,9 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
-  faLightbulb,
   faSun,
   faMoon,
-  faH,
   faHome,
-  faP,
-  faPerson,
-  faUser,
   faBriefcase,
   faPhone,
   faLink,
@@ -136,7 +131,7 @@ const Navbar = () => {
             <div className="hidden md:block">
               <ul className="menu menu-horizontal px-1 gap-2">
                 <li>
-                  <Link href="#home">{t("NAVIGATION.HOME")}</Link>
+                  <Link href="/#home">{t("NAVIGATION.HOME")}</Link>
                 </li>
                 <li>
                   <Link href="/blog" locale="en">
@@ -144,10 +139,10 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#projects">{t("NAVIGATION.PROJECTS")}</Link>
+                  <Link href="/#projects">{t("NAVIGATION.PROJECTS")}</Link>
                 </li>
                 <li>
-                  <Link href="#contact">{t("NAVIGATION.CONTACT")}</Link>
+                  <Link href="/#contact">{t("NAVIGATION.CONTACT")}</Link>
                 </li>
                 <li className="border-l-2 border-gray-400 border-opacity-50 pl-2">
                   <Link
@@ -215,7 +210,7 @@ const Navbar = () => {
               >
                 <ul className="h-full p-8 w-full menu menu-box bg-base-100 shadow-xl space-y-2">
                   <li>
-                    <Link href="#home" className="text-lg block">
+                    <Link href="/#home" className="text-lg block">
                       <FontAwesomeIcon
                         icon={faHome}
                         style={{
@@ -242,7 +237,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link"
                       target="_blank"
                       className="text-lg block"
@@ -256,10 +251,10 @@ const Navbar = () => {
                         }}
                       />{" "}
                       {t("NAVIGATION.RESUME")}
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <Link href="#projects" className="text-lg block">
+                    <Link href="/#projects" className="text-lg block">
                       <FontAwesomeIcon
                         icon={faBriefcase}
                         style={{
@@ -292,7 +287,7 @@ const Navbar = () => {
                                         <Link href="/blog" className="text-lg block" locale="en">blog</Link>
                                     </li> */}
                   <li>
-                    <Link href="#contact" className="text-lg block">
+                    <Link href="/#contact" className="text-lg block">
                       <FontAwesomeIcon
                         icon={faPhone}
                         style={{

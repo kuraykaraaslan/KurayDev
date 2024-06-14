@@ -4,4 +4,6 @@ export interface Post {
     content: string;
     slug: string;
     category: string;
+    image?: string;
+    created_at?: Date;
 }

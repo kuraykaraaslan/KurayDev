@@ -33,6 +33,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withTranslation } from "react-i18next";
 import i18n from "@/libs/localize/localize";
 import SingleProject, { Project } from "./Partials/SingleProject";
+import Link from "next/link";
 
 const ProjectsHero = () => {
   const { t } = i18n;
@@ -261,7 +262,7 @@ const ProjectsHero = () => {
             }}
           >
             {!expanded ? (
-              <a
+              <Link href="#"
                 className="flex flex-col items-center gap-2 animate-bounce"
                 style={{ height: "80px", width: "130px" }}
                 onClick={handleClick}
@@ -274,9 +275,9 @@ const ProjectsHero = () => {
                   }}
                 />{" "}
                 <span>{expanded ? "Show Less" : "Show More"}</span>
-              </a>
+              </Link>
             ) : (
-              <a
+              <Link href="#"
                 className="flex flex-col items-center gap-2"
                 style={{ height: "80px", width: "130px" }}
                 onClick={handleClick}
@@ -286,7 +287,7 @@ const ProjectsHero = () => {
                   style={{ width: "2.0rem", height: "2.0rem" }}
                 />{" "}
                 <span>{expanded ? "Show Less" : "Show More"}</span>
-              </a>
+              </Link>
             )}
           </div>
         </div>

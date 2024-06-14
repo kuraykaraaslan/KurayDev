@@ -1,4 +1,3 @@
-import Image from "next/image";
 import RadialProgressBar from "@/components/admin/widgets/RadialProgressBar";
 import SubscriptionStatus from "@/components/admin/widgets/SubscriptionStatus";
 

@@ -1,5 +1,4 @@
 import { Category } from '@/types/Category';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 import BlogCategoryService from '@/services/BlogCategoryService';
 

@@ -8,18 +8,72 @@
 
 import React from "react";
 import { signIn } from "@/auth"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faGoogle, faMicrosoft,faApple } from "@fortawesome/free-brands-svg-icons";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 
 const LoginPage = () => {
+
   return (
+    <>
+    <h1 className="text-xl font-bold text-center flex justify-center">
+      <Link href="/" className="text-indigo-600"><FontAwesomeIcon icon={faCode} className="w-5 h-5 mr-2 mt-1" /></Link>
+      Login</h1>
     <form
       action={async () => {
         "use server"
         await signIn("github")
       }}
     >
-      <button type="submit">Signin with GitHub</button>
+      <button type="submit"
+        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+      >
+        <FontAwesomeIcon icon={faGithub} className="w-5 h-5 mr-2 mt-1" />
+        Signin with GitHub</button>
     </form>
+    <form
+      action={async () => {
+        "use server"
+        await signIn("google")
+      }}
+    >
+      <button type="submit"
+        className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+      >
+        <FontAwesomeIcon icon={faGoogle} className="w-5 h-5 mr-2 mt-1" />
+        Signin with Google</button>
+    </form>
+    <form
+      action={async () => {
+        "use server"
+        await signIn("microsoft")
+      }}
+    >
+      <button type="submit"
+        className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+      >
+        <FontAwesomeIcon icon={faMicrosoft} className="w-5 h-5 mr-2 mt-1" />
+        Signin with Microsoft</button>
+    </form>
+    <form
+      action={async () => {
+        "use server"
+        await signIn("apple")
+      }}
+    >
+      <button type="submit"
+        className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+      >
+        <FontAwesomeIcon icon={faApple} className="w-5 h-5 mr-2 mt-1" />
+        Signin with Apple</button>
+    </form>
+    </>
   );
 };
 

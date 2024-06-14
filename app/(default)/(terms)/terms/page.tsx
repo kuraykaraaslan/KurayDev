@@ -1,5 +1,3 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import fronrMatter from "front-matter";
 import "./post.css";
 import { Metadata } from "next";
 

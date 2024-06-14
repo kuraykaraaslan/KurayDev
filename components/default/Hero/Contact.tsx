@@ -17,6 +17,7 @@ import { withTranslation } from "react-i18next";
 import i18n from "@/libs/localize/localize";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const ContactForm = dynamic(
   () => import("@/components/default/Hero/Partials/ContactForm"),
@@ -51,13 +52,13 @@ const Contact = () => {
                       icon={faTelegram}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <a
+                    <Link
                       href="https://t.me/kuraykaraaslan"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>Telegram</span>
-                    </a>
+                    </Link>
                   </p>
 
                   <p className="flex items-center">
@@ -65,13 +66,13 @@ const Contact = () => {
                       icon={faLinkedin}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <a
+                    <Link
                       href="https://www.linkedin.com/in/kuraykaraaslan"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>LinkedIn</span>
-                    </a>
+                    </Link>
                   </p>
 
                   <p className="flex items-center">
@@ -79,52 +80,52 @@ const Contact = () => {
                       icon={faGithub}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <a
+                    <Link
                       href="https://github.com/kuraykaraaslan"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>Github</span>
-                    </a>
+                    </Link>
                   </p>
                   <div className="flex items-center">
                     <FontAwesomeIcon
                       icon={faXTwitter}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <a
+                    <Link
                       href="https://twitter.com/kuraykaraaslan"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>X</span>
-                    </a>
+                    </Link>
                   </div>
                   <div className="flex items-center">
                     <FontAwesomeIcon
                       icon={faFacebook}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <a
+                    <Link
                       href="https://www.facebook.com/kuraykaraaslan"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>Facebook</span>
-                    </a>
+                    </Link>
                   </div>
                   <div className="flex items-center">
                     <FontAwesomeIcon
                       icon={faInstagram}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <a
+                    <Link
                       href="https://www.instagram.com/kuraykaraaslan"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span>Instagram</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

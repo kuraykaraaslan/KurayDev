@@ -1,5 +1,4 @@
 import { Post } from '@/types/Post';
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 import BlogPostService from '@/services/BlogPostService';
 

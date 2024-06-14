@@ -113,7 +113,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("daisyui"), require("@tailwindcss/typography"), rotateY],
+  plugins: [require("daisyui"), require("@tailwindcss/typography"), rotateY, require('@tailwindcss/forms')],
   daisyui: {
     themes: [
       {

@@ -4,6 +4,7 @@ import { faCalendar, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 // Path: components/Feed/FeedCard.tsx
 
 import React from 'react';
+import Link from 'next/link';
 
 const FeedCard = () => {
     return (
@@ -17,7 +18,7 @@ const FeedCard = () => {
             </div>
             <div className="col-span-10">
                 <h3 className="text-xl font-bold">Title</h3>
-                <a href="#" className="text-sm justify-center">Read More <FontAwesomeIcon icon={faCaretRight} style={{ height: '1rem', width: '1rem' }} /></a>
+                <Link href="#" className="text-sm justify-center">Read More <FontAwesomeIcon icon={faCaretRight} style={{ height: '1rem', width: '1rem' }} /></Link>
             </div>
         </div>
     );

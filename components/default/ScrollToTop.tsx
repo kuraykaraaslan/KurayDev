@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +13,7 @@ const ScrollToTop = () => {
 
         //make the button appear slowly  when the user scrolls down 20px from the top to 500ms
         window.onscroll = () => {
+            var totalWindowHeight = document.body.scrollHeight - window.innerHeight;
             var aligned = window.scrollY * 0.1 - 80;
             if (aligned > 20) {
                 aligned = 20;

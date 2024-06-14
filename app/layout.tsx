@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,9 +35,10 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         ></meta>
       </head>
-      <body className="lowercase min-h-screen antialiased bg-base-300  duration-200 transition-all scroll-smooth focus:scroll-auto transition-colors">
+      <body className="bg-base-300 text-base-900 font-sans min-h-screen">
         {children}
       </body>
     </html>
   );
 }
+
