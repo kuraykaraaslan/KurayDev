@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   return (
     <>
-    <h1 className="text-xl font-bold text-center flex justify-center">
+    <h1 className="text-xl font-bold text-center flex justify-center mb-2">
       <Link href="/" className="text-indigo-600"><FontAwesomeIcon icon={faCode} className="w-5 h-5 mr-2 mt-1" /></Link>
       Login</h1>
     <form
@@ -28,7 +28,7 @@ const LoginPage = () => {
       }}
     >
       <button type="submit"
-        className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="mb-2 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 
       >
         <FontAwesomeIcon icon={faGithub} className="w-5 h-5 mr-2 mt-1" />
@@ -41,7 +41,7 @@ const LoginPage = () => {
       }}
     >
       <button type="submit"
-        className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="mb-2 flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 
       >
         <FontAwesomeIcon icon={faGoogle} className="w-5 h-5 mr-2 mt-1" />
@@ -54,7 +54,7 @@ const LoginPage = () => {
       }}
     >
       <button type="submit"
-        className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="mb-2 flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 
       >
         <FontAwesomeIcon icon={faMicrosoft} className="w-5 h-5 mr-2 mt-1" />

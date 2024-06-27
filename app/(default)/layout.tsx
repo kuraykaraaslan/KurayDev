@@ -37,7 +37,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <SessionProvider>
         <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
           <Navbar />
-            {children}
+          <div className="min-h-screen">{children}</div>
           <Footer />
           <ScrollToTop />
           <CookieConsent />

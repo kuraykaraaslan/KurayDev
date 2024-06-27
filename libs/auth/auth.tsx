@@ -17,6 +17,9 @@ const authConfig: NextAuthConfig = {
     error: "/auth/error",
     verifyRequest: "/auth/verify-request",
   },
+  session: {
+    strategy: "jwt",
+  },
 };
 
 export default authConfig;

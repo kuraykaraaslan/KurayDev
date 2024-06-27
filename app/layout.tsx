@@ -35,8 +35,10 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         ></meta>
       </head>
-      <body className="bg-base-300 text-base-900 font-sans min-h-screen">
+      <body className="flex bg-base-300 text-base-900 font-sans h-full min-h-screen items-center justify-center">
+        <div className="lowercase w-full">
         {children}
+        </div>
       </body>
     </html>
   );
