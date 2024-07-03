@@ -1,30 +1,53 @@
 //i18n
 import { withTranslation } from "react-i18next";
 import i18n from "@/libs/localize/localize";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTelegram } from "@fortawesome/free-brands-svg-icons";
 
 const MyImage = () => {
   const { t } = i18n;
 
   return (
     <div className="relative flex-none hidden sm:block group">
-      <div className="shadow-2xl max-w-24 sm:max-w-48 md:max-w-64 bg-[#F5F5DC] transition duration-500 transform group-hover:rotate-y-180">
+      <div className="shadow-2xl max-w-24 sm:max-w-48 md:max-w-64 transition duration-500 transform group-hover:rotate-y-180 bg-primary">
         <img
           src="/assests/img/kuraykaraaslan_3.jpg"
           alt="kuray karaaslan"
-          className="transition duration-500 transform group-hover:opacity-0"
+          className="transition duration-500 transform"
         />
       </div>
-      <div className="text-black absolute top-0 left-0 w-full h-full bg-opacity-100 rounded-lg flex justify-center items-center opacity-0 transition duration-500 group-hover:opacity-100 flex-col">
-        <div className="absolute bottom-10 right-3 items-center opacity-0 group-hover:opacity-100 transition duration-500 rotate-y-180 group-hover:rotate-y-0 align-middle text-center">
-          {/*
-          <p className="font-caveat-300 -rotate-45">
-            {t("HIRE_ME.IZMIR_KARACA_CINEMA")}
-          </p>
-          <p className="font-caveat-300 -rotate-45">
-            {t("HIRE_ME.10TH_DECEMBER_2023")}
-          </p>
-          <p className="font-caveat-700 ml-10 -rotate-45">taken by my &#10084;</p>*/}
+      <div className="absolute top-0 shadow-2xl max-w-24 sm:max-w-48 md:max-w-64 transition duration-500 transform rotate-y-180 group-hover:rotate-y-0 bg-primary w-full h-full opacity-0 group-hover:opacity-100">
+        <div className="relative w-full h-full flex flex-col">
+          <div className="fixed flex flex-col uppercase left-2 top-2">
+            <span className="text-2xl font-bold text-black ml-[0.4rem]">
+              A
+            </span>
+            <img
+              src="/assests/img/spades.svg"
+              alt="kuray karaaslan"
+              className="h-8 w-8 transition"
+            />
+          </div>
+          <div className="fixed flex flex-col uppercase mt-2 ml-2 right-2 bottom-2 transform rotate-180">
+            <span className="text-2xl font-bold text-black ml-[0.4rem]">
+              A
+            </span>
+            <img
+              src="/assests/img/spades.svg"
+              alt="kuray karaaslan"
+              className="h-8 w-8 transition"
+            />
+          </div>
+
+          <div className="relative flex flex-col items-center justify-center w-full h-full">
+            <img
+              src="/assests/img/spades.svg"
+              alt="kuray karaaslan"
+              className="h-16 w-16 transition"
+            />
+          </div>
         </div>
+
       </div>
     </div>
   );
