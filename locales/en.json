@@ -69,7 +69,9 @@
     "NAME_PLACEHOLDER": "Your name",
     "EMAIL_PLACEHOLDER": "Your email",
     "PHONE_PLACEHOLDER": "Your phone",
-    "MESSAGE_PLACEHOLDER": "Your message"
+    "MESSAGE_PLACEHOLDER": "Your message",
+    "PHONEANDMAIL": "Phone and mail",
+    "SOCIALLINKS": "Social Links"
   },
   "TOOLBOX": {
     "TITLE": "Creativy needs a lot of tools",

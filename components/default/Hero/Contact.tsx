@@ -2,7 +2,7 @@
 
 import { useState, useEffect, createRef, Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import {
   faXTwitter,
   faGithub,
@@ -11,6 +11,8 @@ import {
   faFacebook,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import { CircleFlag } from "react-circle-flags";
+
 
 //i18n
 import { withTranslation } from "react-i18next";
@@ -39,13 +41,70 @@ const Contact = () => {
                 <h1 className="text-4xl font-bold">{t("CONTACT.TITLE")}</h1>
                 <p className="pt-2 pb-4">{t("CONTACT.DESCRIPTION")}</p>
                 <div className="space-y-4">
+                  <h3 className="text-xl font-bold">
+                    {t("CONTACT.PHONEANDMAIL")}
+                  </h3>
                   <p className="flex items-center">
                     <FontAwesomeIcon
                       icon={faEnvelope}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
-                    <span>kuraykaraaslan@gmail.com</span>
+                    <Link
+                      href="mailto:kuraykaraaslan@gmail.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>kuraykaraaslan@gmail.com</span>
+                    </Link>
                   </p>
+
+                  <p className="flex items-center">
+                    <CircleFlag
+                      countryCode="tr"
+                      className="rounded-full w-5 h-5 mr-2 sm:mr-6"
+                    />
+                    <Link
+                      href="tel:+902323320765"
+                      target="_blank"
+                      rel="noopener noreferrer" >
+                      <span>+90 (232) 332 07 65</span>
+                    </Link>
+                  </p>
+
+                  <p className="flex items-center">
+                    <CircleFlag
+                      countryCode="us"
+                      className="rounded-full w-5 h-5 mr-2 sm:mr-6"
+                    />
+                    <Link
+                      href="tel:+905323209515"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <span>+1 (585) 632 95 15</span>
+                    </Link>
+                  </p>
+
+                  <p className="flex items-center">
+                    <CircleFlag
+                      countryCode="gb"
+                      className="rounded-full w-5 h-5 mr-2 sm:mr-6"
+                    />
+                    <Link
+                      href="tel:+447455479481"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <span>+44 (7455) 479 481</span>
+                    </Link>
+                  </p>
+
+
+
+                </div>
+
+                <div className="space-y-4 mt-4">
+                  <h3 className="text-xl font-bold">
+                    {t("CONTACT.SOCIALLINKS")}
+                  </h3>
 
                   <p className="flex items-center">
                     <FontAwesomeIcon
