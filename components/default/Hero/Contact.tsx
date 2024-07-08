@@ -10,6 +10,7 @@ import {
   faTelegram,
   faFacebook,
   faInstagram,
+  faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import { CircleFlag } from "react-circle-flags";
 
@@ -40,6 +41,9 @@ const ContactForm = dynamic(
 interface Phone {
   CountryCode: string;
   PhoneNumber: string;
+  noSpacePhoneNumber: string;
+  hasTelegram: boolean;
+  hasWhatsapp: boolean;
 }
 
 interface Mail {
@@ -56,12 +60,20 @@ const Contact = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   useEffect(() => {
-    const token = recaptchaRef.current?.executeAsync().then((token) => {
-      setToken(token as string);
-      console.log("token", token);
-    });
+    const token = recaptchaRef.current?.getValue();
+    setToken(token as string);
+    console.log("token", token);
   }
-  , []);
+    , []);
+
+  useEffect(() => {
+    if (token === "") {
+      return;
+    }
+    getPhoneNumbers();
+    getMails();
+  }
+    , [token]);
 
 
   const getPhoneNumbers = async () => {
@@ -77,7 +89,7 @@ const Contact = () => {
       });
     }
 
-   
+
 
   }
 
@@ -93,7 +105,7 @@ const Contact = () => {
         setMails(response.data.mails);
       });
     }
-  
+
 
   }
 
@@ -110,12 +122,6 @@ const Contact = () => {
               <div className="py-6 md:py-0 md:px-6">
                 <h1 className="text-4xl font-bold">{t("CONTACT.TITLE")}</h1>
 
-                <ReCAPTCHA  
-                  ref={recaptchaRef}
-                  size="invisible"
-                  sitekey={recaptchaSiteKey}  
-                />
-
                 <p className="pt-2 pb-4">{t("CONTACT.DESCRIPTION")}</p>
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold">
@@ -123,72 +129,88 @@ const Contact = () => {
                   </h3>
 
                   {token !== "" ?
-                  <>
-                  {mails.length === 0 &&
-                    <button className="flex items-center transform transition-transform duration-500 hover:scale-105" onClick={getMails}>
-                      <FontAwesomeIcon
-                        icon={faEnvelope}
-                        className="w-5 h-5 mr-2 sm:mr-6"
+                    <>
+                      {mails.length === 0 &&
+                        <button className="flex items-center transform transition-transform duration-500 hover:scale-105" onClick={getMails}>
+                          <FontAwesomeIcon
+                            icon={faEnvelope}
+                            className="w-5 h-5 mr-2 sm:mr-6"
+                          />
+                          <span>{t("CONTACT.CLICK_TO_REVEAL_MAIL")}</span>
+                        </button>
+                      }
+
+                      {mails.map((mail, index) => (
+                        <p key={index} className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faEnvelope}
+                            className="w-5 h-5 mr-2 sm:mr-6"
+                          />
+                          <Link
+                            href={"mailto:" + mail.mail}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span>{mail.mail}</span>
+                          </Link>
+                        </p>
+                      ))}
+
+                      {phoneNumbers.length === 0 &&
+                        <button className="flex items-center  transform transition-transform duration-500 hover:scale-105" onClick={getPhoneNumbers}>
+                          <FontAwesomeIcon
+                            icon={faPhone}
+                            className="w-5 h-5 mr-2 sm:mr-6"
+                          />
+                          <span>{t("CONTACT.CLICK_TO_REVEAL_PHONE_NUMBERS")}</span>
+                        </button>
+                      }
+
+                      {phoneNumbers.map((phone, index) => (
+                        <p key={index} className="flex items-center">
+                          <CircleFlag
+                            countryCode={phone.CountryCode}
+                            className="rounded-full w-5 h-5 mr-2 sm:mr-6"
+                          />
+                          <Link
+                            href={"tel:" + phone.noSpacePhoneNumber}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span>{phone.PhoneNumber}</span>
+                          </Link>
+                          <span className="ml-2">
+                            {phone.hasWhatsapp &&
+                            <Link href={"https://wa.me/" + phone.noSpacePhoneNumber}>
+                              <FontAwesomeIcon
+                                icon={faWhatsapp}
+                                className="w-5 h-5 mr-2 sm:mr-3"
+                              />
+                            </Link>
+                            }
+                            {phone.hasTelegram &&
+                            <Link href={"https://t.me/" + phone.noSpacePhoneNumber}>
+                              <FontAwesomeIcon
+                                icon={faTelegram}
+                                className="w-5 h-5 mr-2 sm:mr-3"
+                              />
+                            </Link>
+                            }
+                          </span>
+                        </p>
+                      ))
+                      }
+                    </>
+                    :
+                    <>
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        size="normal"
+                        sitekey={recaptchaSiteKey}
                       />
-                      <span>{t("CONTACT.CLICK_TO_REVEAL_MAIL")}</span>
-                    </button>
+                    </>
                   }
 
-                  {mails.map((mail, index) => (
-                    <p key={index} className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faEnvelope}
-                        className="w-5 h-5 mr-2 sm:mr-6"
-                      />
-                      <Link
-                        href={"mailto:" + mail.mail}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span>{mail.mail}</span>
-                      </Link>
-                    </p>
-                  ))}  
-
-                  {phoneNumbers.length === 0 && 
-                    <button className="flex items-center  transform transition-transform duration-500 hover:scale-105" onClick={getPhoneNumbers}>
-                      <FontAwesomeIcon
-                        icon={faPhone}
-                        className="w-5 h-5 mr-2 sm:mr-6"
-                      />
-                      <span>{t("CONTACT.CLICK_TO_REVEAL_PHONE_NUMBERS")}</span>
-                    </button>
-                  }
-
-                  {phoneNumbers.map((phone, index) => (
-                    <p key={index} className="flex items-center">
-                      <CircleFlag
-                        countryCode={phone.CountryCode}
-                        className="rounded-full w-5 h-5 mr-2 sm:mr-6"
-                      />
-                      <Link
-                        href={"tel:" + phone.PhoneNumber}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span>{phone.PhoneNumber}</span>
-                      </Link>
-                    </p>
-                  ))
-                  }
-                  </>
-                  : 
-                  <>
-                    <button className="flex items-center transform transition-transform duration-500 hover:scale-105" onClick={getMails}>
-                      <FontAwesomeIcon
-                        icon={faShield}
-                        className="w-5 h-5 mr-2 sm:mr-6"
-                      />
-                      <span>{t("CONTACT.WAIT_FOR_RECAPTCHA")}</span>
-                    </button>
-                  </>
-                  }
-  
 
 
                 </div>
@@ -271,7 +293,7 @@ const Contact = () => {
                 <h1 className="text-4xl font-bold">
                   {t("CONTACT.SEND_MESSAGE")}
                 </h1>
-                <ContactForm />
+                <ContactForm token={token} />
               </div>
             </div>
           </div>

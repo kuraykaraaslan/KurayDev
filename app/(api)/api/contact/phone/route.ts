@@ -9,6 +9,9 @@ type ResponseData = {
     phones: Array<{
         CountryCode: string;
         PhoneNumber: string;
+        noSpacePhoneNumber: string;
+        hasTelegram: boolean;
+        hasWhatsapp: boolean;
     }>;
 };
 
@@ -17,15 +20,24 @@ export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData
     const phones = [
         {
             "CountryCode": "tr",
-            "PhoneNumber": "+905459223554"
+            "PhoneNumber": "+90 545 922 35 54",
+            "noSpacePhoneNumber": "+905459223554",
+            "hasWhatsapp": false,
+            "hasTelegram": false
         },
         {
             "CountryCode": "us",
-            "PhoneNumber": "+905323209515"
+            "PhoneNumber": "+1 585 632 9515",
+            "noSpacePhoneNumber": "+15856329515",
+            "hasWhatsapp": false,
+            "hasTelegram": false
         },
         {
             "CountryCode": "gb",
-            "PhoneNumber": "+447455479481"
+            "PhoneNumber": "+44 7455 470481",
+            "noSpacePhoneNumber": "+447455470481",
+            "hasWhatsapp": false,
+            "hasTelegram": false
         }
     ]
 

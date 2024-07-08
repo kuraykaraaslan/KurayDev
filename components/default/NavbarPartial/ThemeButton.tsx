@@ -21,7 +21,6 @@ const ThemeButton = () => {
   useEffect(() => {
     // Check for theme in local storage
     const localTheme = localStorage.getItem("theme");
-    console.log("localTheme: " + localTheme);
 
     if (localTheme) {
       setCurrentTheme(localTheme);
@@ -47,7 +46,6 @@ const ThemeButton = () => {
     localStorage.setItem("theme", nextTheme);
 
     setCurrentTheme(nextTheme);
-    console.log("theme changed to " + nextTheme);
 
     const html = document.querySelector("html");
     if (html) {

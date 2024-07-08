@@ -44,14 +44,14 @@ const ScrollToTop = () => {
 
     return (
         <div
-          className="fixed transition duration-1000 ease-in-out bg-primary p-3 hover:bg-base-400 cursor-pointer p-2 shadow-lg rounded-full hover:rounded-box"
+          className="fixed transition duration-1000 ease-in-out bg-accent p-3 hover:bg-base-400 cursor-pointer p-2 shadow-lg rounded-full hover:rounded-box"
           style={{ zIndex: 100, right: "-80px", bottom: "20px" }}
           id="scrollToTop"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <FontAwesomeIcon
             icon={faArrowUp}
-            className="text-l text-white w-4 h-4 md:w-6 md:h-6"
+            className="text-l font-black w-4 h-4 md:w-6 md:h-6"
           />
         </div>
         

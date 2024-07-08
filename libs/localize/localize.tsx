@@ -51,7 +51,6 @@ i18n
     resources,
     interpolation,
   });
-console.log(i18n.languages);
 
 if (store.getState().global.language) {
   i18n.changeLanguage(store.getState().global.language);

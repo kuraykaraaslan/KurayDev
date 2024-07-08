@@ -1,74 +1,113 @@
-import React from "react";
+'use client';
+import React, { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 
 //i18n
 import { withTranslation } from "react-i18next";
 import i18n from "@/libs/localize/localize";
 
+import './styles/phoneInput.css';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import { CircleFlag } from "react-circle-flags";
+
+
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
-async function sendMessageToChannel(message: any) {
-  try {
-    const response = await axios.post(
-      DISCORD_WEBHOOK_URL as string,
-      {
-        content: message,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-  } catch (error) {
-    console.error(error);
-  }
+interface CountryCode extends String {
+  name: string;
+  dialCode: string;
+  countryCode: string;
 }
 
+
+
 // @ts-ignore
-const ContactForm = (props: any) => {
+const ContactForm = (props: { className?: string; token: string }) => {
   const { t } = i18n;
+
+  //React states
+  const [token, setToken] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<any>("");
+  const [message, setMessage] = useState<string>("");
+
+  //Validation states
+
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
+  const [isPhoneValid, setIsPhoneValid] = useState<boolean>(true);
+  const [isNameValid, setIsNameValid] = useState<boolean>(true);
+  const [isMessageValid, setIsMessageValid] = useState<boolean>(true);
+
+  //Get country code
+  const [geoInfo, setGeoInfo] = useState<any>([]);
+  const [defaultCountry, setDefaultCountry] = useState<any>(undefined);
+
+  function getCountry() {
+    axios.get('https://ipapi.co/json/').then((response) => {
+      let data = response.data;
+      setGeoInfo(data);
+      setDefaultCountry(data.country);
+
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  useEffect(() => {
+    if (geoInfo.length > 0) {
+      return;
+    }
+    getCountry();
+    console.log("geoInfo", geoInfo);
+  }, []);
+
 
   const claases = props.className;
 
+  const onEmailChange = (e: any) => {
+    setEmail(e.target.value);
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setIsEmailValid(regex.test(e.target.value));
+  }
+
+  const onPhoneChange = (e: any) => {
+    setPhone(e);
+  }
+
+  const onNameChange = (e: any) => {
+    setName(e.target.value);
+    const regex = /^[a-zA-Z\sçÇğĞıİöÖşŞüÜ]{3,50}$/; // Modify the regex pattern to include Turkish characters
+    setIsNameValid(regex.test(e.target.value));
+  }
+
+  const onMessageChange = (e: any) => {
+    setMessage(e.target.value);
+    // minimum 10 characters , maximum 500 characters, no sql injection
+    const regex = /^[a-zA-Z0-9\s\WçÇğĞıİöÖşŞüÜ]{10,500}$/; // Modify the regex pattern to include Turkish characters
+
+    setIsMessageValid(regex.test(e.target.value));
+
+  }
+
   async function formSubmit() {
-    // @ts-ignore
-    const name = document?.getElementById("name")?.value as string;
-    // @ts-ignore
-    const email = document?.getElementById("email")?.value;
-    // @ts-ignore
-    const phone = document?.getElementById("phone")?.value;
-    // @ts-ignore
-    const message = document?.getElementById("message")?.value;
+
+    if (token === "") {
+      alert("Can not verify that you are not a robot.");
+      return;
+    }
+
+    if (!isEmailValid || !isPhoneValid || !isNameValid || !isMessageValid) {
+      alert("Please fill in the required fields correctly.");
+      return;
+    }
+
+    if (email === "" || phone === "" || name === "" || message === "") {
+      alert("Please fill in the required fields.");
+      return;
+    }
+
     const date = new Date();
-
-    // regex for email
-    const emailRegex = /\S+@\S+\.\S+/;
-    // regex for phone
-    const phoneRegex = /^\+?[0-9]{10,14}$/;
-    // regex for name with dot and space
-    const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
-
-    // check one of email or phone is provided
-    if (email === "" && phone === "") {
-      alert("please enter at least one of email or phone");
-      return;
-    }
-
-    if (email !== "" && !emailRegex.test(email as string)) {
-      alert("please enter a valid email");
-      return;
-    }
-
-    if (phone !== "" && !phoneRegex.test(phone as string)) {
-      alert("please enter a valid phone");
-      return;
-    }
-
-    if (!nameRegex.test(name as string)) {
-      alert("please enter a valid name");
-      return;
-    }
 
     const data = {
       name: name,
@@ -78,19 +117,31 @@ const ContactForm = (props: any) => {
       date: date,
     };
 
-    var dm = `**${data.name}** sent a message from the website:\n\n
-        **Email:** ${data.email}\n
-        **Phone:** ${data.phone}\n
-        **Message:** ${data.message}\n
-        **Date:** ${data.date}\n
-        `;
+    axios.post("/api/contact/form", data, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      console.log(response.data);
+      alert("Message sent successfully.");
+    }).catch((error) => {
+      console.log(error);
+      alert("An error occurred while sending the message.");
+    });
 
-    sendMessageToChannel(dm);
-    alert("message sent successfully");
   }
 
+
+  useEffect(() => {
+    const token = props.token;
+    setToken(token as string);
+    console.log("token", token);
+  }
+    , []);
+
+
   return (
-    <form action="#" className={claases} onSubmit={formSubmit}>
+    <div className={claases}>
       <div className="mt-2">
         <label htmlFor="name" className="block mb-2 text-sm font-medium ">
           {t("CONTACT.NAME")}
@@ -98,9 +149,10 @@ const ContactForm = (props: any) => {
         <input
           type="text"
           id="name"
-          className="block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black"
+          className={"block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black " + (isNameValid ? "" : "text-red-500")}
           placeholder={t("CONTACT.NAME_PLACEHOLDER")}
           required
+          onChange={onNameChange}
         />
       </div>
       <div className="mt-2">
@@ -110,21 +162,25 @@ const ContactForm = (props: any) => {
         <input
           type="email"
           id="email"
-          className="block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black"
+          className={"block p-3 w-full text-sm rounded-lg border border-1 bg-gray-200 text-black " + (isEmailValid ? "" : "text-red-500")}
           placeholder={t("CONTACT.EMAIL_PLACEHOLDER")}
           required
+          onChange={onEmailChange}
         />
       </div>
       <div className="mt-2">
         <label htmlFor="phone" className="block mb-2 text-sm font-medium">
           {t("CONTACT.PHONE")}
         </label>
-        <input
-          type="tel"
-          id="phone"
-          className="block p-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black"
-          placeholder={t("CONTACT.PHONE_PLACEHOLDER")}
-        />
+          <PhoneInput
+            international
+            className={"block pl-3 w-full text-sm rounded-lg border border-1 border-gray-500 bg-gray-200 text-black " + (isPhoneValid ? "" : "text-red-500")}
+            placeholder={t("CONTACT.PHONE_PLACEHOLDER")}
+            required
+            // @ts-ignore
+            defaultCountry={defaultCountry ? defaultCountry as string : "TR"}
+            onChange={onPhoneChange}
+          />
       </div>
       <div className="mt-2">
         <label htmlFor="message" className="block mb-2 text-sm font-medium">
@@ -133,20 +189,20 @@ const ContactForm = (props: any) => {
         {/* @ts-ignore */}
         <textarea
           id="message"
-          rows="6"
-          className="block p-2.5 w-full text-sm rounded-lg border border-1 border-gray-500 min-h-[150px] bg-gray-200 resize-none text-black"
+          className={"block p-2.5 w-full text-sm rounded-lg border border-1 border-gray-500 min-h-[150px] bg-gray-200 resize-none text-black " + (isMessageValid ? "" : "text-red-500")}
           placeholder={t("CONTACT.MESSAGE_PLACEHOLDER")}
           required
+          onChange={onMessageChange}
         ></textarea>
       </div>
       <button
         type="submit"
-        className="mt-2 py-3 px-5 text-sm font-medium bg-base-300 rounded-lg hover:bg-primary hover:text-white focus:outline-none focus:bg-primary-600 border border-1 border-gray-500 light:placeholder-black"
+        className="mt-2 py-3 px-5 text-sm font-medium bg-base-300 rounded-lg hover:text-white focus:outline-none focus:bg-primary-600 border border-1 border-gray-500 light:placeholder-black"
         onClick={formSubmit}
       >
         {t("CONTACT.SEND")}
       </button>
-    </form>
+    </div>
   );
 };
 
