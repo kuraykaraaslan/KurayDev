@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, createRef, Component } from "react";
+import { useState, useEffect, useRef, createRef, Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faE, faEnvelope, faPhone, faShield } from "@fortawesome/free-solid-svg-icons";
 import {
   faXTwitter,
   faGithub,
@@ -21,13 +21,83 @@ import i18n from "@/libs/localize/localize";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
+//axios
+import axios from "axios";
+
+//reCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha";
+const recaptchaSiteKey = process.env.RECAPTCHA_CLIENT_KEY || "";
+
+console.log("recaptchaSiteKey", recaptchaSiteKey
+);
+
+
 const ContactForm = dynamic(
   () => import("@/components/default/Hero/Partials/ContactForm"),
   { ssr: false },
 );
 
+interface Phone {
+  CountryCode: string;
+  PhoneNumber: string;
+}
+
+interface Mail {
+  mail: string;
+}
+
 const Contact = () => {
   const { t } = i18n;
+
+  const [phoneNumbers, setPhoneNumbers] = useState<Phone[]>([]);
+  const [mails, setMails] = useState<Mail[]>([]);
+  const [token, setToken] = useState<string>("");
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  useEffect(() => {
+    const token = recaptchaRef.current?.executeAsync().then((token) => {
+      setToken(token as string);
+      console.log("token", token);
+    });
+  }
+  , []);
+
+
+  const getPhoneNumbers = async () => {
+
+    if (token === "") {
+      alert("Can not verify that you are not a robot.");
+      return;
+    }
+
+    if (phoneNumbers.length === 0) {
+      axios.get("/api/contact/phone").then((response) => {
+        setPhoneNumbers(response.data.phones);
+      });
+    }
+
+   
+
+  }
+
+  function getMails() {
+
+    if (token === "") {
+      alert("Can not verify that you are not a robot.");
+      return;
+    }
+
+    if (mails.length === 0) {
+      axios.get("/api/contact/mail").then((response) => {
+        setMails(response.data.mails);
+      });
+    }
+  
+
+  }
+
+
 
   return (
     <>
@@ -39,71 +109,93 @@ const Contact = () => {
             <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x pt-12 pb-12 mb-2">
               <div className="py-6 md:py-0 md:px-6">
                 <h1 className="text-4xl font-bold">{t("CONTACT.TITLE")}</h1>
+
+                <ReCAPTCHA  
+                  ref={recaptchaRef}
+                  size="invisible"
+                  sitekey={recaptchaSiteKey}  
+                />
+
                 <p className="pt-2 pb-4">{t("CONTACT.DESCRIPTION")}</p>
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold">
-                    {t("CONTACT.PHONEANDMAIL")}
+                    {t("CONTACT.PHONE_AND_MAIL")}
                   </h3>
-                  <p className="flex items-center">
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="w-5 h-5 mr-2 sm:mr-6"
-                    />
-                    <Link
-                      href="mailto:kuraykaraaslan@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span>kuraykaraaslan@gmail.com</span>
-                    </Link>
-                  </p>
 
-                  <p className="flex items-center">
-                    <CircleFlag
-                      countryCode="tr"
-                      className="rounded-full w-5 h-5 mr-2 sm:mr-6"
-                    />
-                    <Link
-                      href="tel:+902323320765"
-                      target="_blank"
-                      rel="noopener noreferrer" >
-                      <span>+90 (232) 332 07 65</span>
-                    </Link>
-                  </p>
+                  {token !== "" ?
+                  <>
+                  {mails.length === 0 &&
+                    <button className="flex items-center transform transition-transform duration-500 hover:scale-105" onClick={getMails}>
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        className="w-5 h-5 mr-2 sm:mr-6"
+                      />
+                      <span>{t("CONTACT.CLICK_TO_REVEAL_MAIL")}</span>
+                    </button>
+                  }
 
-                  <p className="flex items-center">
-                    <CircleFlag
-                      countryCode="us"
-                      className="rounded-full w-5 h-5 mr-2 sm:mr-6"
-                    />
-                    <Link
-                      href="tel:+905323209515"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <span>+1 (585) 632 95 15</span>
-                    </Link>
-                  </p>
+                  {mails.map((mail, index) => (
+                    <p key={index} className="flex items-center">
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        className="w-5 h-5 mr-2 sm:mr-6"
+                      />
+                      <Link
+                        href={"mailto:" + mail.mail}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>{mail.mail}</span>
+                      </Link>
+                    </p>
+                  ))}  
 
-                  <p className="flex items-center">
-                    <CircleFlag
-                      countryCode="gb"
-                      className="rounded-full w-5 h-5 mr-2 sm:mr-6"
-                    />
-                    <Link
-                      href="tel:+447455479481"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <span>+44 (7455) 479 481</span>
-                    </Link>
-                  </p>
+                  {phoneNumbers.length === 0 && 
+                    <button className="flex items-center  transform transition-transform duration-500 hover:scale-105" onClick={getPhoneNumbers}>
+                      <FontAwesomeIcon
+                        icon={faPhone}
+                        className="w-5 h-5 mr-2 sm:mr-6"
+                      />
+                      <span>{t("CONTACT.CLICK_TO_REVEAL_PHONE_NUMBERS")}</span>
+                    </button>
+                  }
 
+                  {phoneNumbers.map((phone, index) => (
+                    <p key={index} className="flex items-center">
+                      <CircleFlag
+                        countryCode={phone.CountryCode}
+                        className="rounded-full w-5 h-5 mr-2 sm:mr-6"
+                      />
+                      <Link
+                        href={"tel:" + phone.PhoneNumber}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>{phone.PhoneNumber}</span>
+                      </Link>
+                    </p>
+                  ))
+                  }
+                  </>
+                  : 
+                  <>
+                    <button className="flex items-center transform transition-transform duration-500 hover:scale-105" onClick={getMails}>
+                      <FontAwesomeIcon
+                        icon={faShield}
+                        className="w-5 h-5 mr-2 sm:mr-6"
+                      />
+                      <span>{t("CONTACT.WAIT_FOR_RECAPTCHA")}</span>
+                    </button>
+                  </>
+                  }
+  
 
 
                 </div>
 
                 <div className="space-y-4 mt-4">
                   <h3 className="text-xl font-bold">
-                    {t("CONTACT.SOCIALLINKS")}
+                    {t("CONTACT.SOCIAL_LINKS")}
                   </h3>
 
                   <p className="flex items-center">
@@ -134,19 +226,6 @@ const Contact = () => {
                     </Link>
                   </p>
 
-                  <p className="flex items-center">
-                    <FontAwesomeIcon
-                      icon={faGithub}
-                      className="w-5 h-5 mr-2 sm:mr-6"
-                    />
-                    <Link
-                      href="https://github.com/kuraykaraaslan"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span>Github</span>
-                    </Link>
-                  </p>
                   <div className="flex items-center">
                     <FontAwesomeIcon
                       icon={faXTwitter}

@@ -70,8 +70,11 @@
     "EMAIL_PLACEHOLDER": "Your email",
     "PHONE_PLACEHOLDER": "Your phone",
     "MESSAGE_PLACEHOLDER": "Your message",
-    "PHONEANDMAIL": "Phone and mail",
-    "SOCIALLINKS": "Social Links"
+    "PHONE_AND_MAIL": "Phone and mail",
+    "SOCIAL_LINKS": "Social Links",
+    "CLICK_TO_REVEAL_MAIL": "Click to reveal mail",
+    "CLICK_TO_REVEAL_PHONE_NUMBERS": "Click to reveal phone numbers",
+    "WAIT_FOR_RECAPTCHA": "Please wait for reCAPTCHA to load"
   },
   "TOOLBOX": {
     "TITLE": "Creativy needs a lot of tools",
