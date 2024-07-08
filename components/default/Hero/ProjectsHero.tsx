@@ -262,7 +262,7 @@ const ProjectsHero = () => {
             }}
           >
             {!expanded ? (
-              <Link href="#"
+              <button
                 className="flex flex-col items-center gap-2 animate-bounce"
                 style={{ height: "80px", width: "130px" }}
                 onClick={handleClick}
@@ -275,9 +275,9 @@ const ProjectsHero = () => {
                   }}
                 />{" "}
                 <span>{expanded ? "Show Less" : "Show More"}</span>
-              </Link>
+              </button>
             ) : (
-              <Link href="#"
+              <button 
                 className="flex flex-col items-center gap-2"
                 style={{ height: "80px", width: "130px" }}
                 onClick={handleClick}
@@ -287,7 +287,7 @@ const ProjectsHero = () => {
                   style={{ width: "2.0rem", height: "2.0rem" }}
                 />{" "}
                 <span>{expanded ? "Show Less" : "Show More"}</span>
-              </Link>
+              </button>
             )}
           </div>
         </div>

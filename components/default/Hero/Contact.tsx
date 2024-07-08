@@ -55,7 +55,7 @@ const Contact = () => {
 
   const [phoneNumbers, setPhoneNumbers] = useState<Phone[]>([]);
   const [mails, setMails] = useState<Mail[]>([]);
-  const [token, setToken] = useState<string>("");
+  const [token, setToken] = useState<string>("x");
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -70,7 +70,6 @@ const Contact = () => {
     if (token === "") {
       return;
     }
-    getPhoneNumbers();
     getMails();
   }
     , [token]);
