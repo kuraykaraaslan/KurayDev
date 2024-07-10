@@ -27,6 +27,7 @@ const GitContributions = () => {
     }, []);
 
 
+
     return (
         <div className="flex flex-col items-center justify-center">
             <div id="contributions" className="flex gap-1">

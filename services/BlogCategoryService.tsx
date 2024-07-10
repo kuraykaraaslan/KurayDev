@@ -1,49 +1,122 @@
-import { Category } from "@/types/Category";
-import firestore from "@/libs/firestore/firestore";
+import { PrismaClient, Category, Post, User } from '@prisma/client';
+const prisma = new PrismaClient();
 
 export default class BlogCategoryService {
-    constructor() {
-    }
 
-    async createCategory(category: Category) : Promise<Category> {
-        const res = await firestore.collection('categories').add(category);
-        
-        return {
-            ...category,
-            id: res.id
-        };
-    }
+    async updateCategory(category: Category, user: User) {
 
-    async getCategories() {
-        const categories : Category[] = [];
-        await firestore.collection('categories').get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                categories.push(doc.data() as Category);
-            });
-        });
-        return categories;
-    }
+        //check if user is authorized to update category
 
-    async getCategory(slug: string) {
-        const res = await firestore.collection('categories').where('slug', '==', slug).get().then((querySnapshot) => {
-            if (querySnapshot.empty) {
-                return null;
-            }
-            return querySnapshot.docs[0].data() as Category;
+        if (!user.role || (user.role !== 'USER' && user.role !== 'ADMIN')) {
+            throw new Error("Unauthorized");
         }
-        );
-        return res;
+
+        //get the category by slug
+        const existingCategory = await prisma.category.findFirst({
+            where: {
+                id: category.id
+            }
+
+        }).then((category) => {
+            return category;
+        });
+
+        if (!existingCategory) {
+            throw new Error("Category not found");
+        }
+
+        //check if user is an admin
+        if (user.role !== 'ADMIN') {
+            throw new Error("Unauthorized");
+        }
+
+        //update the category
+        return prisma.category.update({
+            where: {
+                id: category.id
+            },
+            data: {
+                ...category,
+                updatedAt: new Date()
+            }
+        }).then((category) => {
+            return category;
+        });
     }
 
-    async updateCategory(slug: string, category: Category) {
-        const res = await firestore.collection('categories').doc(slug).update(category as any);
-        return res;
+    async createCategory(category: Category, user: User) {
 
+        //check if user is authorized to create category
+
+        if (!user.role || (user.role !== 'USER' && user.role !== 'ADMIN')) {
+            throw new Error("Unauthorized");
+        }
+
+        //create the category
+        return prisma.category.create({
+            data: {
+                ...category,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        }).then((category) => {
+            return category;
+        });
     }
 
-    async deleteCategory(slug: string) {
-        const res = await firestore.collection('categories').doc(slug).delete();
-        return res;
+    async deleteCategory(id: string, user: User) {
+
+        //check if user is authorized to delete category
+
+        if (!user.role || (user.role !== 'USER' && user.role !== 'ADMIN')) {
+            throw new Error("Unauthorized");
+        }
+
+        //get the category by id
+        const existingCategory = await prisma.category.findFirst({
+            where: {
+                id: id
+            }
+
+        }).then((category) => {
+            return category;
+        });
+
+        if (!existingCategory) {
+            throw new Error("Category not found");
+        }
+
+        //check if user is an admin
+        if (user.role !== 'ADMIN') {
+            throw new Error("Unauthorized");
+        }
+
+        //delete the category
+        return prisma.category.delete({
+            where: {
+                id: id
+            }
+        }).then((category) => {
+            return category;
+        });
     }
 
+    async getCategories({ page = 1, limit = 10 }) {
+        return prisma.category.findMany({
+            skip: (page - 1) * limit,
+            take: limit
+        }).then((categories) => {
+            return categories;
+        });
+    }
+
+    async getCategoryById(id: string) {
+        return prisma.category.findFirst({
+            where: {
+                id
+            }
+        }).then((category) => {
+            return category;
+        });
+    }
 }

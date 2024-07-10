@@ -1,62 +1,147 @@
-import { Post } from "@/types/Post";
-import firestore from "@/libs/firestore/firestore";
+import { Post, PrismaClient, User } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 
 export default class BlogPostService {
-    constructor() {
-    }
-
-    async createPost(post: Post) : Promise<Post> {
-        const res = await firestore.collection('posts').add(post);
-        
-        return {
-            ...post,
-            id: res.id
-        };
-    }
-
-    async getPosts() {
-        const posts : Post[] = [];
-        await firestore.collection('posts').get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                posts.push(doc.data() as Post);
-            });
-        });
-        return posts;
-    }
-
-    async getPostsPaginated(page: number, limit: number) {
-        const posts : Post[] = [];
-        const res = await firestore.collection('posts').offset(page * limit).limit(limit).get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                posts.push(doc.data() as Post);
-            });
-            return posts;
+    async deletePost(id: any, user: User) {
+        //check if user is authorized to delete post
+        if (!user.role || (user.role !== 'USER' && user.role !== 'ADMIN')) {
+            throw new Error("Unauthorized");
         }
-        );
-        return posts;
-    }
 
-    async getPost(slug: string) {
-        const res = await firestore.collection('posts').where('slug', '==', slug).get().then((querySnapshot) => {
-            if (querySnapshot.empty) {
-                return null;
+        //get the post by id
+        const existingPost = await prisma.post.findFirst({
+            where: {
+                id
             }
-            return querySnapshot.docs[0].data() as Post;
+
+        }).then((post) => {
+            return post;
+        });
+
+        if (!existingPost) {
+            throw new Error("Post not found");
         }
-        );
-        return res;
+
+        //check if user is the author of the post or an admin
+        if (existingPost.authorId !== user.id || user.role !== 'ADMIN') {
+            throw new Error("Unauthorized");
+        }
+
+        //delete the post
+        return prisma.post.delete({
+            where: {
+                id
+            }
+        }).then((post) => {
+            return post;
+        });
     }
 
-    async updatePost(slug: string, post: Post) {
-        const res = await firestore.collection('posts').doc(slug).update(post as any);
-        return res;
+    async updatePost( post: Post, user: User) {
+
+        //check if user is authorized to update post
+
+        if (!user.role || (user.role !== 'USER' && user.role !== 'ADMIN')) {
+            throw new Error("Unauthorized");
+        }
+
+        //get the post by slug
+        const existingPost = await prisma.post.findFirst({
+            where: {
+                id: post.id
+            }
+
+        }).then((post) => {
+            return post;
+        });
+
+        if (!existingPost) {
+            throw new Error("Post not found");
+        }
+
+        //check if user is the author of the post or an admin
+        if (existingPost.authorId !== user.id && user.role !== 'ADMIN') {
+            throw new Error("Unauthorized");
+        }
+
+        //update the post
+
+        //if user is an admin, update the post's every field
+        if (user.role === 'ADMIN') {
+            return prisma.post.update({
+                where: {
+                    id: post.id
+                },
+                data: {
+                    ...post,
+                    updatedAt: new Date()
+                }
+            }).then((post) => {
+                return post;
+            });
+        }
+
+        //if user is the author of the post, update only the title, content, and image, slug
+        return prisma.post.update({
+            where: {
+                id: post.id
+            },
+            data: {
+                title: post.title,
+                content: post.content,
+                image: post.image,
+                slug: post.slug,
+                categoryId: post.categoryId,
+                status: post.status,
+                updatedAt: new Date()
+            }
+        }).then((post) => {
+            return post;
+        });
 
     }
 
-    async deletePost(slug: string) {
-        const res = await firestore.collection('posts').doc(slug).delete();
-        return res;
+    async createPost(post: Post, user: User) {
+
+        //check if user is authorized to create post
+
+        if (!user.role || (user.role !== 'USER' && user.role !== 'ADMIN')) {
+            throw new Error("Unauthorized");
+        }
+
+        //create the post
+        return prisma.post.create({
+            data: {
+                ...post,
+                authorId: user.id,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        }).then((post) => {
+            return post;
+        });
+
+    }
+
+    async getPosts({ page = 1, limit = 10 }) {
+        return prisma.post.findMany({
+            skip: (page - 1) * limit,
+            take: limit
+        }).then((posts) => {
+            return posts;
+        });
+    }
+
+    async getPostBySlug(slug: string) {
+        return prisma.post.findFirst({
+            where: {
+                slug
+            }
+        }).then((post) => {
+            return post;
+        });
     }
 
 }

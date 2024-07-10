@@ -7,6 +7,7 @@ type ContributionDay = {
 type Week = {
     contributionDays: ContributionDay[];
     firstDay: string;
+    isMilitaryTime?: boolean;
 };
 
 type Weeks = Week[];

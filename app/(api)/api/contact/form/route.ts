@@ -11,7 +11,6 @@ type ResponseData = {
 
 export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
 
-    console.log(req.body);
 
     async function sendMessageToChannel(message: any) {
         try {

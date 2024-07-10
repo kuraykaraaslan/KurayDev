@@ -1,16 +1,15 @@
 "use server";
 
-import { NextResponse } from "next/server";
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse, NextRequest } from "next/server";
 import axios from 'axios';
 
-import  { ContributionDay, Week, Weeks, GraphQLRes } from "@/types/GitTypes";
+import { ContributionDay, Week, Weeks, GraphQLRes } from "@/types/GitTypes";
 
 type ResponseData = {
     message: string
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+export async function GET(req: NextRequest, res: NextResponse<ResponseData>) {
     //https://api.github.com/graphql
 
     const url = 'https://api.github.com/graphql'
@@ -43,7 +42,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData
         }
     }).then((response) => {
         var data: GraphQLRes = response.data.data;
-        
+
         const weeks = data.user.contributionsCollection.contributionCalendar.weeks as Week[];
         const last = weeks.length - 1;
 
@@ -59,13 +58,36 @@ export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData
         //update the week
         weeks[last].contributionDays = days;
 
-        data.user.contributionsCollection.contributionCalendar.weeks = weeks;       
+        data.user.contributionsCollection.contributionCalendar.weeks = weeks;
+
+
+        // 01 May 2023 to 01 June 2023 is my military service period so I will add some fake data
+
+        weeks.map((week, i) => {
+            week.contributionDays.map((day, j) => {
+                if (day.date.startsWith("2023-05")) {
+                    day.contributionCount = 10;
+                    console.log(day.date);
+                }
+                if (day.date.startsWith("2023-06")) {
+                    day.contributionCount = 5;
+                    console.log(day.date);
+                }
+            }
+            )
+        }
+        )
+
+
+        //Update the response
+        data.user.contributionsCollection.contributionCalendar.weeks = weeks;
+
 
 
         return NextResponse.json(data, { status: 200 });
-        
-        
-        }
+
+
+    }
 
     ).catch((error) => {
         return NextResponse.json({ message: 'Error', error }, { status: 500 })
