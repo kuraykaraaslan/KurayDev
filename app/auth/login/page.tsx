@@ -17,7 +17,7 @@ import Link from "next/link";
 const LoginPage = () => {
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center max-w-md mx-auto bg-base-100 p-4 rounded-md shadow-lg">
     <h1 className="text-xl font-bold text-center flex justify-center mb-2">
       <Link href="/" className="text-indigo-600"><FontAwesomeIcon icon={faCode} className="w-5 h-5 mr-2 mt-1" /></Link>
       Login</h1>
@@ -41,7 +41,7 @@ const LoginPage = () => {
       }}
     >
       <button type="submit"
-        className="mb-2 flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="mb-2 flex w-sm justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 min-w-md"
 
       >
         <FontAwesomeIcon icon={faGoogle} className="w-5 h-5 mr-2 mt-1" />
@@ -73,7 +73,7 @@ const LoginPage = () => {
         <FontAwesomeIcon icon={faApple} className="w-5 h-5 mr-2 mt-1" />
         Signin with Apple</button>
     </form>
-    </>
+    </div>
   );
 };
 

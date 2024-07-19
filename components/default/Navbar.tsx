@@ -133,6 +133,9 @@ const Navbar = () => {
                 <li>
                   <Link href="/#home">{t("NAVIGATION.HOME")}</Link>
                 </li>
+                <li className="bg-base-300 animate-pulse text-base-content rounded-md">
+                  <Link href="/freelance">{t("NAVIGATION.FREELANCE")}</Link>
+                </li>
                 <li>
                   <Link href="/blog" locale="en">
                     {t("NAVIGATION.BLOG")}
@@ -202,7 +205,7 @@ const Navbar = () => {
                   position: "fixed",
                   zIndex: 101,
                   top: 0,
-                  width: "250px",
+                  width: "280px",
                   height: "100vh",
                   backgroundColor: "#1f2937",
                 }}
@@ -221,6 +224,19 @@ const Navbar = () => {
                         }}
                       />{" "}
                       {t("NAVIGATION.HOME")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/freelance" className="text-lg block">
+                      <FontAwesomeIcon
+                        icon={faBriefcase}
+                        style={{
+                          width: "1.5rem",
+                          height: "1.5rem",
+                          marginRight: "0.5rem",
+                        }}
+                      />{" "}
+                      {t("NAVIGATION.FREELANCE")}
                     </Link>
                   </li>
                   <li>
