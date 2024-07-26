@@ -49,7 +49,8 @@
     "STAY_FOCUSED": "stay focused",
     "TAKE_RISKS": "take risks",
     "KEEP_IMPROVING": "keep improving",
-    "AIM_HIGH": "aim high"
+    "AIM_HIGH": "aim high",
+    "FREELANCE": "Freelance"
   },
   "FOOTER": {
     "COPYRIGHT": "© {{year}} Kuray.dev All rights reserved.",
@@ -67,6 +68,7 @@
     "PHONE": "Phone",
     "MESSAGE": "Message",
     "SEND": "Send",
+    "SENDING": "Sending...",
     "NAME_PLACEHOLDER": "Your name",
     "EMAIL_PLACEHOLDER": "Your email",
     "PHONE_PLACEHOLDER": "Your phone",

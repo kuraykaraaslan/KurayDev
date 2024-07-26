@@ -1,3 +1,60 @@
-export { default } from "next-auth/middleware"
+import { NextRequest, NextResponse } from "next/server";
 
-export const config = { matcher: ["/dashboard"] }
+import axios from "axios";
+import LogService from "./services/LogService";
+
+const DISCORD_DOORMAN_WEBHOOK_URL = process.env.DISCORD_DOORMAN_WEBHOOK_URL;
+
+export async function middleware(request: NextRequest) {
+  
+  const res = NextResponse.next();
+  let ip = request.ip ?? request.headers.get("x-real-ip");
+
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (!ip && forwardedFor) {
+    ip = forwardedFor.split(",").at(0) ?? "Unknown";
+  }
+
+  //console.log(request)
+
+  // search params of the request
+  const searchParams = new URLSearchParams(request.nextUrl.search);
+  // source
+  const source = searchParams.get("s");
+  //referer
+  const referer = request.headers.get("referer");
+  //user agent
+  const userAgent = request.headers.get("user-agent");
+  //path
+  const path = request.url;
+
+  // disabled bots
+  const disabledBots = ["Discordbot", "Canva"];
+
+  if (disabledBots.some((bot) => userAgent?.includes(bot))) {
+    return res;
+  }
+
+  // if the request is not from the main page and the referer is not from the main page
+  if (request.nextUrl.pathname !== "/") {
+    return res;
+  }
+
+  //if localhost
+  if (ip === "::1") {
+    return res;
+  }
+
+  //if path starts with https://0.0.0.0:8080/ and referer is null
+  if (path === "https://0.0.0.0:8080/" && !referer) {
+    return res;
+  }
+
+  /*
+  LogService.info(
+    `Request from ${ip} with user agent ${userAgent} and referer ${referer} and source ${source}`
+  );
+  */
+
+  return res;
+}

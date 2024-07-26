@@ -13,6 +13,7 @@ import PrismaClient, { Contact } from '@/libs/prisma/prisma';
 
 //discord service
 import DiscordService from '@/services/DiscordService';
+import LogService from '@/services/LogService';
 
 
 export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
@@ -41,11 +42,13 @@ export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
         `;
     try {
         await DiscordService.sendMessageToChannel(dm);
+        await LogService.info("Discord Message sent successfully, from: " + (data?.email || "unknown"));
         return NextResponse.json({ message: "message sent successfully" });
     }
 
     catch (error) {
         console.error(error);
+        await LogService.error("An error occurred while sending the message, from: " + (data?.email || "unknown"));
         return NextResponse.json({ message: "An error occurred while sending the message." }, { status: 500 });
     }
 

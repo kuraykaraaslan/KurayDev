@@ -8,22 +8,25 @@ type ResponseData = {
     message: string;
 };
 
-//prisma  
-import PrismaClient, { Contact } from '@/libs/prisma/prisma';
-
-//discord service
-import DiscordService from '@/services/DiscordService';
+//Log service   
+import LogService from '@/services/LogService';
 
 
 export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
 
-   const body = await req.json();
+    try {
 
-   const stringifiedBody = JSON.stringify(body);
+        const body = await req;
 
-   DiscordService.sendMessageToChannel(stringifiedBody);
+        await LogService.info("SMS request received: " + JSON.stringify(body));
+        return NextResponse.json({ message: "an SMS has been sent" });
 
-   return NextResponse.json({ message: "An error occurred while sending the message." }, { status: 500 });
+    }
 
+    catch (error: any) {
+        console.error(error);
+        await LogService.error(error.message);
+        return NextResponse.json({ message: "An error occurred while sending the SMS." }, { status: 500 });
+    }
 }
 

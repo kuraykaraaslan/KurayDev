@@ -1,8 +1,6 @@
 "use server";
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from 'next/server';
-import axios from 'axios';
-
+import { NextResponse , NextRequest} from 'next/server';
+import LogService from '@/services/LogService';
 
 type ResponseData = {
     message: string;
@@ -15,7 +13,7 @@ type ResponseData = {
     }>;
 };
 
-export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+export async function GET(req: NextRequest, res: NextResponse<ResponseData>) {
 
     const phones = [
         {
@@ -41,9 +39,11 @@ export async function GET(req: NextApiRequest, res: NextApiResponse<ResponseData
         }
     ]
 
-
-
-    return NextResponse.json({ message: "Phone numbers", phones });
+    const ip = req.headers.get('x-forwarded-for');
+    if (ip !== "::1") {
+        await LogService.info("Phones fetched successfully for ip: " + ip);
+    }
+    return NextResponse.json({ message: "phones fetched successfully", phones });
 }
 //
 

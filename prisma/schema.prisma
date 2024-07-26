@@ -85,3 +85,10 @@ model SMS {
   status    String  @default("pending") // pending, sent, failed
   createdAt DateTime @default(now())
 }
+
+model Log {
+  id        String   @id @default(cuid())
+  type      String
+  message   String
+  createdAt DateTime @default(now())
+}

@@ -82,8 +82,17 @@ const HireMe = () => {
               ) : null}
             </h2>
 
+            <Link href="/freelance"className="btn btn-primary">
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="mt-1"
+                  style={{ width: "1rem" }}
+                />
+                {t("HIRE_ME.FREELANCE")}
+              </Link>
+
             <Link href="https://drive.google.com/file/d/17Ya5AC2nvcvccN-bS2pFsKFIm5v8dcWN/view?usp=drive_link" target="_blank">
-              <p className="btn btn-primary ml-2 lowercase">
+              <p className="btn btn-ghost ml-2 lowercase">
                 <FontAwesomeIcon
                   icon={faLink}
                   className="mt-1"
@@ -92,7 +101,8 @@ const HireMe = () => {
                 {t("HIRE_ME.MY_RESUME")}
               </p>
             </Link>
-            
+
+            {/*
             <Link href="https://github.com/kuraykaraaslan" target="_blank">
               <p className="btn btn-ghost ml-2 lowercase">
                 <FontAwesomeIcon
@@ -103,12 +113,14 @@ const HireMe = () => {
                 {t("HIRE_ME.MY_GITHUB")}
               </p>
             </Link>
-          </div>
+          */}
 
-          <MyImage />
+            </div>
+
+            <MyImage />
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -10,6 +10,10 @@ import './styles/phoneInput.css';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import { CircleFlag } from "react-circle-flags";
 
+//Fontawesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHourglass, faMessage } from "@fortawesome/free-solid-svg-icons";
+
 
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
@@ -42,6 +46,9 @@ const ContactForm = (props: { className?: string; token: string }) => {
   //Get country code
   const [geoInfo, setGeoInfo] = useState<any>([]);
   const [defaultCountry, setDefaultCountry] = useState<any>(undefined);
+
+  //Timer 
+  const [isSending, setIsSending] = useState<boolean>(false);
 
   function getCountry() {
     axios.get('https://ipapi.co/json/').then((response) => {
@@ -117,15 +124,22 @@ const ContactForm = (props: { className?: string; token: string }) => {
       date: date,
     };
 
+    //set timer
+    setIsSending(true);
+
+
     axios.post("/api/contact/form", data, {
       headers: {
         "Content-Type": "application/json"
       }
     }).then((response) => {
       console.log(response.data);
+      setIsSending(false);
       alert("Message sent successfully.");
+
     }).catch((error) => {
       console.log(error);
+      setIsSending(false);
       alert("An error occurred while sending the message.");
     });
 
@@ -195,13 +209,24 @@ const ContactForm = (props: { className?: string; token: string }) => {
           onChange={onMessageChange}
         ></textarea>
       </div>
+      {isSending ? 
       <button
+        type="submit"
+        disabled
+        className="mt-2 py-3 px-5 text-sm font-medium bg-base-300 rounded-lg hover:text-white focus:outline-none focus:bg-primary-600 border border-1 border-gray-500 light:placeholder-black"
+      >
+        <FontAwesomeIcon icon={faHourglass} spin className="w-3 h-3 mr-2" />
+        {t("CONTACT.SENDING")}
+      </button>
+      : <button
         type="submit"
         className="mt-2 py-3 px-5 text-sm font-medium bg-base-300 rounded-lg hover:text-white focus:outline-none focus:bg-primary-600 border border-1 border-gray-500 light:placeholder-black"
         onClick={formSubmit}
       >
+        <FontAwesomeIcon icon={faMessage} className="w-3 h-3 mr-2" />
         {t("CONTACT.SEND")}
       </button>
+      }
     </div>
   );
 };

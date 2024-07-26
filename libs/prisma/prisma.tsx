@@ -1,14 +1,14 @@
-import { PrismaClient as Orginal , User, Contact, SMS } from '@prisma/client';
+import { PrismaClient as Orginal , User, Contact, SMS, Error } from '@prisma/client';
 
 const PrismaClient = new Orginal();
 
 export type {
     User,
     Contact,
-    SMS
+    SMS,
+    Error
 }
 
-export default {
-    PrismaClient
-}
+export default PrismaClient
+
 
