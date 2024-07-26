@@ -12,7 +12,6 @@ const WelcomeVideo = dynamic(
   { ssr: false },
 );
 
-
 const Welcome = () => {
 
   const [dotColor, setDotColor] = useState("#ffffff");

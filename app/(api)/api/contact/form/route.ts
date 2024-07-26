@@ -8,27 +8,14 @@ type ResponseData = {
     message: string;
 };
 
+//prisma  
+import PrismaClient, { Contact } from '@/libs/prisma/prisma';
+
+//discord service
+import DiscordService from '@/services/DiscordService';
+
 
 export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
-
-
-    async function sendMessageToChannel(message: any) {
-        try {
-            const response = await axios.post(
-                DISCORD_WEBHOOK_URL as string,
-                {
-                    content: message,
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                },
-            );
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
     const { name, email, phone, message } = await req.json();
 
@@ -53,7 +40,7 @@ export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
         **Date:** ${data.date}\n
         `;
     try {
-        await sendMessageToChannel(dm);
+        await DiscordService.sendMessageToChannel(dm);
         return NextResponse.json({ message: "message sent successfully" });
     }
 

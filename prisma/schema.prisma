@@ -64,3 +64,15 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
+
+// Custom Models
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  message   String
+  status    String  @default("pending") // pending, answered, closed
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
