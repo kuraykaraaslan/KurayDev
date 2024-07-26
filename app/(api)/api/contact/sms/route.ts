@@ -4,29 +4,26 @@ import axios from 'axios';
 
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
-type ResponseData = {
-    message: string;
-};
-
 //Log service   
 import LogService from '@/services/LogService';
 
+//SMS service
+import SMSService from '@/services/SMSService';
+import twillio from 'twilio';
+import { t } from 'i18next';
 
-export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
+
+export async function POST(req: NextRequest, res: NextResponse) {
 
     try {
 
-        const body = await req;
-
-        await LogService.info("SMS request received: " + JSON.stringify(body));
-        return NextResponse.json({ message: "an SMS has been sent" });
+        return new NextResponse("<Response><Message>Hello</Message></Response>", { status: 200 });
 
     }
 
     catch (error: any) {
-        console.error(error);
-        await LogService.error(error.message);
-        return NextResponse.json({ message: "An error occurred while sending the SMS." }, { status: 500 });
+        LogService.error(error);
+        return new NextResponse("Error", { status: 500 });
     }
 }
 

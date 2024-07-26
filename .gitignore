@@ -110,3 +110,9 @@ node_modules/
 .env.production
 .env.local
 .env.development
+
+
+# prisma
+/prisma/.env
+/prisma/migration
+/prisma/seeds
