@@ -50,7 +50,11 @@ interface Mail {
   mail: string;
 }
 
-const Contact = () => {
+interface ContactProps {
+  bsckgroundColor?: string;
+}
+
+const Contact = (props: ContactProps) => {
   const { t } = i18n;
 
   const [phoneNumbers, setPhoneNumbers] = useState<Phone[]>([]);
@@ -113,7 +117,8 @@ const Contact = () => {
   return (
     <>
       {/* <section className="md:bg-base-100 bg-base-200 px-4 py-8  md:px-20" id="contact"> */}
-      <section className="bg-base-200 px-4 py-8  md:px-20 " id="contact">
+      <section className={"px-4 py-8  md:px-20 " + (props.bsckgroundColor  ? props.bsckgroundColor : "bg-base-200")}
+       id="contact">
         {/* <div className="container px-2 py-8 mx-auto mx-4 md:px-24 md:bg-base-200 mt-0 md:-mt-24 rounded-box shadow-2xl border-full border-2 border-black contactHero"> */}
         <div className="container  mx-auto mx-4 mt-0 rounded-box shadow-2xl border-full border-2 border-black contactHero">
           <div className="mx-4 md:mx-8 pt-2 rounded-box mb-4">
