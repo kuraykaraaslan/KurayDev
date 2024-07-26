@@ -54,7 +54,8 @@
     "react-simple-maps": "^3.0.0",
     "react-svg-worldmap": "^2.0.0-alpha.16",
     "redux": "^5.0.1",
-    "three": "^0.162.0"
+    "three": "^0.162.0",
+    "twilio": "^5.2.2"
   },
   "devDependencies": {
     "@types/mdx": "^2.0.10",

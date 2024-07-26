@@ -1,5 +1,7 @@
 import PrismaClient , { SMS } from '@/libs/prisma/prisma';
 
+import twillio from 'twilio';
+
 
 /*
 model SMS {
@@ -18,5 +20,11 @@ interface SMSData {
 }
 
 export default class SMSService {
-   
-}
+
+    public static async incomingSMS(data: SMSData): Promise<SMS> {
+      const twiml = new twillio.twiml.MessagingResponse();
+      twiml.message('The Robots are coming! Head for the hills!');
+      return twiml.toString();
+    }
+  }
+  

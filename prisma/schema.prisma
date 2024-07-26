@@ -50,8 +50,15 @@ model User {
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
+  role         String    @default("user") // admin, editor, user
+
   accounts      Account[]
   sessions      Session[]
+  posts         Post[]
+  projects      Project[]
+
+  createdAt     DateTime  @default(now())
+
  
   @@map("users")
 }
@@ -91,4 +98,90 @@ model Log {
   type      String
   message   String
   createdAt DateTime @default(now())
+}
+
+//Post
+model Category {
+  id        String   @id @default(cuid())
+  title      String
+  description String
+  slug      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  posts     Post[]
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String
+  content     String
+  status      String  @default("draft") // draft, published, archived
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String   @map("author_id")
+
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String   @map("category_id")
+
+  comments    Comment[]
+
+  @@map("posts")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  email     String
+  content   String
+  status    String  @default("pending") // pending, approved, rejected
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String   @map("post_id")
+}
+
+//Project
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String
+  content     String
+  status      String  @default("draft") // draft, published, archived
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String   @map("author_id")
+
+  scope      Scope   @relation(fields: [scopeId], references: [id])
+  scopeId    String  @map("scope_id")
+
+  tags      Tag[]
+
+  @@map("projects")
+}
+
+model Scope {
+  id        String   @id @default(cuid())
+  title      String
+  slug      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projects  Project[]
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  title      String
+  slug      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projects  Project[]
 }
