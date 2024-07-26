@@ -33,5 +33,7 @@ module.exports = {
     FIREBASE_CLIENT_EMAIL: process.env.FIREBASE_CLIENT_EMAIL,
     RECAPTCHA_CLIENT_KEY: process.env.RECAPTCHA_CLIENT_KEY,
     RECAPTCHA_SERVER_KEY: process.env.RECAPTCHA_SERVER_KEY,
+    ADMIN_PHONE: process.env.ADMIN_PHONE,
+    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
   },
 };

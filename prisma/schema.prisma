@@ -76,3 +76,12 @@ model Contact {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model SMS {
+  id        String   @id @default(cuid())
+  to        String
+  from      String
+  message   String
+  status    String  @default("pending") // pending, sent, failed
+  createdAt DateTime @default(now())
+}
