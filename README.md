@@ -34,6 +34,8 @@ You can view a live demo of the webpage at [kuray.dev](https://kuray.dev).
 - [x] Add more animations
 - [x] Add redux for state management
 - [ ] Add more tests
+- [ ] Add API for contact form
+
 
 ## Technologies
 
