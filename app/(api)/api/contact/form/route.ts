@@ -1,19 +1,13 @@
 "use server";
 import { NextRequest, NextResponse } from 'next/server';
 import axios from 'axios';
+import DiscordService from '@/services/DiscordService';
 
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 
 type ResponseData = {
     message: string;
 };
-
-//prisma  
-import PrismaClient, { Contact } from '@/libs/prisma/prisma';
-
-//discord service
-import DiscordService from '@/services/DiscordService';
-import LogService from '@/services/LogService';
 
 
 export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
@@ -41,19 +35,16 @@ export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
         **Date:** ${data.date}\n
         `;
     try {
-        await DiscordService.sendMessageToChannel(dm);
-        await LogService.info("Discord Message sent successfully, from: " + (data?.email || "unknown"));
+        await DiscordService.sendWebhookMessage(dm);
         return NextResponse.json({ message: "message sent successfully" });
     }
 
     catch (error) {
         console.error(error);
-        await LogService.error("An error occurred while sending the message, from: " + (data?.email || "unknown"));
         return NextResponse.json({ message: "An error occurred while sending the message." }, { status: 500 });
     }
 
 }
-
 
 
 

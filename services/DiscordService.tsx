@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default class DiscordService {
 
-    static async sendMessageToChannel(message: string) {
+    static async sendWebhookMessage(message: string) {
         try {
             const response = await axios.post(
                 DISCORD_WEBHOOK_URL as string,

@@ -12,18 +12,25 @@ import SMSService from '@/services/SMSService';
 import twillio from 'twilio';
 import { t } from 'i18next';
 
+type ResponseData = {
+    message: string;
+};
 
-export async function POST(req: NextRequest, res: NextResponse) {
+
+export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
 
     try {
 
-        return new NextResponse("<Response><Message>Hello</Message></Response>", { status: 200 });
+        const body = await req.body;
+
+        return NextResponse.json({ message: "SMS sent successfully" });
 
     }
 
     catch (error: any) {
-        LogService.error(error);
-        return new NextResponse("Error", { status: 500 });
+        console.error(error);
+        await LogService.error(error.message);
+        return NextResponse.json({ message: "An error occurred while sending the SMS." }, { status: 500 });
     }
 }
 
