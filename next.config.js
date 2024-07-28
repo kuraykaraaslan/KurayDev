@@ -35,5 +35,10 @@ module.exports = {
     RECAPTCHA_SERVER_KEY: process.env.RECAPTCHA_SERVER_KEY,
     ADMIN_PHONE: process.env.ADMIN_PHONE,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+    DATABASE_HOST: process.env.DATABASE_HOST,
+    DATABASE_NAME: process.env.DATABASE_NAME,
+    DATABASE_USER: process.env.DATABASE_USER,
+    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+    DATABASE_PORT: process.env.DATABASE_PORT,
   },
 };
