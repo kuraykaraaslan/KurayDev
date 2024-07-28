@@ -1,11 +1,14 @@
 import RadialProgressBar from "@/components/admin/widgets/RadialProgressBar";
 import SubscriptionStatus from "@/components/admin/widgets/SubscriptionStatus";
+import Stats from "@/components/admin/widgets/Stats";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <RadialProgressBar progress={50} />
-      <SubscriptionStatus progress={50} />
+    <main className="flex flex-col p-2">
+      <div className="flex flex-row">
+      <Stats />
+      </div>
+
     </main>
   );
 }
