@@ -1,21 +1,80 @@
-import React from 'react';
+'use client';
+import React , { useState, useEffect } from 'react';
 import axios from '@/libs/http/axios';
+import { useSession, SessionProvider } from 'next-auth/react';
+import { User } from '@prisma/client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
     // Add any props you need here
 }
 
 const UsersTable: React.FC = () => {
+
+    const session = useSession();
+
+    const [users, setUsers] = useState<User[]>([]);
+    const [search, setSearch] = useState('');
+    const [status, setStatus] = useState('all');
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+
+    useEffect(() => {
+        if (!session) return;
+        if (users.length > 0) return;
+        axios.get('/api/user')
+            .then((response) => {
+                setUsers(response.data);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
+    //create observable
+    const filterUsers = () => {
+        return users.filter((user: User) => {
+            if (status === 'all') {
+                return user;
+            }
+            return user.status === status;
+        }
+        ).filter((user: User) => {
+            if (search === '' || search === null || search.length < 3) {
+                return user;
+            }
+            return user.name?.toLowerCase().includes(search.toLowerCase()) || user.email.toLowerCase().includes(search.toLowerCase());
+        });
+    }
+    
+
+    function prevPage() {
+        if (page > 1) {
+            setPage(page - 1);
+        }
+    }
+
+    function nextPage() {
+        if (page < Math.ceil(users.length / pageSize)) {
+            setPage(page + 1);
+        }
+    }
+        
+
+
     return (
             <div className="container mx-auto px-4 sm:px-8">
                 <div className="py-8">
                     <div>
                         <h2 className="text-2xl font-semibold leading-tight">Users</h2>
                     </div>
-                    <div className="my-2 flex sm:flex-row flex-col">
+                    <div className="my-2 flex flex-row">
                         <div className="flex flex-row mb-1 sm:mb-0">
                             <div className="relative">
                                 <select
+                                onChange={(e) => setPageSize(Number(e.target.value))}
                                     className="appearance-none h-full rounded-l border block appearance-none w-full bg-base-200 border-base-100 py-2 px-4 pr-8 leading-tight focus:outline-none">
                                     <option>5</option>
                                     <option>10</option>
@@ -30,10 +89,11 @@ const UsersTable: React.FC = () => {
                             </div>
                             <div className="relative">
                                 <select
+                                onChange={(e) => setStatus(e.target.value)}
                                     className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                                    <option>All</option>
-                                    <option>Active</option>
-                                    <option>Inactive</option>
+                                    <option value="all">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
                                 </select>
                                 <div
                                     className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -44,16 +104,17 @@ const UsersTable: React.FC = () => {
                             </div>
                         </div>
                         <div className="block relative">
-                            <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-                                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current text-gray-500">
-                                    <path
-                                        d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
-                                    </path>
-                                </svg>
-                            </span>
                             <input placeholder="Search"
-                                className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                            onChange={(e) => setSearch(e.target.value)}
+                                className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b hidden sm:block pl-8 pr-6 py-2 bg-white text-sm" />
                         </div>
+                        <div className=" flex flex-grow">
+                    </div>
+                    <div className="flex flex-row mb-1 sm:mb-0">
+                        <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            New
+                        </button>
+                    </div>
                     </div>
                     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                         <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -76,149 +137,76 @@ const UsersTable: React.FC = () => {
                                             className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                             Status
                                         </th>
+                                        <th
+                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Actions
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 w-10 h-10">
-                                                    <img className="w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                        alt="" />
+                                    {filterUsers().slice((page - 1) * pageSize, page * pageSize).map((user) => (
+                                        <tr key={user.id}>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <div className="flex items-center">
+                                                    <div className="flex-shrink-0 w-10 h-10">
+                                                        {user.image ? <img className="w-full h-full rounded-full"
+                                                            src={user.image} alt="" />
+                                                            : <FontAwesomeIcon icon={faUser} className="w-full h-full rounded-full" />}
+                                                    </div>
+                                                    <div className="ml-3">
+                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                            {user.name ? user.name : user.email}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div className="ml-3">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        Vera Carpenter
-                                                    </p>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <p className="text-gray-900 whitespace-no-wrap">{user.role}</p>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                    {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : ''}
+                                                </p>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <span
+                                                    className={`relative inline-block px-3 py-1 font-semibold text-${user.status === 'ACTIVE' ? 'green' : 'red'}-900 leading-tight`}>
+                                                    <span aria-hidden
+                                                        className={`absolute inset-0 bg-${user.status === 'active' ? 'green' : 'red'}-200 opacity-50 rounded-full`}></span>
+                                                    <span className="relative">{user.status === 'active' ? 'Active' : 'Inactive'} </span>                                                </span>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <div className="flex items-center gap-2">
+                                                    <button
+                                                        className="btn btn-primary">
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </button>
+                                                    <button disabled={user.role === 'ADMIN'}
+                                                        className="btn btn-danger">
+                                                        <FontAwesomeIcon icon={faTrash} />
+                                                    </button>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">Admin</p>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Jan 21, 2020
-                                            </p>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <span
-                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                <span aria-hidden
-                                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                                <span className="relative">Activo</span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 w-10 h-10">
-                                                    <img className="w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                        alt="" />
-                                                </div>
-                                                <div className="ml-3">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        Blake Bowman
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">Editor</p>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Jan 01, 2020
-                                            </p>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <span
-                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                <span aria-hidden
-                                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                                <span className="relative">Activo</span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 w-10 h-10">
-                                                    <img className="w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                        alt="" />
-                                                </div>
-                                                <div className="ml-3">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        Dana Moore
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">Editor</p>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Jan 10, 2020
-                                            </p>
-                                        </td>
-                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <span
-                                                className="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                                                <span aria-hidden
-                                                    className="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>
-                                                <span className="relative">Suspended</span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="px-5 py-5 bg-white text-sm">
-                                            <div className="flex items-center">
-                                                <div className="flex-shrink-0 w-10 h-10">
-                                                    <img className="w-full h-full rounded-full"
-                                                        src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
-                                                        alt="" />
-                                                </div>
-                                                <div className="ml-3">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        Alonzo Cox
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td className="px-5 py-5 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">Admin</p>
-                                        </td>
-                                        <td className="px-5 py-5 bg-white text-sm">
-                                            <p className="text-gray-900 whitespace-no-wrap">Jan 18, 2020</p>
-                                        </td>
-                                        <td className="px-5 py-5 bg-white text-sm">
-                                            <span
-                                                className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                                <span aria-hidden
-                                                    className="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-                                                <span className="relative">Inactive</span>
-                                            </span>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                             <div
                                 className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                                 <span className="text-xs xs:text-sm text-gray-900">
-                                    Showing 1 to 4 of 50 Entries
+                                    Showing {page} to {pageSize} of {users.length} Entries
                                 </span>
                                 <div className="inline-flex mt-2 xs:mt-0">
                                     <button
-                                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+                                     onClick={prevPage}
+                                     disabled={page === 1}
+                                        className={"text-sm font-semibold py-2 px-4 rounded-l " + (page === 1 ? 'bg-gray-300' : 'bg-gray-400 hover:bg-gray-500 text-gray-800')}>
                                         Prev
                                     </button>
                                     <button
-                                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
+                                        onClick={nextPage}
+                                        disabled={page === Math.ceil(users.length / pageSize)}
+                                        className={"text-sm font-semibold py-2 px-4 rounded-r " + (page === Math.ceil(users.length / pageSize) ? 'bg-gray-300' : 'bg-gray-400 hover:bg-gray-500 text-gray-800')}>
                                         Next
                                     </button>
                                 </div>

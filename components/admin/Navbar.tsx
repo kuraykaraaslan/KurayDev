@@ -1,6 +1,7 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faUser } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 // Next Auth
 import { useSession } from "next-auth/react"
@@ -11,12 +12,16 @@ const Navbar = () => {
 
     const { data: session } = useSession();
 
+    useEffect(() => {
+
+    }, []);
+
     return (
         <div className="navbar bg-base-300">
             <div className="flex-1">
                 <Link href="/admin" className="flex items-center gap-2 mr-2">
-                <FontAwesomeIcon icon={faCode} className="w-5 h-5" />
-                <span className="text-lg font-bold">kuray.dev</span>
+                    <FontAwesomeIcon icon={faCode} className="w-5 h-5 mt-1 ml-2" />
+                    <span className="text-lg font-bold">kuray.dev</span>
                 </Link>
                 <ThemeButton />
             </div>
@@ -52,11 +57,15 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src={session?.user?.image || "https://avatars.dicebear.com/api/avataaars/kuray.svg"}
-                                className="rounded-full w-10 h-10"
-                            />
+                            {session && session.user?.image ? (
+                                <img
+                                    src={session.user.image}
+                                    alt="User Image"
+                                    className="rounded-full w-10 h-10"
+                                />
+                            ) : (
+                                <FontAwesomeIcon icon={faUser} className="w-10 h-10" />
+                            )}
                         </div>
                     </div>
                     <ul
