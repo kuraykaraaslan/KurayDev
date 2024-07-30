@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,11 +6,32 @@ import { faCode } from "@fortawesome/free-solid-svg-icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
-  title: "kuray karaaslan - self-taught full-stack developer",
-  description:
-    "i'm a self-taught full-stack developer with experience in react , java and more. I'm open for new opportunities.",
+  applicationName: process.env.APP_NAME,
+  title: {
+    default: process.env.APP_DEFAULT_TITLE,
+    template: process.env.APP_TITLE_TEMPLATE,
+  },
+  description: process.env.APP_DESCRIPTION,
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: process.env.APP_DEFAULT_TITLE,
+    // startUpImage: [],
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
+    type: "website",
+    siteName: process.env.APP_NAME,
+    title: {
+      default: process.env.APP_DEFAULT_TITLE,
+      template: process.env.APP_TITLE_TEMPLATE,
+    },
+    description: process.env.APP_DESCRIPTION,
     images: [
       {
         url: "/assests/img/og.png",
@@ -20,6 +41,23 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary",
+    title: {
+      default: process.env.APP_DEFAULT_TITLE,
+      template: process.env.APP_TITLE_TEMPLATE,
+    },
+    description: process.env.APP_DESCRIPTION,
+  },
+};
+
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

@@ -6,8 +6,12 @@ if (NODE_ENV === "development") {
   require('dotenv').config({ path: `./.env.production` });
 }
 
+const withPWA = require("@ducanh2912/next-pwa").default({
+  dest: "public",
+});
 
-module.exports = {
+
+const nextConfig = {
   trailingSlash: true, // Add trailing slash to all paths
   reactStrictMode: true,
   typescript: {
@@ -40,5 +44,11 @@ module.exports = {
     DATABASE_USER: process.env.DATABASE_USER,
     DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
     DATABASE_PORT: process.env.DATABASE_PORT,
+    APP_NAME: process.env.APP_NAME,
+    APP_DEFAULT_TITLE: process.env.APP_DEFAULT_TITLE,
+    APP_DESCRIPTION: process.env.APP_DESCRIPTION,
+    APP_TITLE_TEMPLATE: process.env.APP_TITLE_TEMPLATE,
   },
 };
+
+module.exports = withPWA(nextConfig);

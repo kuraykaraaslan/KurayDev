@@ -72,13 +72,20 @@ const LogoButton = () => {
         </Link>
         {/*@ts-ignore*/}
       </div>
-      <ul tabIndex={0} className="absolute z-[1] menu p-2 mt-4 shadow bg-base-100 rounded-box w-32 text-base-content" style={{ display: showMenu ? "block" : "none" }}>
+      <ul tabIndex={0} className="absolute z-[1] menu p-2 mt-4 shadow bg-base-200 rounded-box w-48 text-base-content shadow-lg"
+       style={{ display: showMenu ? "block" : "none" }}>
         {session ? (
           <>
           <li>
+            <Link href="/admin" className="">
+              <FontAwesomeIcon icon={faUser} className="w-4 h-4 mr-2" />
+              {t("NAVIGATION.ADMIN")}
+            </Link>
+          </li>
+          <li>
             <button
               onClick={() => signOut()}
-              className="menu-title"
+              className=""
             >
               <FontAwesomeIcon icon={faRightFromBracket} className="w-4 h-4 mr-2 mt-1" />
               {t("NAVIGATION.LOGOUT")}

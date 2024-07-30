@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect, Suspense , useState} from "react";
 import "./globals.css";
 
 // Components
@@ -19,9 +19,12 @@ import { withTranslation } from "react-i18next";
 
 // Next Auth
 import { SessionProvider } from "next-auth/react"
+import { useSession } from "next-auth/react"
 
+import { auth } from "@/auth.ts";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
+
 
 
   return (
@@ -30,7 +33,8 @@ const layout = ({ children }: { children: React.ReactNode }) => {
         <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
           <Navbar />
           <div className="max-w-full md:max-w-7xl mx-auto px-4 md:px-8 min-h-screen">
-            {children}</div>
+            {children}
+          </div>
           <Footer />
         </CookiesProvider>
       </SessionProvider>
