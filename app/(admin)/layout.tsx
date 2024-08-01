@@ -21,24 +21,30 @@ import { withTranslation } from "react-i18next";
 import { SessionProvider } from "next-auth/react"
 import { useSession } from "next-auth/react"
 
-import { auth } from "@/auth.ts";
+// Router
+import { useRouter } from "next/navigation";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
 
+  const router = useRouter();
 
+  const { data: session } = useSession();
+
+
+  if (!session) {
+  
+    return (
+        <Loading />
+    );
+  }
 
   return (
-    <Suspense fallback={<Loading />}>
-      <SessionProvider>
-        <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
-          <Navbar />
-          <div className="max-w-full md:max-w-7xl mx-auto px-4 md:px-8 min-h-screen">
-            {children}
-          </div>
-          <Footer />
-        </CookiesProvider>
-      </SessionProvider>
-    </Suspense>
+    <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
+      <Navbar />
+      <div className="max-w-full md:max-w-7xl mx-auto px-4 md:px-8 min-h-screen">
+        {children}
+      </div>
+    </CookiesProvider>
   );
 };
 

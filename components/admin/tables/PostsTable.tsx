@@ -1,87 +1,229 @@
-import React from 'react';
+'use client';
+import { Category, Post } from '@prisma/client';
+import React, { useState, useEffect } from 'react';
+import axios from '@/libs/http/axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useSession, SessionProvider } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
-interface Post {
-    id: number;
-    title: string;
-    author: string;
-    date: string;
-}
+const PostsTable = () => {
+    const session = useSession();
+    const router = useRouter();
 
-const PostsTable: React.FC<{ posts: Post[] }> = ({ posts }) => {
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [search, setSearch] = useState('');
+    const [status, setStatus] = useState('all');
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+    const [totalPages, setTotalPages] = useState(0);
+
+    useEffect(() => {
+        axios.get('/api/blog/posts', {
+            params: {
+                search,
+                status,
+                page,
+                pageSize
+            }
+        })
+            .then((response) => {
+                console.log(response.data);
+                setPosts(response.data.posts);
+                setTotalPages(response.data.total === 0 ? 1 : Math.ceil(response.data.total / pageSize));
+                setPage(response.data.page);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+    , [  page, pageSize ]);
+
+    useEffect(() => {
+        setPage(1);
+
+        axios.get('/api/blog/posts', {
+            params: {
+                search,
+                status,
+                page,
+                pageSize
+            }
+        })
+            .then((response) => {
+                console.log(response.data);
+                setPosts(response.data.posts);
+                setTotalPages(response.data.total === 0 ? 1 : Math.ceil(response.data.total / pageSize));
+                setPage(response.data.page);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+    }
+    , [search, status]);
+
+
+    function prevPage() {
+        if (page > 1) {
+            setPage(page - 1);
+        }
+    }
+
+    function nextPage() {
+        if (page < totalPages) {
+            setPage(page + 1);
+        }
+    }
+        
+
+
     return (
-        <div className="overflow-x-auto bg-base-200 mt-4">
-            <table className="table">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* row 1 */}
-                    <tr className="bg-base-200">
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    {/* row 2 */}
-                    <tr>
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-                    {/* row 3 */}
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div className="flex justify-between items-center mt-4 bg-base-200 p-4 rounded-box">
-                <nav aria-label="Page navigation example">
-                    <ul className="flex items-center -space-x-px h-10 text-base">
-                        <li>
-                            <a href="#" className="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span className="sr-only">Previous</span>
-                                <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                        </li>
-                        <li>
-                            <a href="#" aria-current="page" className="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                        </li>
-                        <li>
-                            <a href="#" className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                <span className="sr-only">Next</span>
-                                <svg className="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+            <div className="container mx-auto px-4 sm:px-8">
+                <div className="py-8">
+                    <div>
+                        <h2 className="text-2xl font-semibold leading-tight">Posts</h2>
+                    </div>
+                    <div className="my-2 flex flex-row">
+                        <div className="flex flex-row mb-1 sm:mb-0">
+                            <div className="relative">
+                                <select
+                                onChange={(e) => setPageSize(Number(e.target.value))}
+                                    className="appearance-none h-full rounded-l border block appearance-none w-full bg-base-200 border-base-100 py-2 px-4 pr-8 leading-tight focus:outline-none">
+                                    <option>5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                </select>
+                                <div
+                                    className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <select
+                                onChange={(e) => setStatus(e.target.value)}
+                                    className="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-base-200 py-2 px-4 pr-8 leading-tight">
+                                    <option value="all">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="block relative">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 mb-1 flex items-center px-2 text-gray-700">
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                </div>
+                            <input placeholder="Search"
+                            onChange={(e) => setSearch(e.target.value)}
+                                className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b hidden sm:block pl-8 pr-6 py-2 bg-white text-sm" />
+                        </div>
+                        <div className=" flex flex-grow">
+                    </div>
+                    <div className="flex flex-row mb-1 sm:mb-0">
+                        <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            New
+                        </button>
+                    </div>
+                    </div>
+                    <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                        <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                            <table className="min-w-full leading-normal">
+                                <thead>
+                                    <tr>
+                                        <th
+                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            User
+                                        </th>
+                                        <th
+                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Rol
+                                        </th>
+                                        <th
+                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Created at
+                                        </th>
+                                        <th
+                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Status
+                                        </th>
+                                        <th
+                                            className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {posts.map((post) => (
+                                        <tr key={post.id}>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <div className="flex items-center">
+                                                    <div className="ml-3">
+                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                            {post.title ? post.title : 'No title'}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <p className="text-gray-900 whitespace-no-wrap">{post.slug}</p>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                    {post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ''}
+                                                </p>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <span
+                                                    className={`relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight`}>
+                                                    <span aria-hidden
+                                                        className={`absolute inset-0 bg-green-200 opacity-50 rounded-full`}></span>
+                                                    <span className="relative">active</span>
+                                                </span>
+                                            </td>
+                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <div className="flex items-center gap-2">
+                                                    <button
+                                                        onClick={() => router.push(`/admin/users/${post.id}`)}
+                                                        className="btn btn-primary">
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </button>
+                                                    <button disabled={!session}
+                                                        className="btn btn-danger">
+                                                        <FontAwesomeIcon icon={faTrash} />
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <div
+                                className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+                                <span className="text-xs xs:text-sm text-gray-900">
+                                    Showing {page} to {pageSize} of {posts.length} Entries
+                                </span>
+                                <div className="inline-flex mt-2 xs:mt-0">
+                                    <button
+                                     onClick={prevPage}
+                                     disabled={page === 1}
+                                        className={"text-sm font-semibold py-2 px-4 rounded-l " + (page === 1 ? 'bg-gray-300' : 'bg-gray-400 hover:bg-gray-500 text-gray-800')}>
+                                        Prev
+                                    </button>
+                                    <button
+                                        onClick={nextPage}
+                                        disabled={totalPages === 0 || page === totalPages}
+                                        className={"text-sm font-semibold py-2 px-4 rounded-r " + (page === Math.ceil(posts.length / pageSize) ? 'bg-gray-300' : 'bg-gray-400 hover:bg-gray-500 text-gray-800')}>
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
     );
 };
 

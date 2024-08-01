@@ -6,5 +6,4 @@ const Page: React.FC = () => {
         <UsersTable />
     );
 };
-
 export default Page;

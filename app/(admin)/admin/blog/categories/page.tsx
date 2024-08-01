@@ -1,11 +1,11 @@
 import BreadCrumb from '@/components/admin/BreadCrumb';
-import PostsTable from '@/components/admin/tables/PostsTable';
+import CategoriesTable from '@/components/admin/tables/CategoriesTable';
 import React from 'react';
 
 const Page: React.FC = () => {
     return (
         <>
-            <PostsTable />
+            <CategoriesTable />
         </>
     );
 };

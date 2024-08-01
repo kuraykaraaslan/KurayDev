@@ -120,6 +120,8 @@ export default class UserService {
             return prisma.user.findMany({
                 select: {
                     id: true,
+                    username: true,
+                    about: true,
                     email: true,
                     image: true,
                     
@@ -137,7 +139,7 @@ export default class UserService {
 
         //check if user is authorized to get user
 
-        if (!sessionUser.role || (sessionUser.role !== 'USER' && sessionUser.role !== 'ADMIN')) {
+        if (!sessionUser) {
             throw new Error("Unauthorized: User not authorized");
         }
 
@@ -145,6 +147,18 @@ export default class UserService {
         const user = await prisma.user.findFirst({
             where: {
                 id: userId
+            },
+            select: {
+                id: true,
+                username: true,
+                about: true,
+                name: true,
+                email: true,
+                role: true,
+                image: true,
+                createdAt: true,
+                updatedAt: true,
+                status: true
             }
 
         }).then((user) => {
@@ -152,12 +166,38 @@ export default class UserService {
         });
 
         if (!user) {
-            throw new Error("User not found");
+            return null;
         }
 
         return user;
     }
 
+    static async getUserNoSensitiveData(userId: string) {
+        //get the user by id
+        const user = await prisma.user.findFirst({
+            where: {
+                id: userId
+            },
+            select: {
+                id: true,
+                name: true,
+                email: false,
+                image: true,
+                role: true,
+                createdAt: false,
+                status: false,
+            }
+
+        }).then((user) => {
+            return user;
+        });
+
+        if (!user) {
+            return null;
+        }
+
+        return user;
+    }
 }
 
 

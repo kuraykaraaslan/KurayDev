@@ -6,6 +6,8 @@ import { faCode } from "@fortawesome/free-solid-svg-icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import { SessionProvider } from "next-auth/react";
+
 
 export const metadata: Metadata = {
   applicationName: process.env.APP_NAME,
@@ -75,7 +77,9 @@ export default function RootLayout({
       </head>
       <body className="flex text-base-900 font-sans h-full min-h-screen items-center justify-center transition">
         <div className="lowercase w-full">
-        {children}
+          <SessionProvider>
+              {children}
+          </SessionProvider>
         </div>
       </body>
     </html>

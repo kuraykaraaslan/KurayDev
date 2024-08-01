@@ -95,7 +95,7 @@ const LogoButton = () => {
         ) : (
           <>
           <li>
-            <Link href="/auth/login" className="menu-title">
+            <Link href="/auth/signin" className="menu-title">
               <FontAwesomeIcon icon={faRightToBracket} className="w-4 h-4 mr-2" />
               {t("NAVIGATION.LOGIN")}
             </Link>

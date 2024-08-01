@@ -56,17 +56,27 @@ export async function GET(request: NextRequest, response: NextResponse<ResponseD
         const { searchParams } = new URL(request.url);
         
         var page = searchParams.get('page') || 1;
-        var limit = searchParams.get('limit') || 10;
+        var pageSize = searchParams.get('pageSize') || 10;
+        var search = searchParams.get('search') || '';
+
+        console.log("page: ", page , "pageSize: ", pageSize , "search: ", search);
+
+        //regex to check if search contains only letters , turkish characters and numbers
+        var regex = /^[a-zA-Z0-9ğüşöçİĞÜŞÖÇ\s]*$/;
+
+        if (!regex.test(search)) {
+            return NextResponse.json({ message: "Invalid search query" }, { status: 400 });
+        }
 
         if (!page) {
             page = 1;
         }
 
-        if (!limit) {
-            limit = 10;
+        if (!pageSize) {
+            pageSize = 10;
         }
 
-        const categories = await blogCategoryService.getCategories({ page: Number(page), limit: Number(limit) });
+        const categories = await blogCategoryService.getCategories({ page: Number(page), pageSize: Number(pageSize), search: search });
 
         return NextResponse.json(categories);
 

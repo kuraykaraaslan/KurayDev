@@ -125,14 +125,32 @@ export default class BlogPostService {
 
     }
 
-    async getPosts({ page = 1, limit = 10 }) {
-        return prisma.post.findMany({
-            skip: (page - 1) * limit,
-            take: limit
-        }).then((posts) => {
-            return posts;
-        });
-    }
+    async getPosts({ page = 1, pageSize = 10 , search = '' }) {
+        return prisma.$transaction([
+            prisma.post.count({
+                where: {
+                    title: {
+                        contains: search
+                    }
+                }
+            }),
+            prisma.post.findMany({
+                where: {
+                    title: {
+                        contains: search
+                    }
+                }
+            })
+        ]).then(([total, posts]) => {
+            return {
+                total,
+                page,
+                pageSize,
+                posts
+            };
+        }
+        );
+    }   
 
     async getPostBySlug(slug: string) {
         return prisma.post.findFirst({

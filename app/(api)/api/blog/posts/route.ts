@@ -59,25 +59,35 @@ export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
 }
 
 
-export async function GET(req: NextRequest, res: NextResponse<ResponseData>) {
+export async function GET(request: NextRequest, response: NextResponse<ResponseData>) {
     try {
 
 
-        const { searchParams } = new URL(req.url);
+        const { searchParams } = new URL(request.url);
 
-        var page = searchParams.get('page');
-        var limit = searchParams.get('limit');
+        var page = searchParams.get('page') || 1;
+        var pageSize = searchParams.get('pageSize') || 10;
+        var search = searchParams.get('search') || '';
+
+        console.log("page: ", page , "pageSize: ", pageSize , "search: ", search);
+
+        //regex to check if search contains only letters , turkish characters and numbers
+        var regex = /^[a-zA-Z0-9ğüşöçİĞÜŞÖÇ\s]*$/;
+
+        if (!regex.test(search)) {
+            return NextResponse.json({ message: "Invalid search query" }, { status: 400 });
+        }
 
         if (!page) {
-            page = '1';
+            page = 1;
         }
 
-        if (!limit) {
-            limit = '10';
+        if (!pageSize) {
+            pageSize = 10;
         }
 
 
-        const posts = await blogPostService.getPosts({ page: parseInt(page), limit: parseInt(limit) }) as Post[];
+        const posts = await blogPostService.getPosts({ page: Number(page), pageSize: Number(pageSize), search: search });
 
         return NextResponse.json(posts);
     } catch (error : any) {

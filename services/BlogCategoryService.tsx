@@ -101,12 +101,33 @@ export default class BlogCategoryService {
         });
     }
 
-    async getCategories({ page = 1, limit = 10 }) {
-        return prisma.category.findMany({
-            skip: (page - 1) * limit,
-            take: limit
-        }).then((categories) => {
-            return categories;
+    async getCategories({ page = 1, pageSize = 10 , search = '' }) {
+
+        return prisma.$transaction([
+            prisma.category.count({
+                where: {
+                    title: {
+                        
+                        startsWith: search
+                    }
+                }
+            }),
+            prisma.category.findMany({
+                where: {
+                    title: {
+                        contains: search
+                    }
+                },
+                skip: (page - 1) * pageSize,
+                take: pageSize
+            })
+        ]).then(([total, categories]) => {
+            return {
+                total,
+                page,
+                pageSize,
+                categories
+            };
         });
     }
 

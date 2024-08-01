@@ -1,65 +1,69 @@
 'use client';
-import React , { useState, useEffect } from 'react';
+import { Category } from '@prisma/client';
+import React, { useState, useEffect } from 'react';
 import axios from '@/libs/http/axios';
-import { useSession, SessionProvider } from 'next-auth/react';
-import { User } from '@prisma/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faEdit, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useSession, SessionProvider } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-interface Props {
-    // Add any props you need here
-}
-
-const UsersTable: React.FC = () => {
-
+const CategoriesTable: React.FC = () => {
     const session = useSession();
     const router = useRouter();
 
-    const [users, setUsers] = useState<User[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [search, setSearch] = useState('');
     const [status, setStatus] = useState('all');
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(5);
+    const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
-        if (!session) return;
-        if (users.length > 0) return;
-
-        axios.get('/api/users')
+        axios.get('/api/blog/categories', {
+            params: {
+                search,
+                status,
+                page,
+                pageSize
+            }
+        })
             .then((response) => {
-                if (response.status === 200) {
-                    setUsers(response.data);
-                }
-
-                else {
-                    console.log(response.data);
-                }
+                console.log(response.data);
+                setCategories(response.data.categories);
+                setTotalPages(response.data.total === 0 ? 1 : Math.ceil(response.data.total / pageSize));
+                setPage(response.data.page);
             })
             .catch((error) => {
-
-
+                console.error(error);
             });
-            
-    }, [session, users]);
-
-    //create observable
-    const filterUsers = () => {
-        return users.filter((user: User) => {
-            if (status === 'all') {
-                return user;
-            }
-            return user.status === status;
-        }
-        ).filter((user: User) => {
-            if (search === '' || search === null || search.length < 3) {
-                return user;
-            }
-            return user.name?.toLowerCase().includes(search.toLowerCase()) || user.email.toLowerCase().includes(search.toLowerCase());
-        });
     }
-    
+    , [  page, pageSize ]);
+
+    useEffect(() => {
+        setPage(1);
+
+        axios.get('/api/blog/categories', {
+            params: {
+                search,
+                status,
+                page,
+                pageSize
+            }
+        })
+            .then((response) => {
+                console.log(response.data);
+                setCategories(response.data.categories);
+                setTotalPages(response.data.total === 0 ? 1 : Math.ceil(response.data.total / pageSize));
+                setPage(response.data.page);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+    }
+    , [search, status]);
+
 
     function prevPage() {
         if (page > 1) {
@@ -68,7 +72,7 @@ const UsersTable: React.FC = () => {
     }
 
     function nextPage() {
-        if (page < Math.ceil(users.length / pageSize)) {
+        if (page < totalPages) {
             setPage(page + 1);
         }
     }
@@ -79,7 +83,7 @@ const UsersTable: React.FC = () => {
             <div className="container mx-auto px-4 sm:px-8">
                 <div className="py-8">
                     <div>
-                        <h2 className="text-2xl font-semibold leading-tight">Users</h2>
+                        <h2 className="text-2xl font-semibold leading-tight">Categories</h2>
                     </div>
                     <div className="my-2 flex flex-row">
                         <div className="flex flex-row mb-1 sm:mb-0">
@@ -152,45 +156,41 @@ const UsersTable: React.FC = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {filterUsers().slice((page - 1) * pageSize, page * pageSize).map((user) => (
-                                        <tr key={user.id}>
+                                    {categories.map((category) => (
+                                        <tr key={category.id}>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <div className="flex items-center">
-                                                    <div className="flex-shrink-0 w-10 h-10">
-                                                        {user.image ? <img className="w-full h-full rounded-full"
-                                                            src={user.image} alt="" />
-                                                            : <FontAwesomeIcon icon={faUser} className="w-full h-full rounded-full" />}
-                                                    </div>
                                                     <div className="ml-3">
                                                         <p className="text-gray-900 whitespace-no-wrap">
-                                                            {user.name ? user.name : 'No name'}
+                                                            {category.title ? category.title : 'No title'}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                <p className="text-gray-900 whitespace-no-wrap">{user.role}</p>
+                                                <p className="text-gray-900 whitespace-no-wrap">{category.slug}</p>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <p className="text-gray-900 whitespace-no-wrap">
-                                                    {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : ''}
+                                                    {category.createdAt ? new Date(category.createdAt).toLocaleDateString() : ''}
                                                 </p>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <span
-                                                    className={`relative inline-block px-3 py-1 font-semibold text-${user.status === 'ACTIVE' ? 'green' : 'red'}-900 leading-tight`}>
+                                                    className={`relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight`}>
                                                     <span aria-hidden
-                                                        className={`absolute inset-0 bg-${user.status === 'active' ? 'green' : 'red'}-200 opacity-50 rounded-full`}></span>
-                                                    <span className="relative">{user.status === 'active' ? 'Active' : 'Inactive'} </span>                                                </span>
+                                                        className={`absolute inset-0 bg-green-200 opacity-50 rounded-full`}></span>
+                                                    <span className="relative">active</span>
+                                                </span>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <div className="flex items-center gap-2">
                                                     <button
-                                                        onClick={() => router.push(`/admin/users/${user.id}`)}
+                                                        onClick={() => router.push(`/admin/users/${category.id}`)}
                                                         className="btn btn-primary">
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     </button>
-                                                    <button disabled={user.role === 'ADMIN'}
+                                                    <button disabled={!session}
                                                         className="btn btn-danger">
                                                         <FontAwesomeIcon icon={faTrash} />
                                                     </button>
@@ -203,7 +203,7 @@ const UsersTable: React.FC = () => {
                             <div
                                 className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                                 <span className="text-xs xs:text-sm text-gray-900">
-                                    Showing {page} to {pageSize} of {users.length} Entries
+                                    Showing {page} to {pageSize} of {categories.length} Entries
                                 </span>
                                 <div className="inline-flex mt-2 xs:mt-0">
                                     <button
@@ -214,8 +214,8 @@ const UsersTable: React.FC = () => {
                                     </button>
                                     <button
                                         onClick={nextPage}
-                                        disabled={page === Math.ceil(users.length / pageSize)}
-                                        className={"text-sm font-semibold py-2 px-4 rounded-r " + (page === Math.ceil(users.length / pageSize) ? 'bg-gray-300' : 'bg-gray-400 hover:bg-gray-500 text-gray-800')}>
+                                        disabled={totalPages === 0 || page === totalPages}
+                                        className={"text-sm font-semibold py-2 px-4 rounded-r " + (page === Math.ceil(categories.length / pageSize) ? 'bg-gray-300' : 'bg-gray-400 hover:bg-gray-500 text-gray-800')}>
                                         Next
                                     </button>
                                 </div>
@@ -227,4 +227,4 @@ const UsersTable: React.FC = () => {
     );
 };
 
-export default UsersTable;
+export default CategoriesTable;

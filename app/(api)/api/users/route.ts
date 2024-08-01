@@ -8,6 +8,11 @@ import { unzip } from "zlib";
 export async function GET(req: NextRequest, res: NextResponse) {
 
     try {    
+        const session = await auth()
+
+        console.log("Session:");
+        console.log(session);
+
        
         const users = await UserService.getUsersNoSensitiveData();
         
