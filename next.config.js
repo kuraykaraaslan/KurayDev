@@ -48,7 +48,7 @@ const nextConfig = {
     APP_DEFAULT_TITLE: process.env.APP_DEFAULT_TITLE,
     APP_DESCRIPTION: process.env.APP_DESCRIPTION,
     APP_TITLE_TEMPLATE: process.env.APP_TITLE_TEMPLATE,
-  },
+  }
 };
 
 module.exports = withPWA(nextConfig);

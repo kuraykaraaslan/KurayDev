@@ -125,6 +125,21 @@ export default class BlogPostService {
 
     }
 
+    async createPostByAdmin(post: Post) {
+            
+            //create the post
+            return prisma.post.create({
+                data: {
+                    ...post,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                }
+            }).then((post) => {
+                return post;
+            });
+    
+        }
+
     async getPosts({ page = 1, pageSize = 10 , search = '' }) {
         return prisma.$transaction([
             prisma.post.count({
