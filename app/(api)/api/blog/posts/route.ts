@@ -18,7 +18,7 @@ export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
 
     try {
         const body = await req.json();
-        
+
         const { id, title, content, slug, categoryId, image, authorId, createdAt, updatedAt, status } = body;
 
         if (!title || !content || !slug || !categoryId || !image) {
@@ -93,11 +93,11 @@ export async function PUT(request: NextRequest, response: NextResponse<ResponseD
 
     const session = await auth();
 
-    /*
+    
     if (!session?.user) {
         return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
-    */
+    
 
 
     try {
