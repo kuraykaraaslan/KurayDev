@@ -15,46 +15,37 @@ type ResponseData = {
 
 export async function POST(req: NextRequest, res: NextResponse<ResponseData>) {
 
-    const session = await auth();
-
-    if (!session?.user) {
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-
-    const user = session.user as User;
-    
-    if (!user.role || user.role !== 'ADMIN') {
-        return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-
-
 
     try {
-        const { id, title, content, slug, categoryId, image , authorId, status , createdAt , updatedAt } = await req.json();
+        const body = await req.json();
+        
+        const { id, title, content, slug, categoryId, image, authorId, createdAt, updatedAt, status } = body;
 
         if (!title || !content || !slug || !categoryId || !image) {
             return NextResponse.json({ message: "Please fill in the required fields." }, { status: 400 });
         }
 
-        const res = await blogPostService.createPost({
+        console.log("authorId: ", authorId);
+
+        const res = await blogPostService.createPostByAdmin({
             id,
             title,
             slug,
             content,
             categoryId,
             image,
-            authorId: authorId || user.id,
+            authorId: authorId,
             createdAt: createdAt || new Date(),
             updatedAt: updatedAt || new Date(),
             status: status || 'PUBLISHED'
-        }, user);
+        });
 
         return NextResponse.json(res);
     }
 
-    catch (error) {
+    catch (error: any) {
         console.error(error);
-        return NextResponse.json({ message: "An error occurred" }, { status: 500 });
+        return NextResponse.json({ message:  error.message }, { status: 500 });
     }
 }
 
@@ -102,9 +93,11 @@ export async function PUT(request: NextRequest, response: NextResponse<ResponseD
 
     const session = await auth();
 
+    /*
     if (!session?.user) {
         return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
+    */
 
 
     try {

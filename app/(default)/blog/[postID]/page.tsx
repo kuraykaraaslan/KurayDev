@@ -14,7 +14,7 @@ export default function BlogPost({ params } : { params: { postID: string } }) {
     });
 
     useEffect(() => {
-        axiosInstance.get("/api/blog/post/" + params.postID)
+        axiosInstance.get("/api/blog/posts/" + params.postID)
             .then(response => {
                 console.log(response.data);
                 if (response.data) {
