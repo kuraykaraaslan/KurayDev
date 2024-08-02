@@ -76,6 +76,10 @@ const PostsTable = () => {
             setPage(page + 1);
         }
     }
+
+    function handleNewPost() {
+        router.push('/admin/blog/posts/new');
+    }
         
 
 
@@ -123,7 +127,9 @@ const PostsTable = () => {
                         <div className=" flex flex-grow">
                     </div>
                     <div className="flex flex-row mb-1 sm:mb-0">
-                        <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        <button type="button" 
+                        onClick={handleNewPost}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             New
                         </button>
                     </div>

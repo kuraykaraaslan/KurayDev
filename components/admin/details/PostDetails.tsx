@@ -1,9 +1,12 @@
 'use client';
 import React, { useEffect } from 'react';
-import { Post } from '@/libs/prisma/prisma';
+import { Post, User} from '@/libs/prisma/prisma';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import axiosInstance from '@/libs/http/axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 
 interface PostDetailsProps {
     post: Post;
@@ -21,10 +24,19 @@ const PostDetails: React.FC<PostDetailsProps> = (props) => {
     const [authorId, setAuthorId] = React.useState<string>("");
     const [categoryId, setCategoryId] = React.useState<string>("");
 
+
+    // 
+    const [authors, setAuthors] = React.useState<any[]>([]);
+    const [categories, setCategories] = React.useState<any[]>([]);
+
+    //
+
     useEffect(() => {
         if (!props) {
             return;
         };
+        fetchAuthors();
+        fetchCategories();
         setId(props.post.id);
         setTitle(props.post.title);
         setSlug(props.post.slug);
@@ -33,23 +45,95 @@ const PostDetails: React.FC<PostDetailsProps> = (props) => {
         setImage(props.post.image);
         setAuthorId(props.post.authorId);
         setCategoryId(props.post.categoryId);
-    
-    } , [props]);
+
+    }, [props]);
 
     // handle form submit
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        // save the
-        axiosInstance.put(`/api/users/${props?.user?.id}`, {
-            username: username,
-            name: name,
-            about: about,
-            image: image
-        }).then((response) => {
-            console.log(response.data);
-        }).catch((error) => {
-            console.error(error);
-        });
+
+        console.log("title: ", title);
+        console.log("slug: ", slug);
+        console.log("content: ", content);
+        console.log("status: ", status);
+        console.log("authorId: ", authorId);
+        console.log("categoryId: ", categoryId);
+
+        if (!title || !slug || !content || !status || !authorId || !categoryId) {
+            alert("Please fill all fields");
+            return;
+        }
+        
+        if (id) {
+            updatePost(e);
+        } else {
+            createPost(e);
+        }
+    }
+
+    //update current post
+    const updatePost = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        axiosInstance.put(`/api/blog/posts/${props?.post.id}`, {
+            title,
+            slug,
+            content,
+            status,
+            image,
+            authorId,
+            categoryId
+        }).
+            then((res) => {
+                console.log(res.data);
+            }).
+            catch((err) => {
+                console.log(err);
+            });
+    }
+
+    //create new post
+    const createPost = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        axiosInstance.post(`/api/blog/posts`, {
+            title,
+            slug,
+            content,
+            status,
+            image,
+            authorId,
+            categoryId
+        }).
+            then((res) => {
+                console.log(res.data);
+            }).
+            catch((err) => {
+                console.log(err);
+            });
+    }
+
+    //fetch authors
+    const fetchAuthors = () => {
+        axiosInstance.get(`/api/users`).
+            then((res) => {
+                setAuthors(res.data);
+                console.log(res.data);
+            }).
+            catch((err) => {
+                console.log(err);
+            });
+    }
+
+    //fetch categories
+    const fetchCategories = () => {
+        axiosInstance.get(`/api/blog/categories`).
+            then((res) => {
+                setCategories(res.data.categories);
+                console.log(res.data);
+            }).
+            catch((err) => {
+                console.log(err);
+            }
+            );
     }
 
 
@@ -61,45 +145,20 @@ const PostDetails: React.FC<PostDetailsProps> = (props) => {
                 </div>
                 <form>
                     <div className="space-y-12 mt-2">
-                        <div className="border-b border-gray-900/10 pb-12 bg-base-300 p-4 rounded-lg">
-                            <h2 className="text-base font-semibold leading-7 ">Post Information</h2>
-                            <p className="mt-1 text-sm leading-6 ">
-                                Basic information about the post.
-                            </p>
+                        <div className="border-b pb-12 bg-base-300 p-4 rounded-lg">
 
-                            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div className="grid grid-cols-1 gap-x-6 gap-y-8">
                                 <div className="sm:col-span-4">
-                                    <label htmlFor="title" className="block text-sm font-medium leading-6 ">
+                                    <label htmlFor="name" className="block text-sm font-medium leading-6 ">
                                         Title
                                     </label>
                                     <div className="mt-2">
-                                        <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 bg-white sm:max-w-md">
-                                            <span className="flex select-none items-center pl-3 pt-[0.5px] text-gray-500 sm:text-sm">kuray.dev/users/</span>
-                                            <input
-                                                id="title"
-                                                name="title"
-                                                type="text"
-                                                value={title}
-                                                onChange={(e) => setTitle(e.target.value)}
-                                                placeholder="A title for the post"
-                                                autoComplete="title"
-                                                className="block flex-1 border-0 bg-transparent py-1.5 pl-1  placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="sm:col-span-4">
-                                    <label htmlFor="name" className="block text-sm font-medium leading-6 ">
-                                        Name
-                                    </label>
-                                    <div className="mt-2">
                                         <input
-                                            id="name"
-                                            name="name"
+                                            id="title"
+                                            name="title"
                                             type="text"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
                                             placeholder="Jane Smith"
                                             autoComplete="name"
                                             className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -107,62 +166,145 @@ const PostDetails: React.FC<PostDetailsProps> = (props) => {
                                     </div>
                                 </div>
 
-                                <div className="col-span-full">
-                                    <label htmlFor="about" className="block text-sm font-medium leading-6 ">
-                                        About
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="slug" className="block text-sm font-medium leading-6 ">
+                                        Slug
                                     </label>
                                     <div className="mt-2">
-                                        <textarea
-                                            id="about"
-                                            name="about"
-                                            rows={3}
-                                            placeholder="You can write a few sentences about yourself."
-                                            value={about}
-                                            onChange={(e) => setAbout(e.target.value)}
+                                        <input
+                                            id="slug"
+                                            name="slug"
+                                            type="text"
+                                            value={slug}
+                                            onChange={(e) => setSlug(e.target.value)}
+                                            placeholder="jane-smith"
+                                            autoComplete="slug"
                                             className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         />
                                     </div>
-                                    <p className="mt-3 text-sm leading-6 ">Write a few sentences about yourself.</p>
                                 </div>
 
-                                <div className="col-span-full">
-                                    <label htmlFor="photo" className="block text-sm font-medium leading-6 ">
-                                        Photo
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="status" className="block text-sm font-medium leading-6 ">
+                                        Status
                                     </label>
-                                    <div className="mt-2 flex items-center gap-x-3">
-                                        {image ? (
-                                            <img src={image} alt="User" className="h-12 w-12 rounded-full" />
-                                        ) : (
-                                            <div className="h-12 w-12 bg-gray-300 rounded-full"></div>
-                                        )}
-                                        <button
-                                            type="button"
-                                            className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold  shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                                    <div className="mt-2">
+                                        <select
+                                            id="status"
+                                            name="status"
+                                            value={status}
+                                            onChange={(e) => setStatus(e.target.value)}
+                                            autoComplete="status"
+                                            className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                         >
-                                            Change
-                                        </button>
+                                            <option value="draft">Draft</option>
+                                            <option value="published">Published</option>
+                                            <option value="archived">Archived</option>
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div className="col-span-full">
-                                    <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 ">
-                                        Cover photo
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="author" className="block text-sm font-medium leading-6 ">
+                                        Author
                                     </label>
-                                    <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                                        <div className="text-center">
-                                            <FontAwesomeIcon icon={faImage} className="h-12 w-12 text-gray-300 mx-auto" />
-                                            <div className="mt-4 flex text-sm leading-6 ">
-                                                <label
-                                                    htmlFor="file-upload"
-                                                    className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                                                >
-                                                    <span>Upload a file</span>
-                                                    <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                                                </label>
-                                                <p className="pl-1">or drag and drop</p>
-                                            </div>
-                                            <p className="text-xs leading-5 ">PNG, JPG, GIF up to 10MB</p>
-                                        </div>
+                                    <div className="mt-2">
+                                        <select
+                                            id="author"
+                                            name="author"
+                                            value={authorId}
+                                            onChange={(e) => setAuthorId(e.target.value)}
+                                            autoComplete="author"
+                                            className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        >
+                                            {authors.length === 0 && <option value="" disabled>No authors</option>}
+                                            {authorId == "" && <option value="" disabled>Select an author</option>}
+                                            {authors.map((author: User) => (
+                                                <option key={author.id} value={author.id}>{author.name ? author.name : author.email}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="category" className="block text-sm font-medium leading-6 ">
+                                        Category
+                                    </label>
+                                    <div className="mt-2">
+                                        <select
+                                            id="category"
+                                            name="category"
+                                            value={categoryId}
+                                            onChange={(e) => setCategoryId(e.target.value)}
+                                            autoComplete="category"
+                                            className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        >
+                                            {categories.length === 0 && <option value="" disabled>No categories</option>}
+                                            {categoryId == "" && <option value="" disabled>Select a category</option>}
+                                            {categories.map((category: any) => (
+                                                <option key={category.id} value={category.id}>{category.title}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="content" className="block text-sm font-medium leading-6 ">
+                                        Content
+                                    </label>
+                                    <ReactQuill theme="snow" className='h-64 bg-white'
+                                     value={content} onChange={setContent} />
+                                </div>                              
+
+                            </div>
+                        </div>
+                        <div className="border-b pb-12 bg-base-300 p-4 rounded-lg">
+                            <div className="grid grid-cols-1 gap-x-6 gap-y-8">
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="metaTitle" className="block text-sm font-medium leading-6 ">
+                                        Meta Title
+                                    </label>
+                                    <div className="mt-2">
+                                        <input
+                                            id="metaTitle"
+                                            name="metaTitle"
+                                            type="text"
+                                            placeholder="Jane Smith"
+                                            autoComplete="name"
+                                            className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="metaDescription" className="block text-sm font-medium leading-6 ">
+                                        Meta Description
+                                    </label>
+                                    <div className="mt-2">
+                                        <input
+                                            id="metaDescription"
+                                            name="metaDescription"
+                                            type="text"
+                                            placeholder="Jane Smith"
+                                            autoComplete="name"
+                                            className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="sm:col-span-4">
+                                    <label htmlFor="metaKeywords" className="block text-sm font-medium leading-6 ">
+                                        Meta Keywords
+                                    </label>
+                                    <div className="mt-2">
+                                        <input
+                                            id="metaKeywords"
+                                            name="metaKeywords"
+                                            type="text"
+                                            placeholder="Jane Smith"
+                                            autoComplete="name"
+                                            className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -188,4 +330,4 @@ const PostDetails: React.FC<PostDetailsProps> = (props) => {
     );
 }
 
-export default UserDetails;
+export default PostDetails;
