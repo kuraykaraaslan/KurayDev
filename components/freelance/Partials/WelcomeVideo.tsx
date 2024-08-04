@@ -4,7 +4,13 @@ import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
+//i18n
+import { withTranslation } from 'react-i18next';
+import i18n from '@/libs/localize/localize';
+
 const WelcomeVideo: React.FC = () => {
+
+    const { t } = i18n;
 
     const [playing, setPlaying] = React.useState(false);
     const player = createRef<ReactPlayer>();
@@ -39,14 +45,14 @@ const WelcomeVideo: React.FC = () => {
         <>
             <button className="btn btn-ghost mr-2" onClick={handleOpenModal}>
                 <FontAwesomeIcon icon={faPlayCircle} className="mr-2 text-xl w-6 h-6" />
-                Beni tanıyın
+                {t("FREELANCE.WELCOME.WATCH_VIDEO")}
             </button>
             <dialog id="my_modal" className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                 <ReactPlayer url="https://www.youtube.com/watch?v=uBBDMqZKagY" controls={true} width="100%" playing={playing} ref={player} />
                     <div className="modal-action">
                         <form method="dialog">
-                            <button className="btn">Close</button>
+                            <button className="btn">{t("FREELANCE.WELCOME.CLOSE")}</button>
                         </form>
                     </div>
                 </div>
@@ -55,4 +61,4 @@ const WelcomeVideo: React.FC = () => {
     );
 };
 
-export default WelcomeVideo;
+export default withTranslation()(WelcomeVideo);

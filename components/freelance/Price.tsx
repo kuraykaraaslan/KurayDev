@@ -3,43 +3,48 @@ import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
-import SinglePrice from './Partials/SingkePrice'
+import SinglePrice from './Partials/SinglePrice'
 
+//i18n
+import { withTranslation } from "react-i18next";
+import i18n from "@/libs/localize/localize";
+import Link from "next/link";
 
 
 export default function Price() {
 
 
+    const { t } = i18n;
 
     const PriceOptions = [
         {
-            title: "Hourly rate",
-            subtitle: "Pay as you go. Perfect for small tasks and projects.",
-            priceTitle: "Fixed price",
+            title: t("FREELANCE.PRICING.HOURLY_RATE.TITLE"),
+            subtitle: t("FREELANCE.PRICING.HOURLY_RATE.SUBTITLE"),
+            priceTitle: t("FREELANCE.PRICING.HOURLY_RATE.PRICE_TITLE"),
             price: 12,
             priceCurrencyIcon: faDollarSign,
-            buttonText: "Get access",
+            priceSubtitle: t("FREELANCE.PRICING.HOURLY_RATE.PRICE_SUBTITLE"),
+            pricePostfix: t("FREELANCE.PRICING.HOURLY_RATE.PRICE_POSTFIX"),
+            buttonText: t("FREELANCE.PRICING.HOURLY_RATE.BUTTON_TEXT"),
             buttonUrl: "#",
             features: [
-                "Unlimited revisions",
-                "24/7 support",
-                "Lifetime ownership",
-                "Lifetime updates",
+                t("FREELANCE.PRICING.HOURLY_RATE.INCLUDE_1"),
+                t("FREELANCE.PRICING.HOURLY_RATE.INCLUDE_2"),
             ],
         },
         {
-            title: "Monthly rate",
-            subtitle: "Hire me for a month. Perfect for ongoing projects and tasks.",
-            priceTitle: "Starting at",
+            title: t("FREELANCE.PRICING.MONTHLY_RATE.TITLE"),
+            subtitle: t("FREELANCE.PRICING.MONTHLY_RATE.SUBTITLE"),
+            priceTitle: t("FREELANCE.PRICING.MONTHLY_RATE.PRICE_TITLE"),
             price: 2000,
             priceCurrencyIcon: faDollarSign,
-            buttonText: "Get access",
+            buttonText: t("FREELANCE.PRICING.MONTHLY_RATE.BUTTON_TEXT"),
             buttonUrl: "#",
             features: [
-                "Unlimited revisions",
-                "24/7 support",
-                "Lifetime ownership",
-                "Lifetime updates",
+                t("FREELANCE.PRICING.MONTHLY_RATE.INCLUDE_1"),
+                t("FREELANCE.PRICING.MONTHLY_RATE.INCLUDE_2"),
+                t("FREELANCE.PRICING.MONTHLY_RATE.INCLUDE_3"),
+                t("FREELANCE.PRICING.MONTHLY_RATE.INCLUDE_4"),
             ],
         }
     ]
@@ -50,9 +55,9 @@ export default function Price() {
         <div className="bg-base-300 py-12 sm:py-24">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl sm:text-center">
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Simple no-tricks pricing</h2>
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t("FREELANCE.PRICING.TITLE")}</h2>
                     <p className="mt-6 text-lg leading-8 ">
-                        I keep pricing simple and transparent. No hidden fees. Fair pricing for all types of businesses.
+                        {t("FREELANCE.PRICING.DESCRIPTION")}
                     </p>
                     {PriceOptions.map((priceOption, index) => (
                         <button
@@ -65,7 +70,7 @@ export default function Price() {
                         </button>
                     ))}
                 </div>
-                <SinglePrice {...selectedPrice} />
+                <SinglePrice {...selectedPrice} t={t} />
             </div>
         </div>
     )

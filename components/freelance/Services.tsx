@@ -38,9 +38,9 @@ const ServicesHero = () => {
     {
       id: "1",
       image: "/assests/img/services/phone.jpg",
-      title: "Mobile App Development",
+      title: t("SERVICES.MOBILE_APP_DEVELOPMENT.TITLE"),
       description:
-        "We develop mobile applications for both Android and iOS platforms. We use the latest technologies and tools to deliver high-quality applications.",
+        t("SERVICES.MOBILE_APP_DEVELOPMENT.DESCRIPTION"),
       urls: [
         { type: "GitHub", url: "https://github.com/kuraykaraaslan/pegasus" },
         { type: "Demo", url: "https://pegasus.kuray.dev" },
@@ -54,9 +54,9 @@ const ServicesHero = () => {
     {
       id: "2",
       image: "/assests/img/services/web.jpg",
-      title: "Web Development",
+      title: t("SERVICES.WEB_DEVELOPMENT.TITLE"),
       description:
-        "We develop web applications using the latest technologies and tools. We design and develop responsive and user-friendly web applications.",
+        t("SERVICES.WEB_DEVELOPMENT.DESCRIPTION"),        
       urls: [
         { type: "GitHub", url: "https://github.com/kuraykaraaslan/pegasus" },
         { type: "Demo", url: "https://pegasus.kuray.dev" },
@@ -70,9 +70,9 @@ const ServicesHero = () => {
     {
       id: "3",
       image: "/assests/img/services/backend.jpg",
-      title: "Backend Development",
+      title: t("SERVICES.BACKEND_DEVELOPMENT.TITLE"),
       description:
-        "We develop backend applications using the latest technologies and tools. We design and develop scalable and secure backend applications.",
+        t("SERVICES.BACKEND_DEVELOPMENT.DESCRIPTION"),
       urls: [],
       tags : [
         { name: "Node.js", color: "bg-green-200", icon: faWind },
@@ -83,10 +83,10 @@ const ServicesHero = () => {
     {
       id: "4",
       image: "/assests/img/services/other2.jpg",
-      title: "Need Something Else?",
+      title: t("SERVICES.SOMETHING_ELSE.TITLE"),
       bgColor: "bg-base-200",
       description:
-        "We can help you with your custom software development needs. Contact us to discuss your project.",
+        t("SERVICES.SOMETHING_ELSE.DESCRIPTION"),
       urls: [],
       tags: []
     }

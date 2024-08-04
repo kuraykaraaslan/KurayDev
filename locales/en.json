@@ -139,6 +139,85 @@
   },
   "SERVICES": {
     "TITLE": "My Services",
-    "DESCRIPTION": "i offer a wide range of services to help you build your dream project."
+    "DESCRIPTION": "i offer a wide range of services to help you build your dream project.",
+    "MOBILE_APP_DEVELOPMENT": {
+      "TITLE": "Mobile App Development",
+      "DESCRIPTION": "I develop mobile applications for both Android and iOS platforms. i use the latest technologies and tools to deliver high-quality applications."
+    },
+    "WEB_DEVELOPMENT": {
+      "TITLE": "Web Development",
+      "DESCRIPTION": "I can help you build a website or web app using React, Next.js that looks great on all devices."
+    },
+    "BACKEND_DEVELOPMENT": {
+      "TITLE": "Backend Development",
+      "DESCRIPTION": "Have a project that requires a backend? I can help you build a scalable and secure backend using Node.js, Express, and Postgresql."
+    },
+    "SOMETHING_ELSE": {
+      "TITLE": "Something Else",
+      "DESCRIPTION": "I  can help you with your custom software development needs. Contact us to discuss your project. like setting up a CI/CD pipeline, writing tests, or deploying your app."
+    }
+  },
+  "FREELANCE": {
+    "WELCOME": {
+      "TITLE": "Seamless Freelance Experience",
+      "DESCRIPTION": "Have a project in mind? Let's work together to make it a reality.",
+      "WATCH_VIDEO": "Get know me better",
+      "MY_SERVICES": "My Services",
+      "CLOSE": "Close"
+    },
+    "PRICING" : {
+      "TITLE": "Pricing",
+      "DESCRIPTION": "I keep pricing simple and transparent. No hidden fees. Fair pricing for all types of businesses.",
+      "HOURLY_RATE": {
+        "TITLE": "Hourly Rate",
+        "SUBTITLE": "I charge $50 per hour for all types of projects.",
+        "PRICE_TITLE": "Minimum",
+        "PRICE_SUBTITLE": "8 hour",
+        "PRICE_POSTFIX": "per hour",
+        "BUTTON_TEXT": "Hire Me",
+        "INCLUDE_1": "quality code",
+        "INCLUDE_2": "fast delivery",
+        "INCLUDE_3": "ongoing support"
+      },
+      "MONTHLY_RATE": {
+        "TITLE": "Monthly Rate",
+        "SUBTITLE": "I charge $2000 per month for full-time projects.",
+        "PRICE_TITLE": "Starting from",
+        "BUTTON_TEXT": "Hire Me",
+        "INCLUDE_1": "dedicated developer",
+        "INCLUDE_2": "daily updates",
+        "INCLUDE_3": "ongoing support",
+        "INCLUDE_4": "quality code"
+      },
+      "FOOTER": "All prices are in USD. I accept payments via PayPal, BTC, and bank transfer."
+    },
+    "PLATFORMS" : {
+      "TITLE": "Active on different platforms",
+      "DESCRIPTION": "I'm available on the following platforms. You can hire me on any of these platforms."
+    }
+  },
+  "TESTIMONIALS": {
+    "TITLE": "What People Say",
+    "DESCRIPTION": "I've worked with some amazing people and companies. Here's what they have to say about me.",
+    "CLIENT_1": {
+      "NAME": "Mutlu Kurtbas",
+      "TITLE": "cafe franchise owner",
+      "REVIEW": "He helped to build our order management system, and i was impressed by his ability to communicate complex ideas to non-technical team members."
+    },
+    "CLIENT_2": {
+      "NAME": "Gabriel Williams",
+      "TITLE": "Marketing Manager",
+      "REVIEW": "Communication was great, and he was able to deliver the project on time and on budget."
+    },
+    "CLIENT_3": {
+      "NAME": "Natalie Adams",
+      "TITLE": "Warehouse",
+      "REVIEW": "Stock management is a breeze now, and we're able to keep track of our inventory in real time."
+    },
+    "CLIENT_4": {
+      "NAME": "Penelope Scott",
+      "TITLE": "IT Manager",
+      "REVIEW": "He helped us build a custom CRM system that has helped us streamline our sales process."
+    }
   }
 }

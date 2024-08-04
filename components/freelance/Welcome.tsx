@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faCircleNodes } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import WorldMap from "react-svg-worldmap";
-import { t } from 'i18next';
+
+//i18n
+import { withTranslation } from 'react-i18next';
+import i18n from '@/libs/localize/localize';
 
 const WelcomeVideo = dynamic(
   () => import("@/components/freelance/Partials/WelcomeVideo"),
@@ -13,6 +16,7 @@ const WelcomeVideo = dynamic(
 );
 
 const Welcome = () => {
+  const { t } = i18n;
 
   const [dotColor, setDotColor] = useState("#ffffff");
 
@@ -69,16 +73,16 @@ const Welcome = () => {
         >
           <div className="hero-content">
             <div className="flex-1 max-w-2xl">
-              <div className="max-w-lg">
-                <h1 className="text-5xl font-bold">Kusursuz bir işbirliği</h1>
+              <div className="max-w-lg mr-4">
+                <h1 className="text-5xl font-bold">{t("FREELANCE.WELCOME.TITLE")}</h1>
                 <p className="py-6 text-white">
-                  Yazılım firması seçme konusundaki endişelerinizi anlıyoruz. Bu yüzden, işbirliğimizin her aşamasında size destek oluyoruz.
+                  {t("FREELANCE.WELCOME.DESCRIPTION")}
                 </p>
                 {/* @ts-ignore */}
                 <WelcomeVideo />
                 <Link className="btn btn-primary" href="/freelance#services">
                   <FontAwesomeIcon icon={faCircleNodes} className="mr-2 text-xl w-6 h-6" />
-                  Hizmetlerim
+                  {t("FREELANCE.WELCOME.MY_SERVICES")}
                 </Link>
               </div>
             </div>
@@ -92,4 +96,4 @@ const Welcome = () => {
   );
 };
 
-export default Welcome;
+export default withTranslation()(Welcome);
