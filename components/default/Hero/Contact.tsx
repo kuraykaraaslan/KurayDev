@@ -226,6 +226,20 @@ const Contact = (props: ContactProps) => {
 
                   <p className="flex items-center">
                     <FontAwesomeIcon
+                      icon={faWhatsapp}
+                      className="w-5 h-5 mr-2 sm:mr-6"
+                    />
+                    <Link
+                      href="https://wa.me/447456373554"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Whatsapp</span>
+                    </Link>
+                  </p>
+
+                  <p className="flex items-center">
+                    <FontAwesomeIcon
                       icon={faTelegram}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
