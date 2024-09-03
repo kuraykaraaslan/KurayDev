@@ -42,7 +42,7 @@ const SingleProject: React.FC<SingleProjectProps> = ({ service }) => {
 
   return (
     <article id="services"
-      className={`rounded-lg border shadow-md min-h-80 ${service.bgColor ? service.bgColor : "bg-base-200"} ${service.borderColor ? service.borderColor : "border-base-200"} ${service.textColor ? service.textColor : "text-base-900"}`}
+      className={`rounded-lg select-none border shadow-md min-h-80 ${service.bgColor ? service.bgColor : "bg-base-200"} ${service.borderColor ? service.borderColor : "border-base-200"} ${service.textColor ? service.textColor : "text-base-900"}`}
     >
       <img src={service.image} alt={service.title} className="w-full h-48 object-cover rounded-t-lg" />
       <div className="flex flex-col mt-5 p-6">
@@ -66,7 +66,8 @@ const SingleProject: React.FC<SingleProjectProps> = ({ service }) => {
           ))}
         </div>
         <h2 className="mb-2 text-2xl font-bold tracking-tight">
-          <Link href="">{service.title}</Link>
+          <Link href="#" style={{ pointerEvents: "none" }}
+          >{service.title}</Link>
         </h2>
         <p className="mb-5 font-light">{service.description}</p>
         <div className="flex justify-between items-center">

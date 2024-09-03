@@ -6,6 +6,7 @@ import Contact from '@/components/default/Hero/Contact';
 import Platforms from '@/components/freelance/Platforms';
 import Price from '@/components/freelance/Price';
 import Testimonials from '@/components/default/Hero/Testimonials';
+import PayWith from '@/components/freelance/PayWith';
 
 const Page = () => {
     return (
@@ -15,7 +16,8 @@ const Page = () => {
         <Price />
         <Platforms />
         <Testimonials />
-        <Contact bsckgroundColor='bg-base-100' />
+        <PayWith />
+        <Contact bsckgroundColor='bg-base-200' />
         </>
     )
 };

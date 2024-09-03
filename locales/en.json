@@ -170,7 +170,7 @@
       "DESCRIPTION": "I keep pricing simple and transparent. No hidden fees. Fair pricing for all types of businesses.",
       "HOURLY_RATE": {
         "TITLE": "Hourly Rate",
-        "SUBTITLE": "I charge $50 per hour for all types of projects.",
+        "SUBTITLE": "i charge $12 per hour for project-based work.",
         "PRICE_TITLE": "Minimum",
         "PRICE_SUBTITLE": "8 hour",
         "PRICE_POSTFIX": "per hour",
@@ -181,7 +181,7 @@
       },
       "MONTHLY_RATE": {
         "TITLE": "Monthly Rate",
-        "SUBTITLE": "I charge $2000 per month for full-time projects.",
+        "SUBTITLE": "i charge $2000 per month for full-time projects.",
         "PRICE_TITLE": "Starting from",
         "BUTTON_TEXT": "Hire Me",
         "INCLUDE_1": "dedicated developer",
@@ -194,6 +194,10 @@
     "PLATFORMS" : {
       "TITLE": "Active on different platforms",
       "DESCRIPTION": "I'm available on the following platforms. You can hire me on any of these platforms."
+    },
+    "PAYMENT": {
+      "TITLE": "You can pay with",
+      "DESCRIPTION": "I accept payments via PayPal, BTC, Credit Card, and bank transfer."
     }
   },
   "TESTIMONIALS": {

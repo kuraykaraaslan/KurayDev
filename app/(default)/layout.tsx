@@ -29,19 +29,25 @@ import ScrollToTop from "@/components/default/ScrollToTop";
 // Next Auth
 import { SessionProvider } from "next-auth/react"
 
+// Context 
+import UserProvider from "@/libs/context/UserContext";
+
 
 const layout = ({ children }: { children: React.ReactNode }) => {
+
 
   return (
     <Suspense fallback={<Loading />}>
       <SessionProvider>
-        <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
-          <Navbar />
-          <div className="min-h-screen">{children}</div>
-          <Footer />
-          <ScrollToTop />
-          <CookieConsent />
-        </CookiesProvider>
+        <UserProvider>
+          <CookiesProvider defaultSetOptions={{ path: "/", maxAge: 31536000 }}>
+            <Navbar />
+            <div className="min-h-screen">{children}</div>
+            <Footer />
+            <ScrollToTop />
+            <CookieConsent />
+          </CookiesProvider>
+        </UserProvider>
       </SessionProvider>
     </Suspense>
   );

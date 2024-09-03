@@ -12,15 +12,15 @@ import { SessionProvider } from "next-auth/react";
 export const metadata: Metadata = {
   applicationName: process.env.APP_NAME,
   title: {
-    default: process.env.APP_DEFAULT_TITLE,
-    template: process.env.APP_TITLE_TEMPLATE,
+    default: process.env.APP_DEFAULT_TITLE as string,
+    template: process.env.APP_TITLE_TEMPLATE as string,
   },
-  description: process.env.APP_DESCRIPTION,
+  description: process.env.APP_DESCRIPTION as string,
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: process.env.APP_DEFAULT_TITLE,
+    title: process.env.APP_DEFAULT_TITLE as string,
     // startUpImage: [],
   },
   formatDetection: {
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     type: "website",
     siteName: process.env.APP_NAME,
     title: {
-      default: process.env.APP_DEFAULT_TITLE,
-      template: process.env.APP_TITLE_TEMPLATE,
+      default: process.env.APP_DEFAULT_TITLE as string,
+      template: process.env.APP_TITLE_TEMPLATE as string,
     },
-    description: process.env.APP_DESCRIPTION,
+    description: process.env.APP_DESCRIPTION as string,
     images: [
       {
         url: "/assests/img/og.png",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: {
-      default: process.env.APP_DEFAULT_TITLE,
-      template: process.env.APP_TITLE_TEMPLATE,
+      default: process.env.APP_DEFAULT_TITLE as string,
+      template: process.env.APP_TITLE_TEMPLATE as string,
     },
     description: process.env.APP_DESCRIPTION,
   },

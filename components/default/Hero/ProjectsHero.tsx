@@ -54,9 +54,19 @@ const ProjectsHero = () => {
     setExpanded(!expanded);
   };
 
+  const otherProjectsImageHTML =
+    `<div class="w-full h-48 bg-base-100 rounded-t-lg flex items-center justify-center select-none">
+  <a href="https://github.com/kuraykaraaslan" class="flex items-center gap-2 p-4">
+    <img src="/assests/img/github.svg" alt="GitHub" class="w-12 h-12 object-cover object-center rounded-lg" />
+    <span class="text-xl font-bold">/kuraykaraaslan</span>
+  </a>
+
+  </div>`;
+
   const projects: Project[] = [
     {
       id: "1",
+      image: "/assests/img/projects/pegasus.png",
       title: "Pegasus UI Kit",
       description:
         "Pegasus is a React UI Kit that is built using Tailwind CSS. It offers a responsive and user-friendly interface for an optimal experience.",
@@ -71,6 +81,7 @@ const ProjectsHero = () => {
     },
     {
       id: "2",
+      image: "https://github.com/kuraykaraaslan/expo-react-redux-boilerplate/raw/main/static/logo.png",
       title: "Expo React Redux Boilerplate",
       description:
         "It provides a solid foundation for creating cross-platform mobile apps with a predictable state container for managing application data flow.",
@@ -84,6 +95,7 @@ const ProjectsHero = () => {
     },
     {
       id: "3",
+      image: "https://github.com/kuraykaraaslan/Sozlesmeci/raw/main/static/main.gif",
       title: "Sözleşmeci",
       description:
         "Sözleşmeci is a contract generator that allows users to create, customize, and print professional contracts with ease. Built using React, it offers a responsive and user-friendly interface for an optimal experience.",
@@ -97,19 +109,20 @@ const ProjectsHero = () => {
     },
     {
       id: "4",
-      title: "fireCMS",
+      image: "https://github.com/kuraykaraaslan/SecondLanguage/raw/main/static/main.gif",
+      title: "Second Language",
       description:
-        "fireCMS is a Headless CMS that is built using Express and Firebase. It offers a API based CMS for an optimal experience.",
+        "a Language learning app that allows users to learn a new language by listening to the pronunciation of words and phrases.",
       urls: [
-        { type: "GitHub", url: "https://github.com/kuraykaraaslan/FireCMS" },
+        { type: "GitHub", url: "https://github.com/kuraykaraaslan/SecondLanguage" },
       ],
       tags: [
         { name: "React", color: "bg-blue-300", icon: faReact },
-        { name: "Firebase", color: "bg-yellow-300", icon: faFire },
       ],
     },
     {
       id: "5",
+      image: "https://github.com/kuraykaraaslan/InstaFollowStudio/raw/main/static/logo.png",
       title: "Instagram Follow Studio",
       description:
         "Instagram Follow Studio is a Chrome extension that allows you to follow and unfollow people on Instagram automatically. Listing them in a table, the extension allows you to follow and unfollow people in a controlled manner.",
@@ -132,6 +145,7 @@ const ProjectsHero = () => {
     },
     {
       id: "6",
+      image: "https://github.com/kuraykaraaslan/Resume/raw/main/static/screenshot.gif",
       title: "Resume",
       description:
         "This open source application allows users to create, customize, and print professional resumes and CVs with ease. Built using React, it offers a responsive and user-friendly interface for an optimal experience.",
@@ -143,6 +157,7 @@ const ProjectsHero = () => {
     },
     {
       id: "7",
+      image: "/assests/img/projects/tnyist.png",
       title: "tny.ist",
       description:
         "tny.ist is a free URL shortening service that provides companies and individuals with unique, customizable and secure links as well as analytics for the shortened links.",
@@ -155,6 +170,7 @@ const ProjectsHero = () => {
     },
     {
       id: "8",
+      image: "/assests/img/projects/datewave.png",
       title: "DateWave",
       description:
         "DateWave is a dating app that allows users to find their soulmates. The app is built using React Native and Firebase, and it is available on both Android and iOS.",
@@ -170,6 +186,7 @@ const ProjectsHero = () => {
     },
     {
       id: "9",
+      image: "https://raw.githubusercontent.com/kuraykaraaslan/control-view-cube/main/static/donut.gif",
       title: "3D View Cube",
       description:
         "3D View Cube is a 3D cube that is built using React and WebGL. It is a simple application that allows users to rotate the cube in 3D space.",
@@ -207,12 +224,13 @@ const ProjectsHero = () => {
         { name: "Web", color: "bg-blue-300", icon: faGlobe },
       ],
       bgColor: "bg-base-200",
+      imageHtml: otherProjectsImageHTML,
     },
   ];
 
   return (
     <>
-      <section className="bg-base-300 pt-12" id="projects">
+      <section className="bg-base-300 pt-16" id="projects">
         <div
           className="px-4 mx-auto max-w-screen-xl lg:pb-16 lg:px-6 duration-1000"
           style={{ height: "560px", overflow: "clip" }}
@@ -277,7 +295,7 @@ const ProjectsHero = () => {
                 <span>{expanded ? "Show Less" : "Show More"}</span>
               </button>
             ) : (
-              <button 
+              <button
                 className="flex flex-col items-center gap-2"
                 style={{ height: "80px", width: "130px" }}
                 onClick={handleClick}

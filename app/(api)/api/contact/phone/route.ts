@@ -16,13 +16,6 @@ export async function GET(req: NextRequest, res: NextResponse<ResponseData>) {
 
     const phones = [
         {
-            "CountryCode": "tr",
-            "PhoneNumber": "+90 545 922 3554",
-            "noSpacePhoneNumber": "+905459223554",
-            "hasWhatsapp": false,
-            "hasTelegram": false
-        },
-        {
             "CountryCode": "gb",
             "PhoneNumber": "+44 7456 373554",
             "noSpacePhoneNumber": "+447456373554",
@@ -33,6 +26,13 @@ export async function GET(req: NextRequest, res: NextResponse<ResponseData>) {
             "CountryCode": "us",
             "PhoneNumber": "+1 251 564 0856",
             "noSpacePhoneNumber": "+1 251 564 0856",
+            "hasWhatsapp": false,
+            "hasTelegram": false
+        },
+        {
+            "CountryCode": "tr",
+            "PhoneNumber": "+90 545 922 3554",
+            "noSpacePhoneNumber": "+905459223554",
             "hasWhatsapp": false,
             "hasTelegram": false
         }

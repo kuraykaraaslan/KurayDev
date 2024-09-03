@@ -20,6 +20,8 @@ export type Tag = {
 
 export type Project = {
   id: string;
+  image?: string;
+  imageHtml?: string;
   title: string;
   description: string;
   urls: Url[];
@@ -36,9 +38,24 @@ type SingleProjectProps = {
 const SingleProject: React.FC<SingleProjectProps> = ({ project }) => {
   return (
     <article
-      className={`p-6 rounded-lg border shadow-md ${project.bgColor ? project.bgColor : "bg-base-100"} ${project.borderColor ? project.borderColor : "border-base-200"} ${project.textColor ? project.textColor : "text-base-900"}`}
+      className={`rounded-lg border shadow-md ${project.bgColor ? project.bgColor : "bg-base-100"} ${project.borderColor ? project.borderColor : "border-base-200"} ${project.textColor ? project.textColor : "text-base-900"}`}
     >
-      <div className="flex items-center mb-5 text-black">
+      <div className="shadow-md rounded-t-lg">
+        {project.imageHtml ? (
+          <div
+            dangerouslySetInnerHTML={{ __html: project.imageHtml }}
+            className="w-full h-48 object-cover object-center rounded-t-lg"
+          />
+        ) : project.image ? (
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-48 object-cover object-center rounded-t-lg"
+        /> ) : (
+          <div className="w-full h-48 bg-base-100 rounded-t-lg"></div>
+        )}
+      </div>
+      <div className="pt-6 px-6 flex items-center mb-5 text-black">
         {project.tags.map((tag) => (
           <span
             key={tag.name}
@@ -57,11 +74,11 @@ const SingleProject: React.FC<SingleProjectProps> = ({ project }) => {
           </span>
         ))}
       </div>
-      <h2 className="mb-2 text-2xl font-bold tracking-tight">
+      <h2 className="px-6 mb-2 text-2xl font-bold tracking-tight">
         <Link href="">{project.title}</Link>
       </h2>
-      <p className="mb-5 font-light">{project.description}</p>
-      <div className="flex justify-between items-center">
+      <p className="px-6 mb-5 font-light">{project.description}</p>
+      <div className="px-6 pb-6 flex justify-between items-center">
         <div className="flex items-center space-x-4">
           {project.urls.map((url) => (
             <Link

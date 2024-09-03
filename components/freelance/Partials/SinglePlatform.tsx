@@ -3,7 +3,7 @@ import React from 'react';
 interface Platform {
     name: string;
     icon: string;
-    url: string;
+    url?: string;
     bgColor?: string;
     borderColor?: string;
     zoom?: number;

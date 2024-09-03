@@ -224,13 +224,13 @@ const Contact = (props: ContactProps) => {
                     {t("CONTACT.SOCIAL_LINKS")}
                   </h3>
 
-                  <p className="flex items-center">
+                  <p className="flex items-center text-green-500 animate-pulse">
                     <FontAwesomeIcon
                       icon={faWhatsapp}
                       className="w-5 h-5 mr-2 sm:mr-6"
                     />
                     <Link
-                      href="https://wa.me/447456373554"
+                      href="https://wa.me/905459223554"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

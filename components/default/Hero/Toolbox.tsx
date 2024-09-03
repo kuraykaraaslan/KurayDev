@@ -54,7 +54,7 @@ const Toolbox = () => {
       icon: faJava,
       hoverBgColor: "bg-red-500",
       title: "Java",
-      description: "spring, swing",
+      description: "spring & swing",
       hoverTextColor: "text-black"
     },
     {
@@ -85,14 +85,14 @@ const Toolbox = () => {
       icon: faJs,
       hoverBgColor: "bg-yellow-500",
       title: "Javascript",
-      description: "react & native",
+      description: "react & native & express & next",
       hoverTextColor: "text-black",
     },
     {
       icon: faCss3,
       hoverBgColor: "bg-blue-500",
       title: "CSS",
-      description: "tailwind & bootstrap",
+      description: "tailwind & bootstrap & scss",
       hoverTextColor: "text-black",
     },
     {

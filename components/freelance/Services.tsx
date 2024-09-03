@@ -42,8 +42,6 @@ const ServicesHero = () => {
       description:
         t("SERVICES.MOBILE_APP_DEVELOPMENT.DESCRIPTION"),
       urls: [
-        { type: "GitHub", url: "https://github.com/kuraykaraaslan/pegasus" },
-        { type: "Demo", url: "https://pegasus.kuray.dev" },
       ],
       tags: [
         { name: "Android", color: "bg-green-200", icon: faAndroid },
@@ -58,8 +56,6 @@ const ServicesHero = () => {
       description:
         t("SERVICES.WEB_DEVELOPMENT.DESCRIPTION"),        
       urls: [
-        { type: "GitHub", url: "https://github.com/kuraykaraaslan/pegasus" },
-        { type: "Demo", url: "https://pegasus.kuray.dev" },
       ],
       tags: [
         { name: "React", color: "bg-blue-200", icon: faReact },

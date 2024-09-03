@@ -4,8 +4,7 @@ import { Post, User} from '@/libs/prisma/prisma';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import axiosInstance from '@/libs/http/axios';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+
 
 
 interface PostDetailsProps {
@@ -252,8 +251,8 @@ const PostDetails: React.FC<PostDetailsProps> = (props) => {
                                     <label htmlFor="content" className="block text-sm font-medium leading-6 ">
                                         Content
                                     </label>
-                                    <ReactQuill theme="snow" className='h-64 bg-white'
-                                     value={content} onChange={setContent} />
+                                    <textarea className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                     value={content} onChange={(e) => setContent(e.target.value)}></textarea>
                                 </div>                              
 
                             </div>

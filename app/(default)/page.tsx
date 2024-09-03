@@ -13,6 +13,8 @@ import Timeline from "@/components/default/Hero/Timeline";
 import ExpoBoilerplate from "@/components/default/CarouselPartial/ExpoBoilerplate";
 import Pegasus from "@/components/default/CarouselPartial/Pegasus";
 import GitSection from "@/components/default/Hero/GitSection";
+import ExpressBoilerplate from "@/components/default/CarouselPartial/ExpressBoilerplate";
+import Diplomat from "@/components/default/CarouselPartial/Diplomat";
 
 export default function Home() {
   return (
@@ -20,7 +22,9 @@ export default function Home() {
       <HireMe />
       <GitSection />
       <Carousel>
+        <ExpressBoilerplate />
         <Pegasus />
+        <Diplomat />
         <ExpoBoilerplate />
         <ControlViewCube />
         <Resume />
