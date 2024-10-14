@@ -11,13 +11,11 @@ import PayWith from '@/components/freelance/PayWith';
 const Page = () => {
     return (
         <>
-        <Welcome />
-        <Services />
-        <Price />
-        <Platforms />
-        <Testimonials />
-        <PayWith />
-        <Contact bsckgroundColor='bg-base-200' />
+            <Welcome />
+            <Services />
+            <Platforms />
+            <Testimonials />
+            <Contact />
         </>
     )
 };

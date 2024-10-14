@@ -15,8 +15,8 @@ const PayWith = (props: any) => {
 
     const  platforms = [
         {
-            name: "Paypal",
-            icon: "/assests/img/paypal.svg",
+            name: "Payoneer",
+            icon: "/assests/img/payoneer.svg",
             bgColor: "bg-white",
             zoom: 2
         },

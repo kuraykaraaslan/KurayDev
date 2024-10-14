@@ -6,10 +6,6 @@ import "./globals.css";
 import Navbar from "@/components/default/Navbar";
 import Footer from "@/components/default/Footer";
 
-// Font Awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-
 //Suspense
 import Loading from "@/components/default/Loading";
 import dynamic from "next/dynamic";
@@ -21,9 +17,6 @@ const CookieConsent = dynamic(
   { ssr: false },
 );
 
-//i18n
-import { withTranslation } from "react-i18next";
-import { Scroll } from "@react-three/drei";
 import ScrollToTop from "@/components/default/ScrollToTop";
 
 // Next Auth

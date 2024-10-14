@@ -12,14 +12,14 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe, faHorseHead, faSnowman } from "@fortawesome/free-solid-svg-icons";
 
-const Diplomat = () => {
+const NextAdminBoilerplate = () => {
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse mx-4 md:mx-20">
         <div className="max-w-sm rounded-lg shadow-2xl hidden lg:block">
           <div className="mockup-browser border bg-base-300">
             <div className="mockup-browser-toolbar">
-              <div className="input">Diplomat Backend</div>
+              <div className="input">next-admin-boilerplate</div>
             </div>
             <img
               src="/assests/img/diplomat.png"
@@ -48,10 +48,20 @@ const Diplomat = () => {
               Live Preview
             </p>
           </Link>
+          <Link href="https://github.com/kuraykaraaslan/next-admin-boilerplate">
+            <p className="btn bg-black text-white hover:bg-gray-600 ml-2">
+              <FontAwesomeIcon
+                icon={faGithub}
+                style={{ width: "1.0rem", height: "1.0rem" }}
+              />{" "}
+              Github
+            </p>
+          </Link>
+
         </div>
       </div>
     </div>
   );
 };
 
-export default Diplomat;
+export default NextAdminBoilerplate;

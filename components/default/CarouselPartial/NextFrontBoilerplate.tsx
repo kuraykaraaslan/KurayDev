@@ -12,14 +12,14 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe, faHorseHead } from "@fortawesome/free-solid-svg-icons";
 
-const Pegasus = () => {
+const NextFrontBoilerplate = () => {
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse mx-4 md:mx-20">
         <div className="max-w-sm rounded-lg shadow-2xl hidden lg:block">
           <div className="mockup-browser border bg-base-300">
             <div className="mockup-browser-toolbar">
-              <div className="input">Insta Follow Studio</div>
+              <div className="input">next-front-boilerplate</div>
             </div>
             <img
               src="https://raw.githubusercontent.com/kuraykaraaslan/Pegasus/main/static/home.png"
@@ -64,4 +64,4 @@ const Pegasus = () => {
   );
 };
 
-export default Pegasus;
+export default NextFrontBoilerplate;

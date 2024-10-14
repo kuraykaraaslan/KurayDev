@@ -12,7 +12,6 @@ import { faArrowRight, faLink } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
 
-import "@fontsource/caveat-brush";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

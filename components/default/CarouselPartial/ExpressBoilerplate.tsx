@@ -10,7 +10,7 @@ import {
   faInstagram,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faBolt, faGlobe, faHorseHead, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faBolt, faCoffee, faGlobe, faHorseHead, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const ExpressBoilerplate = () => {
   return (
@@ -22,7 +22,7 @@ const ExpressBoilerplate = () => {
               <div className="input">Express Boilerplate</div>
             </div>
             <img
-              src="https://raw.githubusercontent.com/kuraykaraaslan/express-boilerplate/main/static/screenshot.png"
+              src="/assests/img/express-boilerplate.png"
               alt="cover"
               className="mockup-browser-img"
             />
@@ -41,13 +41,13 @@ const ExpressBoilerplate = () => {
             that is pre-configured with the necessary tools and libraries to
             help you kickstart your next project.
           </p>
-          <Link href="https://github.com/kuraykaraaslan/express-boilerplate">
+          <Link href="https://www.fiverr.com/kuraykaraaslan">
             <p className="btn bg-green-500 text-white hover:bg-green-600">
               <FontAwesomeIcon
-                icon={faGithub}
+                icon={faCoffee}
                 style={{ width: "1.0rem", height: "1.0rem" }}
               />{" "}
-              Github
+              Buy Me a Coffee
             </p>
           </Link>
           <Link href="https://express-boilerplate.kuray.dev/">

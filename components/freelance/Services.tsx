@@ -1,25 +1,17 @@
 "use client";
-import React , { useEffect } from "react";
+import React from "react";
 import {
   faApple,
   faAndroid,
   faReact,
-  faNodeJs,
   faPhp,
   faJava
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faDesktop,
-  faAnglesDown,
-  faAnglesUp,
-  faFire,
-  faGear,
   faGlobe,
-  faMobileScreenButton,
-  faTv,
   faWind,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //i18n
 import { withTranslation } from "react-i18next";
