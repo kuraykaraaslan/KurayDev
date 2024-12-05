@@ -1,4 +1,8 @@
-# kuray.dev Page
+# kuray.dev Page [ Archived ]   
+
+This repository is archived. The new repository is [kuray.dev](https://github.com/kuraykaraaslan/KurayDevV2). You can check the new repository for the latest updates.
+
+## Introduction
 
 ![kuray.dev](/static/kuraymain.gif)
 
